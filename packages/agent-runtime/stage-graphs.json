@@ -1,0 +1,930 @@
+{
+  "manju": [
+    {
+      "id": "S0_SETUP",
+      "name": "格式/题材删减",
+      "agentIds": [
+        "orch.writing",
+        "topic.market_brief",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S1_HOOK_BATCH"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_HOOK_BATCH",
+      "name": "核心梗批量",
+      "agentIds": [
+        "topic.core_hook_batch"
+      ],
+      "next": [
+        "S2_HOOK_CRITIC"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_HOOK_CRITIC",
+      "name": "核心梗评审",
+      "agentIds": [
+        "topic.core_hook_critic"
+      ],
+      "next": [
+        "S2_HOOK_SELECT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_HOOK_SELECT",
+      "name": "人工采纳核心梗",
+      "agentIds": [],
+      "next": [
+        "S2_LOGLINE_100"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_LOGLINE_100",
+      "name": "100字测试",
+      "agentIds": [],
+      "next": [
+        "S2_COOL_BATCH"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_COOL_BATCH",
+      "name": "爽虐点批量",
+      "agentIds": [
+        "struct.cool18",
+        "struct.cool_expand"
+      ],
+      "next": [
+        "S3_BIO"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_BIO",
+      "name": "人物小传",
+      "agentIds": [
+        "char.bio_manju",
+        "char.relation_net"
+      ],
+      "next": [
+        "S3_BIO_ACK"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_BIO_ACK",
+      "name": "小传人工确认",
+      "agentIds": [],
+      "next": [
+        "S4_EP10_OUTLINE"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_EP10_OUTLINE",
+      "name": "前十集大纲",
+      "agentIds": [
+        "struct.episode_outline",
+        "hook.episode_alts"
+      ],
+      "next": [
+        "S4_OUTLINE_ACK"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_OUTLINE_ACK",
+      "name": "大纲人工确认",
+      "agentIds": [
+        "struct.story_graph"
+      ],
+      "next": [
+        "S5_EP_BODY_BATCH"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S5_EP_BODY_BATCH",
+      "name": "分集正文串行（Bible注入·衰减硬停）",
+      "agentIds": [
+        "orch.batch_writer",
+        "qc.bible_guard",
+        "prose.episode_body",
+        "struct.episode_graph",
+        "hook.foreshadow_ledger",
+        "mem.chapter_summary"
+      ],
+      "next": [
+        "S6_QA"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S6_QA",
+      "name": "规格校正 / 字数衰减修复",
+      "agentIds": [
+        "prose.qa_correct",
+        "prose.length_decay_fix"
+      ],
+      "next": [
+        "S7_STORYBOARD"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S7_STORYBOARD",
+      "name": "去小说化 / 分镜化",
+      "agentIds": [
+        "prose.storyboard"
+      ],
+      "next": [
+        "S8_DIALOGUE"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S8_DIALOGUE",
+      "name": "台词加压",
+      "agentIds": [
+        "prose.dialogue_pressure"
+      ],
+      "next": [
+        "S9_DE_AI"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S9_DE_AI",
+      "name": "去 AI 味",
+      "agentIds": [
+        "qc.de_ai"
+      ],
+      "next": [
+        "S10_HUMAN_QC"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S10_HUMAN_QC",
+      "name": "人工校稿 / LogicAck",
+      "agentIds": [
+        "char.soul_check",
+        "qc.logic_heuristic",
+        "qc.human_checklist"
+      ],
+      "next": [
+        "S11_EXTEND",
+        "S11_PITCH"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S11_EXTEND",
+      "name": "扩展后续大纲",
+      "agentIds": [
+        "struct.story_graph",
+        "hook.foreshadow_ledger",
+        "struct.extend_outline",
+        "struct.act100_manju"
+      ],
+      "next": [
+        "S5_EP_BODY_BATCH"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S11_PITCH",
+      "name": "投稿打包（四件套）",
+      "agentIds": [
+        "deliver.pitch_pack"
+      ],
+      "next": [
+        "S11_DONE"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S11_DONE",
+      "name": "交稿完成",
+      "agentIds": [],
+      "next": [],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    }
+  ],
+  "duanju": [
+    {
+      "id": "S0_PRODUCT",
+      "name": "产品锁",
+      "agentIds": [
+        "orch.writing",
+        "biz.product_align"
+      ],
+      "next": [
+        "S1_TOPIC"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_TOPIC",
+      "name": "选题（想看/爽点/壳）",
+      "agentIds": [
+        "topic.want_how",
+        "topic.cool_point_5",
+        "topic.story_shell",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S1_TOPIC_ACK"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_TOPIC_ACK",
+      "name": "选题人工确认",
+      "agentIds": [],
+      "next": [
+        "S2_BIO"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_BIO",
+      "name": "人设",
+      "agentIds": [
+        "char.mini_bio",
+        "char.empathy_3",
+        "qc.gender_path"
+      ],
+      "next": [
+        "S3_BEAT20"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_BEAT20",
+      "name": "二十节拍+中点+付费+桥段",
+      "agentIds": [
+        "struct.beat20",
+        "struct.midpoint",
+        "struct.paywall",
+        "struct.bridge8"
+      ],
+      "next": [
+        "S4_EP10_DRAFT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_EP10_DRAFT",
+      "name": "十集大纲生成",
+      "agentIds": [
+        "struct.ep_outline_duanju"
+      ],
+      "next": [
+        "S4_EP10"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_EP10",
+      "name": "十集大纲（人工确认）",
+      "agentIds": [
+        "struct.ep_outline_duanju",
+        "qc.human_qc_duanju"
+      ],
+      "next": [
+        "S5_SCENE"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S5_SCENE",
+      "name": "场级正文",
+      "agentIds": [
+        "scene.opening7",
+        "scene.triple",
+        "scene.triangle",
+        "prose.dialogue_formula",
+        "hook.one_plus_one",
+        "hook.suspense_design",
+        "scene.comedy",
+        "scene.location_budget"
+      ],
+      "next": [
+        "S6_REVISE20"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S6_REVISE20",
+      "name": "Revise20",
+      "agentIds": [
+        "qc.revise20",
+        "qc.ai_question"
+      ],
+      "next": [
+        "S7_SUBMIT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S7_SUBMIT",
+      "name": "红线+交付",
+      "agentIds": [
+        "qc.redline",
+        "deliver.submission_pack",
+        "topic.logline_title",
+        "qc.human_checklist"
+      ],
+      "next": [],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    }
+  ],
+  "male_long": [
+    {
+      "id": "S0_SETUP",
+      "name": "项目设置",
+      "agentIds": [
+        "orch.writing",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S1_TOPIC_SCAN"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_TOPIC_SCAN",
+      "name": "刷榜选题+开篇钩",
+      "agentIds": [
+        "male.opening",
+        "topic.book_pack",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S2_GOLD_FINGER"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_GOLD_FINGER",
+      "name": "金手指设定",
+      "agentIds": [
+        "male.gold_finger"
+      ],
+      "next": [
+        "S3_CHARACTER"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_CHARACTER",
+      "name": "人设",
+      "agentIds": [
+        "char.bible_big5",
+        "char.soul_check"
+      ],
+      "next": [
+        "S4_VOLUME"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_VOLUME",
+      "name": "卷纲升级循环",
+      "agentIds": [
+        "male.upgrade_loop"
+      ],
+      "next": [
+        "S5_CHAPTER"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S5_CHAPTER",
+      "name": "章纲",
+      "agentIds": [
+        "struct.chapter_cap"
+      ],
+      "next": [
+        "S6_BEAT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S6_BEAT",
+      "name": "细纲",
+      "agentIds": [
+        "struct.face_slap",
+        "struct.expectation",
+        "male.no_stuck"
+      ],
+      "next": [
+        "S7_BODY"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S7_BODY",
+      "name": "正文分章（Bible注入·章摘要·衰减硬停）",
+      "agentIds": [
+        "orch.batch_writer",
+        "qc.bible_guard",
+        "hook.foreshadow_ledger",
+        "prose.novel_body",
+        "prose.length_decay_fix",
+        "mem.chapter_summary"
+      ],
+      "next": [
+        "S8_COOL_DENSITY"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S8_COOL_DENSITY",
+      "name": "爽点密度+升级循环质检",
+      "agentIds": [
+        "male.cool_density",
+        "male.upgrade_loop",
+        "struct.cool18"
+      ],
+      "next": [
+        "S9_RISK"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S9_RISK",
+      "name": "雷区+去AI味",
+      "agentIds": [
+        "male.risk",
+        "char.soul_check",
+        "qc.de_ai",
+        "qc.human_checklist"
+      ],
+      "next": [
+        "S10_DONE"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S10_DONE",
+      "name": "完成",
+      "agentIds": [],
+      "next": [],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    }
+  ],
+  "female_long": [
+    {
+      "id": "S0_SETUP",
+      "name": "项目设置",
+      "agentIds": [
+        "orch.writing",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S1_TOPIC"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_TOPIC",
+      "name": "选题",
+      "agentIds": [
+        "struct.chase_wife",
+        "topic.book_pack",
+        "topic.genre_trim",
+        "inspiration.expand"
+      ],
+      "next": [
+        "S1_FOUR_SWAP"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_FOUR_SWAP",
+      "name": "四换三（换元保主线）",
+      "agentIds": [
+        "swap.master"
+      ],
+      "next": [
+        "S2_CHARACTER"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_CHARACTER",
+      "name": "人设",
+      "agentIds": [
+        "char.bible_big5",
+        "char.soul_check",
+        "female.tension"
+      ],
+      "next": [
+        "S3_VOLUME"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_VOLUME",
+      "name": "卷纲",
+      "agentIds": [
+        "female.pace",
+        "struct.chase_wife"
+      ],
+      "next": [
+        "S4_CHAPTER"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_CHAPTER",
+      "name": "章纲",
+      "agentIds": [
+        "struct.chapter_cap"
+      ],
+      "next": [
+        "S5_BEAT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S5_BEAT",
+      "name": "细纲",
+      "agentIds": [
+        "struct.expectation",
+        "female.tension",
+        "struct.paywall",
+        "male.no_stuck"
+      ],
+      "next": [
+        "S6_BODY"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S6_BODY",
+      "name": "正文（Bible注入·章摘要·衰减硬停）",
+      "agentIds": [
+        "orch.batch_writer",
+        "qc.bible_guard",
+        "hook.foreshadow_ledger",
+        "prose.novel_body",
+        "prose.length_decay_fix",
+        "mem.chapter_summary"
+      ],
+      "next": [
+        "S7_RHYTHM"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S7_RHYTHM",
+      "name": "节奏情绪",
+      "agentIds": [
+        "female.pace",
+        "qc.immersion",
+        "ip.emotion_quant"
+      ],
+      "next": [
+        "S8_TABOO"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S8_TABOO",
+      "name": "雷区",
+      "agentIds": [
+        "female.risk",
+        "char.soul_check"
+      ],
+      "next": [
+        "S9_PAYWALL"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S9_PAYWALL",
+      "name": "付费点+去AI味",
+      "agentIds": [
+        "struct.paywall",
+        "qc.de_ai",
+        "qc.human_checklist"
+      ],
+      "next": [
+        "S10_DONE"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S10_DONE",
+      "name": "完成",
+      "agentIds": [],
+      "next": [],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    }
+  ],
+  "short_novel": [
+    {
+      "id": "S0_SETUP",
+      "name": "设置",
+      "agentIds": [
+        "orch.writing",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S1_DISSECT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_DISSECT",
+      "name": "拆书",
+      "agentIds": [
+        "kb.report_pipeline"
+      ],
+      "next": [
+        "S2_SWAP"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_SWAP",
+      "name": "换元",
+      "agentIds": [
+        "swap.master",
+        "qc.similarity"
+      ],
+      "next": [
+        "S3_SYNOPSIS"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_SYNOPSIS",
+      "name": "梗概",
+      "agentIds": [
+        "inspiration.expand",
+        "struct.expectation"
+      ],
+      "next": [
+        "S4_CHAPTER_OUTLINE"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_CHAPTER_OUTLINE",
+      "name": "章纲",
+      "agentIds": [
+        "struct.chapter_cap"
+      ],
+      "next": [
+        "S5_BEAT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S5_BEAT",
+      "name": "细纲",
+      "agentIds": [
+        "struct.expectation",
+        "struct.face_slap"
+      ],
+      "next": [
+        "S6_BODY_CHAPTER"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S6_BODY_CHAPTER",
+      "name": "正文",
+      "agentIds": [
+        "prose.short_opening",
+        "prose.novel_body",
+        "orch.batch_writer"
+      ],
+      "next": [
+        "S7_POLISH"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S7_POLISH",
+      "name": "润色去AI味",
+      "agentIds": [
+        "qc.de_ai",
+        "qc.show_dont_tell"
+      ],
+      "next": [
+        "S8_QC"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S8_QC",
+      "name": "质检",
+      "agentIds": [
+        "qc.human_checklist",
+        "qc.ai_question",
+        "qc.similarity"
+      ],
+      "next": [
+        "S9_DONE"
+      ],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    },
+    {
+      "id": "S9_DONE",
+      "name": "完成",
+      "agentIds": [],
+      "next": [],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    }
+  ],
+  "ip_adapt": [
+    {
+      "id": "S0_SETUP",
+      "name": "设置",
+      "agentIds": [
+        "orch.writing",
+        "topic.genre_trim"
+      ],
+      "next": [
+        "S1_IP_EVAL"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S1_IP_EVAL",
+      "name": "IP评估",
+      "agentIds": [
+        "ip.select_score",
+        "kb.report_pipeline"
+      ],
+      "next": [
+        "S2_UNIT_SPLIT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S2_UNIT_SPLIT",
+      "name": "单元拆解",
+      "agentIds": [
+        "ip.unit_cut",
+        "swap.master"
+      ],
+      "next": [
+        "S3_EMOTION"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S3_EMOTION",
+      "name": "情绪量化",
+      "agentIds": [
+        "ip.emotion_quant"
+      ],
+      "next": [
+        "S4_COMPRESS"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S4_COMPRESS",
+      "name": "压缩重构",
+      "agentIds": [
+        "ip.rebuild"
+      ],
+      "next": [
+        "S5_EPISODE_RHYTHM"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S5_EPISODE_RHYTHM",
+      "name": "单集节奏",
+      "agentIds": [
+        "struct.episode_outline",
+        "struct.kartian"
+      ],
+      "next": [
+        "S6_BEATS"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S6_BEATS",
+      "name": "卡点",
+      "agentIds": [
+        "struct.kartian",
+        "struct.paywall",
+        "hook.one_plus_one"
+      ],
+      "next": [
+        "S7_SCRIPT"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S7_SCRIPT",
+      "name": "剧本输出",
+      "agentIds": [
+        "prose.episode_body",
+        "orch.batch_writer",
+        "qc.de_ai"
+      ],
+      "next": [
+        "S8_DONE"
+      ],
+      "requiresUserAck": false,
+      "mode": "ordered"
+    },
+    {
+      "id": "S8_DONE",
+      "name": "完成",
+      "agentIds": [
+        "qc.human_checklist",
+        "deliver.pitch_pack"
+      ],
+      "next": [],
+      "requiresUserAck": true,
+      "mode": "ordered"
+    }
+  ]
+}

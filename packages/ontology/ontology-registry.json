@@ -1,0 +1,3704 @@
+{
+  "schemaVersion": "writing-ontology/1",
+  "generatedAt": "2026-11-19T12:40:25.870Z",
+  "sharedProperties": [
+    {
+      "apiName": "projectId",
+      "displayName": "项目 ID",
+      "kind": "shared_property"
+    },
+    {
+      "apiName": "format",
+      "displayName": "格式",
+      "kind": "shared_property",
+      "schemaExport": "FormatSchema"
+    },
+    {
+      "apiName": "status",
+      "displayName": "状态",
+      "kind": "shared_property"
+    },
+    {
+      "apiName": "schemaVersion",
+      "displayName": "Schema 版本",
+      "kind": "shared_property"
+    },
+    {
+      "apiName": "contentHash",
+      "displayName": "内容哈希 CAS",
+      "kind": "shared_property"
+    },
+    {
+      "apiName": "adoptedAt",
+      "displayName": "采纳时间",
+      "kind": "shared_property"
+    }
+  ],
+  "interfaces": [
+    {
+      "apiName": "HasPayoffStatus",
+      "displayName": "可兑现状态",
+      "kind": "interface",
+      "properties": [
+        "status"
+      ],
+      "description": "ExpectationHook / ForeshadowEntry / StoryEdge(payoff)"
+    },
+    {
+      "apiName": "HasEpisodeSpan",
+      "displayName": "集跨度",
+      "kind": "interface",
+      "properties": [
+        "episodeSpan",
+        "episode",
+        "episodeNo"
+      ]
+    },
+    {
+      "apiName": "AdoptedArtifactBacked",
+      "displayName": "Artifact 物化背书",
+      "kind": "interface",
+      "properties": [
+        "backingArtifactId",
+        "status"
+      ]
+    },
+    {
+      "apiName": "HumanAckable",
+      "displayName": "需人工确认",
+      "kind": "interface",
+      "properties": [
+        "humanVerdict",
+        "ackedAt",
+        "ackedBy"
+      ]
+    },
+    {
+      "apiName": "GraphNodeLike",
+      "displayName": "图节点形态",
+      "kind": "interface",
+      "properties": [
+        "id",
+        "kind",
+        "label"
+      ]
+    },
+    {
+      "apiName": "WorkflowStateful",
+      "displayName": "课内工作流态",
+      "kind": "interface",
+      "properties": [
+        "currentStep",
+        "completeness"
+      ]
+    }
+  ],
+  "objectTypes": [
+    {
+      "apiName": "Project",
+      "displayName": "项目",
+      "kind": "object_type",
+      "schemaExport": "ProjectSchema"
+    },
+    {
+      "apiName": "StageRun",
+      "displayName": "阶段运行",
+      "kind": "object_type",
+      "implements": [
+        "HumanAckable"
+      ]
+    },
+    {
+      "apiName": "Inspiration",
+      "displayName": "灵感",
+      "kind": "object_type",
+      "schemaExport": "InspirationClassifyItemSchema",
+      "artifactType": "other"
+    },
+    {
+      "apiName": "MasterOutline",
+      "displayName": "总纲",
+      "kind": "object_type",
+      "schemaExport": "MasterOutlineBodySchema",
+      "artifactType": "master_outline",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "Framework",
+      "displayName": "框架",
+      "kind": "object_type",
+      "schemaExport": "FrameworkBodySchema",
+      "artifactType": "framework",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "VolumeOutline",
+      "displayName": "卷纲",
+      "kind": "object_type",
+      "artifactType": "volume_outline",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "ChapterOutline",
+      "displayName": "章纲",
+      "kind": "object_type",
+      "schemaExport": "ChapterOutlineItemSchema",
+      "artifactType": "chapter_outline",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "BeatSheet",
+      "displayName": "细纲",
+      "kind": "object_type",
+      "schemaExport": "BeatSheetItemSchema",
+      "artifactType": "beat_sheet",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "UnitStory",
+      "displayName": "单元故事",
+      "kind": "object_type",
+      "schemaExport": "UnitStoryBodySchema",
+      "implements": [
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "CoreHook",
+      "displayName": "核心梗",
+      "kind": "object_type",
+      "schemaExport": "CoreHookFullBodySchema",
+      "artifactType": "core_hook",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "HumanAckable"
+      ]
+    },
+    {
+      "apiName": "GoldFinger",
+      "displayName": "金手指",
+      "kind": "object_type",
+      "artifactType": "gold_finger_cap",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "WorldSetting",
+      "displayName": "世界观设定",
+      "kind": "object_type",
+      "artifactType": "world_setting",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "ExpectationHook",
+      "displayName": "期待钩子",
+      "kind": "object_type",
+      "schemaExport": "ExpectationHookUnitSchema",
+      "implements": [
+        "HasPayoffStatus",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "ConflictDesign",
+      "displayName": "冲突设计",
+      "kind": "object_type",
+      "schemaExport": "ConflictDesignSchema"
+    },
+    {
+      "apiName": "CoolPoint",
+      "displayName": "爽点",
+      "kind": "object_type",
+      "schemaExport": "CoolPointFourStepSchema",
+      "implements": [
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "EmotionAnchor",
+      "displayName": "情绪锚点",
+      "kind": "object_type",
+      "schemaExport": "EmotionAnchorSchema"
+    },
+    {
+      "apiName": "Character",
+      "displayName": "角色",
+      "kind": "object_type",
+      "schemaExport": "CharacterSheetSevenSchema",
+      "artifactType": "character",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "CharacterRelation",
+      "displayName": "人物关系边",
+      "kind": "object_type",
+      "artifactType": "character_graph"
+    },
+    {
+      "apiName": "EpisodeOutline",
+      "displayName": "分集大纲",
+      "kind": "object_type",
+      "artifactType": "episode_outline",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "HumanAckable",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "Manuscript",
+      "displayName": "正文/剧本",
+      "kind": "object_type",
+      "artifactType": "manuscript",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "SceneShot",
+      "displayName": "场次镜头",
+      "kind": "object_type",
+      "artifactType": "scene",
+      "implements": [
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "StoryAnchor",
+      "displayName": "剧情锚点",
+      "kind": "object_type",
+      "implements": [
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "ForeshadowEntry",
+      "displayName": "伏笔条目",
+      "kind": "object_type",
+      "schemaExport": "ForeshadowEntrySchema",
+      "artifactType": "foreshadow_ledger",
+      "implements": [
+        "HasPayoffStatus",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "StoryNode",
+      "displayName": "连续性图节点",
+      "kind": "object_type",
+      "schemaExport": "StoryNodeSchema",
+      "implements": [
+        "GraphNodeLike",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "StoryEdge",
+      "displayName": "连续性图边",
+      "kind": "object_type",
+      "schemaExport": "StoryEdgeSchema",
+      "implements": [
+        "HasPayoffStatus",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "CharacterState",
+      "displayName": "角色状态快照",
+      "kind": "object_type",
+      "schemaExport": "CharacterStateSnapshotSchema",
+      "implements": [
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "StoryGraph",
+      "displayName": "全剧连续性图",
+      "kind": "object_type",
+      "schemaExport": "StoryGraphBodySchema",
+      "artifactType": "story_graph",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ],
+      "memoryPath": "bible/story_graph.md"
+    },
+    {
+      "apiName": "EpisodeGraph",
+      "displayName": "分集连续性图",
+      "kind": "object_type",
+      "schemaExport": "StoryGraphBodySchema",
+      "artifactType": "episode_graph",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "HasEpisodeSpan"
+      ]
+    },
+    {
+      "apiName": "PitchPack",
+      "displayName": "投稿包",
+      "kind": "object_type",
+      "artifactType": "other",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "HumanAckable"
+      ]
+    },
+    {
+      "apiName": "TopicCard",
+      "displayName": "选题卡",
+      "kind": "object_type",
+      "schemaExport": "TopicFormulaCardSchema",
+      "artifactType": "topic_card",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "IpAdaptPack",
+      "displayName": "IP改编包",
+      "kind": "object_type",
+      "artifactType": "select_score",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "GateCheck",
+      "displayName": "门禁结果",
+      "kind": "object_type"
+    },
+    {
+      "apiName": "GenerationPolicy",
+      "displayName": "生成控长策略",
+      "kind": "object_type",
+      "schemaExport": "GenerationPolicySchema"
+    },
+    {
+      "apiName": "PromptCompose",
+      "displayName": "提示词组装",
+      "kind": "object_type",
+      "schemaExport": "PromptComposeSchema"
+    },
+    {
+      "apiName": "DissectParams",
+      "displayName": "拆书参数",
+      "kind": "object_type",
+      "schemaExport": "DissectParamsBodySchema",
+      "artifactType": "dissect_params",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "SwapImitate",
+      "displayName": "换元仿写态",
+      "kind": "object_type",
+      "schemaExport": "SwapImitateWorkflowSchema",
+      "artifactType": "swap_plan",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "ExpectationConflict",
+      "displayName": "期待冲突工作流",
+      "kind": "object_type",
+      "schemaExport": "ExpectationConflictWorkflowSchema",
+      "artifactType": "expectation_conflict",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "ManjuPipeline",
+      "displayName": "漫剧管线态",
+      "kind": "object_type",
+      "schemaExport": "ManjuPipelineWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "CharacterDepth",
+      "displayName": "人物深度态",
+      "kind": "object_type",
+      "schemaExport": "CharacterDepthWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "FemaleLongDepth",
+      "displayName": "女频长篇深度态",
+      "kind": "object_type",
+      "schemaExport": "FemaleLongDepthWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "MaleLongEngine",
+      "displayName": "男频长篇引擎态",
+      "kind": "object_type",
+      "schemaExport": "MaleLongEngineWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "EmotionRhythm",
+      "displayName": "情绪节奏工作流",
+      "kind": "object_type",
+      "schemaExport": "EmotionRhythmWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "CoolFaceSlap",
+      "displayName": "爽点打脸工作流",
+      "kind": "object_type",
+      "schemaExport": "CoolFaceSlapWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "InspirationToStory",
+      "displayName": "灵感到故事",
+      "kind": "object_type",
+      "schemaExport": "InspirationToStoryWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "TopicSelection",
+      "displayName": "选题工作流",
+      "kind": "object_type",
+      "schemaExport": "TopicSelectionWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "ManjuGenreTrack",
+      "displayName": "漫剧题材轨",
+      "kind": "object_type",
+      "schemaExport": "ManjuGenreTrackWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "IpAdapt",
+      "displayName": "IP改编工作流",
+      "kind": "object_type",
+      "schemaExport": "IpAdaptWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "ManjuAdvanced",
+      "displayName": "漫剧进阶",
+      "kind": "object_type",
+      "schemaExport": "ManjuAdvancedWorkflowSchema",
+      "implements": [
+        "WorkflowStateful"
+      ]
+    },
+    {
+      "apiName": "Logline",
+      "displayName": "一句话梗概",
+      "kind": "object_type",
+      "artifactType": "logline",
+      "implements": [
+        "AdoptedArtifactBacked",
+        "HumanAckable"
+      ]
+    },
+    {
+      "apiName": "BookPack",
+      "displayName": "开书包",
+      "kind": "object_type",
+      "artifactType": "book_pack",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "Beat20",
+      "displayName": "二十节拍",
+      "kind": "object_type",
+      "artifactType": "beat20",
+      "implements": [
+        "AdoptedArtifactBacked"
+      ]
+    },
+    {
+      "apiName": "Scenario",
+      "displayName": "临时情景分支",
+      "kind": "object_type",
+      "description": "Palantir Scenario：试大纲/结局副本"
+    },
+    {
+      "apiName": "KbGraphSnapshot",
+      "displayName": "知识库图谱快照",
+      "kind": "object_type",
+      "description": "只读 Object Set，映射 GraphSnapshot"
+    }
+  ],
+  "linkTypes": [
+    {
+      "apiName": "owns",
+      "displayName": "拥有",
+      "kind": "link_type",
+      "fromType": "Project",
+      "toType": "*"
+    },
+    {
+      "apiName": "contains",
+      "displayName": "包含",
+      "kind": "link_type",
+      "fromType": "*",
+      "toType": "*"
+    },
+    {
+      "apiName": "appearsIn",
+      "displayName": "出场于",
+      "kind": "link_type",
+      "fromType": "Character",
+      "toType": "EpisodeOutline|Manuscript|StoryNode"
+    },
+    {
+      "apiName": "relatedTo",
+      "displayName": "人物关系",
+      "kind": "link_type",
+      "fromType": "Character",
+      "toType": "Character"
+    },
+    {
+      "apiName": "causes",
+      "displayName": "导致",
+      "kind": "link_type",
+      "fromType": "StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "enables",
+      "displayName": "促成",
+      "kind": "link_type",
+      "fromType": "StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "blocks",
+      "displayName": "阻碍",
+      "kind": "link_type",
+      "fromType": "StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "foreshadows",
+      "displayName": "伏笔",
+      "kind": "link_type",
+      "fromType": "StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "payoff",
+      "displayName": "兑现",
+      "kind": "link_type",
+      "fromType": "StoryNode|ExpectationHook|ForeshadowEntry",
+      "toType": "StoryNode|CoolPoint|StoryAnchor"
+    },
+    {
+      "apiName": "knows",
+      "displayName": "知晓",
+      "kind": "link_type",
+      "fromType": "Character|StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "objectOwns",
+      "displayName": "持有物",
+      "kind": "link_type",
+      "fromType": "Character|StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "located",
+      "displayName": "位于",
+      "kind": "link_type",
+      "fromType": "Character|StoryNode",
+      "toType": "StoryNode"
+    },
+    {
+      "apiName": "paidBy",
+      "displayName": "被兑现于",
+      "kind": "link_type",
+      "fromType": "ExpectationHook|ForeshadowEntry",
+      "toType": "CoolPoint|StoryAnchor|Manuscript"
+    },
+    {
+      "apiName": "plantedIn",
+      "displayName": "埋于",
+      "kind": "link_type",
+      "fromType": "ForeshadowEntry",
+      "toType": "EpisodeOutline"
+    },
+    {
+      "apiName": "derivedFrom",
+      "displayName": "换元派生",
+      "kind": "link_type",
+      "fromType": "*",
+      "toType": "*",
+      "description": "六元素原→新"
+    },
+    {
+      "apiName": "instantiates",
+      "displayName": "实例化",
+      "kind": "link_type",
+      "fromType": "CoreHook",
+      "toType": "*"
+    },
+    {
+      "apiName": "advancesTo",
+      "displayName": "推进至",
+      "kind": "link_type",
+      "fromType": "StageRun",
+      "toType": "StageRun"
+    },
+    {
+      "apiName": "aggregates",
+      "displayName": "汇入",
+      "kind": "link_type",
+      "fromType": "StoryGraph",
+      "toType": "EpisodeGraph"
+    },
+    {
+      "apiName": "pairsWith",
+      "displayName": "配对",
+      "kind": "link_type",
+      "fromType": "ExpectationHook",
+      "toType": "ConflictDesign"
+    },
+    {
+      "apiName": "scenarioForkOf",
+      "displayName": "情景分叉自",
+      "kind": "link_type",
+      "fromType": "Scenario",
+      "toType": "*"
+    }
+  ],
+  "valueTypes": [
+    {
+      "apiName": "CognitiveGapQuadrant",
+      "displayName": "CognitiveGapQuadrant",
+      "kind": "value_type",
+      "schemaExport": "CognitiveGapQuadrantSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "OutlineLevel",
+      "displayName": "OutlineLevel",
+      "kind": "value_type",
+      "schemaExport": "OutlineLevelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StoryScale",
+      "displayName": "StoryScale",
+      "kind": "value_type",
+      "schemaExport": "StoryScaleSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoreHookKind",
+      "displayName": "CoreHookKind",
+      "kind": "value_type",
+      "schemaExport": "CoreHookKindSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoreHookCategory",
+      "displayName": "CoreHookCategory",
+      "kind": "value_type",
+      "schemaExport": "CoreHookCategorySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoreHookSize",
+      "displayName": "CoreHookSize",
+      "kind": "value_type",
+      "schemaExport": "CoreHookSizeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionChainNode",
+      "displayName": "EmotionChainNode",
+      "kind": "value_type",
+      "schemaExport": "EmotionChainNodeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChaseWifePhase",
+      "displayName": "ChaseWifePhase",
+      "kind": "value_type",
+      "schemaExport": "ChaseWifePhaseSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DissectPurpose",
+      "displayName": "DissectPurpose",
+      "kind": "value_type",
+      "schemaExport": "DissectPurposeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TextEncodingCheck",
+      "displayName": "TextEncodingCheck",
+      "kind": "value_type",
+      "schemaExport": "TextEncodingCheckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionCurvePoint",
+      "displayName": "EmotionCurvePoint",
+      "kind": "value_type",
+      "schemaExport": "EmotionCurvePointSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationLayer",
+      "displayName": "ExpectationLayer",
+      "kind": "value_type",
+      "schemaExport": "ExpectationLayerSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationSpan",
+      "displayName": "ExpectationSpan",
+      "kind": "value_type",
+      "schemaExport": "ExpectationSpanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationSize",
+      "displayName": "ExpectationSize",
+      "kind": "value_type",
+      "schemaExport": "ExpectationSizeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationHorizon",
+      "displayName": "ExpectationHorizon",
+      "kind": "value_type",
+      "schemaExport": "ExpectationHorizonSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationDecayRisk",
+      "displayName": "ExpectationDecayRisk",
+      "kind": "value_type",
+      "schemaExport": "ExpectationDecayRiskSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationHookStatus",
+      "displayName": "ExpectationHookStatus",
+      "kind": "value_type",
+      "schemaExport": "ExpectationHookStatusSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ConflictKind",
+      "displayName": "ConflictKind",
+      "kind": "value_type",
+      "schemaExport": "ConflictKindSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ConflictLocus",
+      "displayName": "ConflictLocus",
+      "kind": "value_type",
+      "schemaExport": "ConflictLocusSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ConflictTargetPriority",
+      "displayName": "ConflictTargetPriority",
+      "kind": "value_type",
+      "schemaExport": "ConflictTargetPrioritySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ConflictUpgradeMode",
+      "displayName": "ConflictUpgradeMode",
+      "kind": "value_type",
+      "schemaExport": "ConflictUpgradeModeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "VillainEnding",
+      "displayName": "VillainEnding",
+      "kind": "value_type",
+      "schemaExport": "VillainEndingSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ConflictSixElementId",
+      "displayName": "ConflictSixElementId",
+      "kind": "value_type",
+      "schemaExport": "ConflictSixElementIdSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "GenericArcPhase",
+      "displayName": "GenericArcPhase",
+      "kind": "value_type",
+      "schemaExport": "GenericArcPhaseSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MethodSpectrumStep",
+      "displayName": "MethodSpectrumStep",
+      "kind": "value_type",
+      "schemaExport": "MethodSpectrumStepSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MethodSpectrumState",
+      "displayName": "MethodSpectrumState",
+      "kind": "value_type",
+      "schemaExport": "MethodSpectrumStateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SixElementKey",
+      "displayName": "SixElementKey",
+      "kind": "value_type",
+      "schemaExport": "SixElementKeySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SixElementRow",
+      "displayName": "SixElementRow",
+      "kind": "value_type",
+      "schemaExport": "SixElementRowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SixElementsMapping",
+      "displayName": "SixElementsMapping",
+      "kind": "value_type",
+      "schemaExport": "SixElementsMappingSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionSlope",
+      "displayName": "EmotionSlope",
+      "kind": "value_type",
+      "schemaExport": "EmotionSlopeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharacterTrinity",
+      "displayName": "CharacterTrinity",
+      "kind": "value_type",
+      "schemaExport": "CharacterTrinitySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SwapCandidate",
+      "displayName": "SwapCandidate",
+      "kind": "value_type",
+      "schemaExport": "SwapCandidateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoreEmotionType",
+      "displayName": "CoreEmotionType",
+      "kind": "value_type",
+      "schemaExport": "CoreEmotionTypeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ShuangSubtype",
+      "displayName": "ShuangSubtype",
+      "kind": "value_type",
+      "schemaExport": "ShuangSubtypeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "NueSubtype",
+      "displayName": "NueSubtype",
+      "kind": "value_type",
+      "schemaExport": "NueSubtypeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TianSubtype",
+      "displayName": "TianSubtype",
+      "kind": "value_type",
+      "schemaExport": "TianSubtypeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TianSugarMode",
+      "displayName": "TianSugarMode",
+      "kind": "value_type",
+      "schemaExport": "TianSugarModeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ProtagonistHarmLevel",
+      "displayName": "ProtagonistHarmLevel",
+      "kind": "value_type",
+      "schemaExport": "ProtagonistHarmLevelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "WorkGenreLabel",
+      "displayName": "WorkGenreLabel",
+      "kind": "value_type",
+      "schemaExport": "WorkGenreLabelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ShowDontTellScan",
+      "displayName": "ShowDontTellScan",
+      "kind": "value_type",
+      "schemaExport": "ShowDontTellScanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SentenceTension",
+      "displayName": "SentenceTension",
+      "kind": "value_type",
+      "schemaExport": "SentenceTensionSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AtmospherePolarity",
+      "displayName": "AtmospherePolarity",
+      "kind": "value_type",
+      "schemaExport": "AtmospherePolaritySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PullOutcome",
+      "displayName": "PullOutcome",
+      "kind": "value_type",
+      "schemaExport": "PullOutcomeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ReplayAmplifyMode",
+      "displayName": "ReplayAmplifyMode",
+      "kind": "value_type",
+      "schemaExport": "ReplayAmplifyModeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SceneSixElement",
+      "displayName": "SceneSixElement",
+      "kind": "value_type",
+      "schemaExport": "SceneSixElementSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ZhangChiKind",
+      "displayName": "ZhangChiKind",
+      "kind": "value_type",
+      "schemaExport": "ZhangChiKindSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EditorRejectReason",
+      "displayName": "EditorRejectReason",
+      "kind": "value_type",
+      "schemaExport": "EditorRejectReasonSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MaslowNeedLevel",
+      "displayName": "MaslowNeedLevel",
+      "kind": "value_type",
+      "schemaExport": "MaslowNeedLevelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "Cool12TropeId",
+      "displayName": "Cool12TropeId",
+      "kind": "value_type",
+      "schemaExport": "Cool12TropeIdSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FaceSlapMode",
+      "displayName": "FaceSlapMode",
+      "kind": "value_type",
+      "schemaExport": "FaceSlapModeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SlapVariant",
+      "displayName": "SlapVariant",
+      "kind": "value_type",
+      "schemaExport": "SlapVariantSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FaceSlapTier",
+      "displayName": "FaceSlapTier",
+      "kind": "value_type",
+      "schemaExport": "FaceSlapTierSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "InfoGapKnowLevel",
+      "displayName": "InfoGapKnowLevel",
+      "kind": "value_type",
+      "schemaExport": "InfoGapKnowLevelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "VillainPsyche",
+      "displayName": "VillainPsyche",
+      "kind": "value_type",
+      "schemaExport": "VillainPsycheSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "HeroPsyche",
+      "displayName": "HeroPsyche",
+      "kind": "value_type",
+      "schemaExport": "HeroPsycheSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AtmospherePsyche",
+      "displayName": "AtmospherePsyche",
+      "kind": "value_type",
+      "schemaExport": "AtmospherePsycheSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "InsiderPsyche",
+      "displayName": "InsiderPsyche",
+      "kind": "value_type",
+      "schemaExport": "InsiderPsycheSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ActiveSubMode",
+      "displayName": "ActiveSubMode",
+      "kind": "value_type",
+      "schemaExport": "ActiveSubModeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ImmersionIssue",
+      "displayName": "ImmersionIssue",
+      "kind": "value_type",
+      "schemaExport": "ImmersionIssueSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ImmersionVillainCard",
+      "displayName": "ImmersionVillainCard",
+      "kind": "value_type",
+      "schemaExport": "ImmersionVillainCardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ImmersionDiagLevel",
+      "displayName": "ImmersionDiagLevel",
+      "kind": "value_type",
+      "schemaExport": "ImmersionDiagLevelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ProseForceChecklist",
+      "displayName": "ProseForceChecklist",
+      "kind": "value_type",
+      "schemaExport": "ProseForceChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DissectMode",
+      "displayName": "DissectMode",
+      "kind": "value_type",
+      "schemaExport": "DissectModeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StoryStructureLevel",
+      "displayName": "StoryStructureLevel",
+      "kind": "value_type",
+      "schemaExport": "StoryStructureLevelSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "InspirationRoutePath",
+      "displayName": "InspirationRoutePath",
+      "kind": "value_type",
+      "schemaExport": "InspirationRoutePathSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChaseWifeFiveActPhase",
+      "displayName": "ChaseWifeFiveActPhase",
+      "kind": "value_type",
+      "schemaExport": "ChaseWifeFiveActPhaseSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RelationshipRole",
+      "displayName": "RelationshipRole",
+      "kind": "value_type",
+      "schemaExport": "RelationshipRoleSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AiReviseDraft",
+      "displayName": "AiReviseDraft",
+      "kind": "value_type",
+      "schemaExport": "AiReviseDraftSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "LengthPacePolicy",
+      "displayName": "LengthPacePolicy",
+      "kind": "value_type",
+      "schemaExport": "LengthPacePolicySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AudienceBucket",
+      "displayName": "AudienceBucket",
+      "kind": "value_type",
+      "schemaExport": "AudienceBucketSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CreationPurpose",
+      "displayName": "CreationPurpose",
+      "kind": "value_type",
+      "schemaExport": "CreationPurposeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DesireFearSecret",
+      "displayName": "DesireFearSecret",
+      "kind": "value_type",
+      "schemaExport": "DesireFearSecretSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DiffCpPreset",
+      "displayName": "DiffCpPreset",
+      "kind": "value_type",
+      "schemaExport": "DiffCpPresetSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoolAbuseEvent",
+      "displayName": "CoolAbuseEvent",
+      "kind": "value_type",
+      "schemaExport": "CoolAbuseEventSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeRhythmBand",
+      "displayName": "EpisodeRhythmBand",
+      "kind": "value_type",
+      "schemaExport": "EpisodeRhythmBandSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PitchEthicsGate",
+      "displayName": "PitchEthicsGate",
+      "kind": "value_type",
+      "schemaExport": "PitchEthicsGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "OutlinePerEpReview",
+      "displayName": "OutlinePerEpReview",
+      "kind": "value_type",
+      "schemaExport": "OutlinePerEpReviewSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RollingMilestone",
+      "displayName": "RollingMilestone",
+      "kind": "value_type",
+      "schemaExport": "RollingMilestoneSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExtendForm",
+      "displayName": "ExtendForm",
+      "kind": "value_type",
+      "schemaExport": "ExtendFormSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ManjuGenreTrackKind",
+      "displayName": "ManjuGenreTrackKind",
+      "kind": "value_type",
+      "schemaExport": "ManjuGenreTrackKindSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleTrackTier",
+      "displayName": "FemaleTrackTier",
+      "kind": "value_type",
+      "schemaExport": "FemaleTrackTierSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleCharCard",
+      "displayName": "FemaleCharCard",
+      "kind": "value_type",
+      "schemaExport": "FemaleCharCardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemalePaceNode",
+      "displayName": "FemalePaceNode",
+      "kind": "value_type",
+      "schemaExport": "FemalePaceNodeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemalePacePhase",
+      "displayName": "FemalePacePhase",
+      "kind": "value_type",
+      "schemaExport": "FemalePacePhaseSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleEmotionSample",
+      "displayName": "FemaleEmotionSample",
+      "kind": "value_type",
+      "schemaExport": "FemaleEmotionSampleSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleMonetizePlan",
+      "displayName": "FemaleMonetizePlan",
+      "kind": "value_type",
+      "schemaExport": "FemaleMonetizePlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ElementComboBoard",
+      "displayName": "ElementComboBoard",
+      "kind": "value_type",
+      "schemaExport": "ElementComboBoardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StoryNodeKind",
+      "displayName": "StoryNodeKind",
+      "kind": "value_type",
+      "schemaExport": "StoryNodeKindSchema",
+      "description": "from story-graph.ts"
+    },
+    {
+      "apiName": "StoryEdgeKind",
+      "displayName": "StoryEdgeKind",
+      "kind": "value_type",
+      "schemaExport": "StoryEdgeKindSchema",
+      "description": "from story-graph.ts"
+    },
+    {
+      "apiName": "TaskProposal",
+      "displayName": "TaskProposal",
+      "kind": "value_type",
+      "schemaExport": "TaskProposalSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "Hotspot",
+      "displayName": "Hotspot",
+      "kind": "value_type",
+      "schemaExport": "HotspotSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "ScheduledTask",
+      "displayName": "ScheduledTask",
+      "kind": "value_type",
+      "schemaExport": "ScheduledTaskSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "ProjectFormat",
+      "displayName": "ProjectFormat",
+      "kind": "value_type",
+      "schemaExport": "ProjectFormatSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "ProjectStatus",
+      "displayName": "ProjectStatus",
+      "kind": "value_type",
+      "schemaExport": "ProjectStatusSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "Market",
+      "displayName": "Market",
+      "kind": "value_type",
+      "schemaExport": "MarketSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "ManjuStage",
+      "displayName": "ManjuStage",
+      "kind": "value_type",
+      "schemaExport": "ManjuStageSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "DuanjuStage",
+      "displayName": "DuanjuStage",
+      "kind": "value_type",
+      "schemaExport": "DuanjuStageSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "ShortNovelStage",
+      "displayName": "ShortNovelStage",
+      "kind": "value_type",
+      "schemaExport": "ShortNovelStageSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "MaleLongStage",
+      "displayName": "MaleLongStage",
+      "kind": "value_type",
+      "schemaExport": "MaleLongStageSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "FemaleLongStage",
+      "displayName": "FemaleLongStage",
+      "kind": "value_type",
+      "schemaExport": "FemaleLongStageSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "IpAdaptStage",
+      "displayName": "IpAdaptStage",
+      "kind": "value_type",
+      "schemaExport": "IpAdaptStageSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "ArtifactType",
+      "displayName": "ArtifactType",
+      "kind": "value_type",
+      "schemaExport": "ArtifactTypeSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "ArtifactStatus",
+      "displayName": "ArtifactStatus",
+      "kind": "value_type",
+      "schemaExport": "ArtifactStatusSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "RunStatus",
+      "displayName": "RunStatus",
+      "kind": "value_type",
+      "schemaExport": "RunStatusSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "GateResult",
+      "displayName": "GateResult",
+      "kind": "value_type",
+      "schemaExport": "GateResultSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "JobStatus",
+      "displayName": "JobStatus",
+      "kind": "value_type",
+      "schemaExport": "JobStatusSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "KnowledgeDocType",
+      "displayName": "KnowledgeDocType",
+      "kind": "value_type",
+      "schemaExport": "KnowledgeDocTypeSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "KnowledgeDocStatus",
+      "displayName": "KnowledgeDocStatus",
+      "kind": "value_type",
+      "schemaExport": "KnowledgeDocStatusSchema",
+      "description": "from enums.ts"
+    },
+    {
+      "apiName": "GenderChannel",
+      "displayName": "GenderChannel",
+      "kind": "value_type",
+      "schemaExport": "GenderChannelSchema",
+      "description": "from enums.ts"
+    }
+  ],
+  "structs": [
+    {
+      "apiName": "Instruction7W",
+      "displayName": "Instruction7W",
+      "kind": "struct",
+      "schemaExport": "Instruction7WSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FrameworkOmitFlags",
+      "displayName": "FrameworkOmitFlags",
+      "kind": "struct",
+      "schemaExport": "FrameworkOmitFlagsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "UnitSevenSteps",
+      "displayName": "UnitSevenSteps",
+      "kind": "struct",
+      "schemaExport": "UnitSevenStepsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "QiChengZhuanHe",
+      "displayName": "QiChengZhuanHe",
+      "kind": "struct",
+      "schemaExport": "QiChengZhuanHeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChaseWifeRound",
+      "displayName": "ChaseWifeRound",
+      "kind": "struct",
+      "schemaExport": "ChaseWifeRoundSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChaseWifeTemplate",
+      "displayName": "ChaseWifeTemplate",
+      "kind": "struct",
+      "schemaExport": "ChaseWifeTemplateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationDesign1Plus3",
+      "displayName": "ExpectationDesign1Plus3",
+      "kind": "struct",
+      "schemaExport": "ExpectationDesign1Plus3Schema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionChain3",
+      "displayName": "EmotionChain3",
+      "kind": "struct",
+      "schemaExport": "EmotionChain3Schema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoolPointReversePlan",
+      "displayName": "CoolPointReversePlan",
+      "kind": "struct",
+      "schemaExport": "CoolPointReversePlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ConflictSixElementsChecklist",
+      "displayName": "ConflictSixElementsChecklist",
+      "kind": "struct",
+      "schemaExport": "ConflictSixElementsChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationConflictPairing",
+      "displayName": "ExpectationConflictPairing",
+      "kind": "struct",
+      "schemaExport": "ExpectationConflictPairingSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "GenericArcTemplate",
+      "displayName": "GenericArcTemplate",
+      "kind": "struct",
+      "schemaExport": "GenericArcTemplateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AiCandidateScreenScore",
+      "displayName": "AiCandidateScreenScore",
+      "kind": "struct",
+      "schemaExport": "AiCandidateScreenScoreSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharacterExpectationContrast",
+      "displayName": "CharacterExpectationContrast",
+      "kind": "struct",
+      "schemaExport": "CharacterExpectationContrastSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExpectationReviseItem",
+      "displayName": "ExpectationReviseItem",
+      "kind": "struct",
+      "schemaExport": "ExpectationReviseItemSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StyleExtractElements",
+      "displayName": "StyleExtractElements",
+      "kind": "struct",
+      "schemaExport": "StyleExtractElementsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StyleExtractWorkflow",
+      "displayName": "StyleExtractWorkflow",
+      "kind": "struct",
+      "schemaExport": "StyleExtractWorkflowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "WashSegment",
+      "displayName": "WashSegment",
+      "kind": "struct",
+      "schemaExport": "WashSegmentSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "WashSegmentWorkflow",
+      "displayName": "WashSegmentWorkflow",
+      "kind": "struct",
+      "schemaExport": "WashSegmentWorkflowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RhythmQuant",
+      "displayName": "RhythmQuant",
+      "kind": "struct",
+      "schemaExport": "RhythmQuantSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionSlopeCompareItem",
+      "displayName": "EmotionSlopeCompareItem",
+      "kind": "struct",
+      "schemaExport": "EmotionSlopeCompareItemSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionSlopeCompare",
+      "displayName": "EmotionSlopeCompare",
+      "kind": "struct",
+      "schemaExport": "EmotionSlopeCompareSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DissectFourLayers",
+      "displayName": "DissectFourLayers",
+      "kind": "struct",
+      "schemaExport": "DissectFourLayersSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharacterSanzijing",
+      "displayName": "CharacterSanzijing",
+      "kind": "struct",
+      "schemaExport": "CharacterSanzijingSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "QcPriorityItem",
+      "displayName": "QcPriorityItem",
+      "kind": "struct",
+      "schemaExport": "QcPriorityItemSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "QcPriorityChecklist",
+      "displayName": "QcPriorityChecklist",
+      "kind": "struct",
+      "schemaExport": "QcPriorityChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "BeatSwapBatchItem",
+      "displayName": "BeatSwapBatchItem",
+      "kind": "struct",
+      "schemaExport": "BeatSwapBatchItemSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "WorkflowCheckpoint",
+      "displayName": "WorkflowCheckpoint",
+      "kind": "struct",
+      "schemaExport": "WorkflowCheckpointSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionPayload",
+      "displayName": "EmotionPayload",
+      "kind": "struct",
+      "schemaExport": "EmotionPayloadSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ShowDontTellHit",
+      "displayName": "ShowDontTellHit",
+      "kind": "struct",
+      "schemaExport": "ShowDontTellHitSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionSceneBeat",
+      "displayName": "EmotionSceneBeat",
+      "kind": "struct",
+      "schemaExport": "EmotionSceneBeatSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SeePersonThroughEvent",
+      "displayName": "SeePersonThroughEvent",
+      "kind": "struct",
+      "schemaExport": "SeePersonThroughEventSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PullRound",
+      "displayName": "PullRound",
+      "kind": "struct",
+      "schemaExport": "PullRoundSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ThreeRoundPullFormula",
+      "displayName": "ThreeRoundPullFormula",
+      "kind": "struct",
+      "schemaExport": "ThreeRoundPullFormulaSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ZhangChiUnit",
+      "displayName": "ZhangChiUnit",
+      "kind": "struct",
+      "schemaExport": "ZhangChiUnitSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PaceStructure",
+      "displayName": "PaceStructure",
+      "kind": "struct",
+      "schemaExport": "PaceStructureSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TightLooseBeat",
+      "displayName": "TightLooseBeat",
+      "kind": "struct",
+      "schemaExport": "TightLooseBeatSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RhythmFourDim",
+      "displayName": "RhythmFourDim",
+      "kind": "struct",
+      "schemaExport": "RhythmFourDimSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "HookLeadFourAxes",
+      "displayName": "HookLeadFourAxes",
+      "kind": "struct",
+      "schemaExport": "HookLeadFourAxesSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PlatformEmotionPolicy",
+      "displayName": "PlatformEmotionPolicy",
+      "kind": "struct",
+      "schemaExport": "PlatformEmotionPolicySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "BlindWriteDrill",
+      "displayName": "BlindWriteDrill",
+      "kind": "struct",
+      "schemaExport": "BlindWriteDrillSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EditorRejectDiagnose",
+      "displayName": "EditorRejectDiagnose",
+      "kind": "struct",
+      "schemaExport": "EditorRejectDiagnoseSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EmotionRenderCheckItem",
+      "displayName": "EmotionRenderCheckItem",
+      "kind": "struct",
+      "schemaExport": "EmotionRenderCheckItemSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TropeRecipeCheck",
+      "displayName": "TropeRecipeCheck",
+      "kind": "struct",
+      "schemaExport": "TropeRecipeCheckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MaslowCool12Plan",
+      "displayName": "MaslowCool12Plan",
+      "kind": "struct",
+      "schemaExport": "MaslowCool12PlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FlexShowElements",
+      "displayName": "FlexShowElements",
+      "kind": "struct",
+      "schemaExport": "FlexShowElementsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FaceSlapPremise",
+      "displayName": "FaceSlapPremise",
+      "kind": "struct",
+      "schemaExport": "FaceSlapPremiseSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "InfoGapTable",
+      "displayName": "InfoGapTable",
+      "kind": "struct",
+      "schemaExport": "InfoGapTableSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FaceSlapBeatStep",
+      "displayName": "FaceSlapBeatStep",
+      "kind": "struct",
+      "schemaExport": "FaceSlapBeatStepSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PsycheTracks",
+      "displayName": "PsycheTracks",
+      "kind": "struct",
+      "schemaExport": "PsycheTracksSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FaceSlapBeatDesign",
+      "displayName": "FaceSlapBeatDesign",
+      "kind": "struct",
+      "schemaExport": "FaceSlapBeatDesignSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharacterFiveAsk",
+      "displayName": "CharacterFiveAsk",
+      "kind": "struct",
+      "schemaExport": "CharacterFiveAskSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharacterArcFour",
+      "displayName": "CharacterArcFour",
+      "kind": "struct",
+      "schemaExport": "CharacterArcFourSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TensionPack",
+      "displayName": "TensionPack",
+      "kind": "struct",
+      "schemaExport": "TensionPackSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EditorialAsk",
+      "displayName": "EditorialAsk",
+      "kind": "struct",
+      "schemaExport": "EditorialAskSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ImmersionFiveAudit",
+      "displayName": "ImmersionFiveAudit",
+      "kind": "struct",
+      "schemaExport": "ImmersionFiveAuditSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CurveAlignDrill",
+      "displayName": "CurveAlignDrill",
+      "kind": "struct",
+      "schemaExport": "CurveAlignDrillSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StorylineCard",
+      "displayName": "StorylineCard",
+      "kind": "struct",
+      "schemaExport": "StorylineCardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoreEventExpand",
+      "displayName": "CoreEventExpand",
+      "kind": "struct",
+      "schemaExport": "CoreEventExpandSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PlotThreeElements",
+      "displayName": "PlotThreeElements",
+      "kind": "struct",
+      "schemaExport": "PlotThreeElementsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChaseWifeFiveActBeat",
+      "displayName": "ChaseWifeFiveActBeat",
+      "kind": "struct",
+      "schemaExport": "ChaseWifeFiveActBeatSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChaseWifeFiveAct",
+      "displayName": "ChaseWifeFiveAct",
+      "kind": "struct",
+      "schemaExport": "ChaseWifeFiveActSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RelationshipNetRow",
+      "displayName": "RelationshipNetRow",
+      "kind": "struct",
+      "schemaExport": "RelationshipNetRowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChapterTreeNode",
+      "displayName": "ChapterTreeNode",
+      "kind": "struct",
+      "schemaExport": "ChapterTreeNodeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SceneFourRender",
+      "displayName": "SceneFourRender",
+      "kind": "struct",
+      "schemaExport": "SceneFourRenderSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoreEventIntensityLadder",
+      "displayName": "CoreEventIntensityLadder",
+      "kind": "struct",
+      "schemaExport": "CoreEventIntensityLadderSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AiReviseFlow",
+      "displayName": "AiReviseFlow",
+      "kind": "struct",
+      "schemaExport": "AiReviseFlowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "GenreGuard",
+      "displayName": "GenreGuard",
+      "kind": "struct",
+      "schemaExport": "GenreGuardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AudienceSegment",
+      "displayName": "AudienceSegment",
+      "kind": "struct",
+      "schemaExport": "AudienceSegmentSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ChartMiningBoard",
+      "displayName": "ChartMiningBoard",
+      "kind": "struct",
+      "schemaExport": "ChartMiningBoardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ContrastSeam",
+      "displayName": "ContrastSeam",
+      "kind": "struct",
+      "schemaExport": "ContrastSeamSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "HotspotLanding",
+      "displayName": "HotspotLanding",
+      "kind": "struct",
+      "schemaExport": "HotspotLandingSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ForeshadowTwistLedger",
+      "displayName": "ForeshadowTwistLedger",
+      "kind": "struct",
+      "schemaExport": "ForeshadowTwistLedgerSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "IntroLeadDraft",
+      "displayName": "IntroLeadDraft",
+      "kind": "struct",
+      "schemaExport": "IntroLeadDraftSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MasterStoryBeatSlot",
+      "displayName": "MasterStoryBeatSlot",
+      "kind": "struct",
+      "schemaExport": "MasterStoryBeatSlotSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MasterStoryBeatRail",
+      "displayName": "MasterStoryBeatRail",
+      "kind": "struct",
+      "schemaExport": "MasterStoryBeatRailSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TopicFivePitfalls",
+      "displayName": "TopicFivePitfalls",
+      "kind": "struct",
+      "schemaExport": "TopicFivePitfallsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ExecutionQcLite",
+      "displayName": "ExecutionQcLite",
+      "kind": "struct",
+      "schemaExport": "ExecutionQcLiteSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PostSubmitPolicy",
+      "displayName": "PostSubmitPolicy",
+      "kind": "struct",
+      "schemaExport": "PostSubmitPolicySchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CreationPurposeGate",
+      "displayName": "CreationPurposeGate",
+      "kind": "struct",
+      "schemaExport": "CreationPurposeGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "BigFiveTraitSlot",
+      "displayName": "BigFiveTraitSlot",
+      "kind": "struct",
+      "schemaExport": "BigFiveTraitSlotSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "BigFiveBlend",
+      "displayName": "BigFiveBlend",
+      "kind": "struct",
+      "schemaExport": "BigFiveBlendSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DiffCpCombo",
+      "displayName": "DiffCpCombo",
+      "kind": "struct",
+      "schemaExport": "DiffCpComboSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SoulProbeRow",
+      "displayName": "SoulProbeRow",
+      "kind": "struct",
+      "schemaExport": "SoulProbeRowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SoulProbeThree",
+      "displayName": "SoulProbeThree",
+      "kind": "struct",
+      "schemaExport": "SoulProbeThreeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ForeshadowRecoverItem",
+      "displayName": "ForeshadowRecoverItem",
+      "kind": "struct",
+      "schemaExport": "ForeshadowRecoverItemSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ShortFictionHandEdit12",
+      "displayName": "ShortFictionHandEdit12",
+      "kind": "struct",
+      "schemaExport": "ShortFictionHandEdit12Schema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ShortSubmitGate",
+      "displayName": "ShortSubmitGate",
+      "kind": "struct",
+      "schemaExport": "ShortSubmitGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharacterPitfallsThree",
+      "displayName": "CharacterPitfallsThree",
+      "kind": "struct",
+      "schemaExport": "CharacterPitfallsThreeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CoarseOutline",
+      "displayName": "CoarseOutline",
+      "kind": "struct",
+      "schemaExport": "CoarseOutlineSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeRhythmSlot",
+      "displayName": "EpisodeRhythmSlot",
+      "kind": "struct",
+      "schemaExport": "EpisodeRhythmSlotSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeRhythmPlan",
+      "displayName": "EpisodeRhythmPlan",
+      "kind": "struct",
+      "schemaExport": "EpisodeRhythmPlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RejectThreeCheck",
+      "displayName": "RejectThreeCheck",
+      "kind": "struct",
+      "schemaExport": "RejectThreeCheckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "Dialogue13Lite",
+      "displayName": "Dialogue13Lite",
+      "kind": "struct",
+      "schemaExport": "Dialogue13LiteSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "LoglineSocialConfirm",
+      "displayName": "LoglineSocialConfirm",
+      "kind": "struct",
+      "schemaExport": "LoglineSocialConfirmSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PromptTrimAck",
+      "displayName": "PromptTrimAck",
+      "kind": "struct",
+      "schemaExport": "PromptTrimAckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeFunctionCard",
+      "displayName": "EpisodeFunctionCard",
+      "kind": "struct",
+      "schemaExport": "EpisodeFunctionCardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MarketGenreAck",
+      "displayName": "MarketGenreAck",
+      "kind": "struct",
+      "schemaExport": "MarketGenreAckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "HookBatchRound",
+      "displayName": "HookBatchRound",
+      "kind": "struct",
+      "schemaExport": "HookBatchRoundSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "Ep10TableAcceptRound",
+      "displayName": "Ep10TableAcceptRound",
+      "kind": "struct",
+      "schemaExport": "Ep10TableAcceptRoundSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ScriptFormatGate",
+      "displayName": "ScriptFormatGate",
+      "kind": "struct",
+      "schemaExport": "ScriptFormatGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DialogueHarshChecklist",
+      "displayName": "DialogueHarshChecklist",
+      "kind": "struct",
+      "schemaExport": "DialogueHarshChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ManjuHandbookOps",
+      "displayName": "ManjuHandbookOps",
+      "kind": "struct",
+      "schemaExport": "ManjuHandbookOpsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "UpgradeSevenBeat",
+      "displayName": "UpgradeSevenBeat",
+      "kind": "struct",
+      "schemaExport": "UpgradeSevenBeatSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AntiTropeThreeLayer",
+      "displayName": "AntiTropeThreeLayer",
+      "kind": "struct",
+      "schemaExport": "AntiTropeThreeLayerSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RegretTrack",
+      "displayName": "RegretTrack",
+      "kind": "struct",
+      "schemaExport": "RegretTrackSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeQuotaPlan",
+      "displayName": "EpisodeQuotaPlan",
+      "kind": "struct",
+      "schemaExport": "EpisodeQuotaPlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "DiscouragedTopicCheck",
+      "displayName": "DiscouragedTopicCheck",
+      "kind": "struct",
+      "schemaExport": "DiscouragedTopicCheckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "BenchmarkCollectionGate",
+      "displayName": "BenchmarkCollectionGate",
+      "kind": "struct",
+      "schemaExport": "BenchmarkCollectionGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "KernelExtractDrill",
+      "displayName": "KernelExtractDrill",
+      "kind": "struct",
+      "schemaExport": "KernelExtractDrillSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "GenderFreqHint",
+      "displayName": "GenderFreqHint",
+      "kind": "struct",
+      "schemaExport": "GenderFreqHintSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "IpStructureChecks",
+      "displayName": "IpStructureChecks",
+      "kind": "struct",
+      "schemaExport": "IpStructureChecksSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "IpSelectScorecard",
+      "displayName": "IpSelectScorecard",
+      "kind": "struct",
+      "schemaExport": "IpSelectScorecardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AdaptBudgetLite",
+      "displayName": "AdaptBudgetLite",
+      "kind": "struct",
+      "schemaExport": "AdaptBudgetLiteSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AdaptAnchorTable",
+      "displayName": "AdaptAnchorTable",
+      "kind": "struct",
+      "schemaExport": "AdaptAnchorTableSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AdaptLoglinePack",
+      "displayName": "AdaptLoglinePack",
+      "kind": "struct",
+      "schemaExport": "AdaptLoglinePackSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "UnitCutRow",
+      "displayName": "UnitCutRow",
+      "kind": "struct",
+      "schemaExport": "UnitCutRowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RebuildBlocksPlan",
+      "displayName": "RebuildBlocksPlan",
+      "kind": "struct",
+      "schemaExport": "RebuildBlocksPlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeRhythmLite",
+      "displayName": "EpisodeRhythmLite",
+      "kind": "struct",
+      "schemaExport": "EpisodeRhythmLiteSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AvVerifyChecklist",
+      "displayName": "AvVerifyChecklist",
+      "kind": "struct",
+      "schemaExport": "AvVerifyChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AdaptPitchPackGate",
+      "displayName": "AdaptPitchPackGate",
+      "kind": "struct",
+      "schemaExport": "AdaptPitchPackGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleTrackPick",
+      "displayName": "FemaleTrackPick",
+      "kind": "struct",
+      "schemaExport": "FemaleTrackPickSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TopicSixHazards",
+      "displayName": "TopicSixHazards",
+      "kind": "struct",
+      "schemaExport": "TopicSixHazardsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleCharCraft",
+      "displayName": "FemaleCharCraft",
+      "kind": "struct",
+      "schemaExport": "FemaleCharCraftSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "CharFiveHazards",
+      "displayName": "CharFiveHazards",
+      "kind": "struct",
+      "schemaExport": "CharFiveHazardsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "SubPlotRow",
+      "displayName": "SubPlotRow",
+      "kind": "struct",
+      "schemaExport": "SubPlotRowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MainSubPlotArch",
+      "displayName": "MainSubPlotArch",
+      "kind": "struct",
+      "schemaExport": "MainSubPlotArchSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "RetentionGate",
+      "displayName": "RetentionGate",
+      "kind": "struct",
+      "schemaExport": "RetentionGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EightPrewriteReports",
+      "displayName": "EightPrewriteReports",
+      "kind": "struct",
+      "schemaExport": "EightPrewriteReportsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ArchSixHazards",
+      "displayName": "ArchSixHazards",
+      "kind": "struct",
+      "schemaExport": "ArchSixHazardsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "IndustrySelfChecklist",
+      "displayName": "IndustrySelfChecklist",
+      "kind": "struct",
+      "schemaExport": "IndustrySelfChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemalePaceSixHazards",
+      "displayName": "FemalePaceSixHazards",
+      "kind": "struct",
+      "schemaExport": "FemalePaceSixHazardsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemalePaceCurveReport",
+      "displayName": "FemalePaceCurveReport",
+      "kind": "struct",
+      "schemaExport": "FemalePaceCurveReportSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleEmotionLab",
+      "displayName": "FemaleEmotionLab",
+      "kind": "struct",
+      "schemaExport": "FemaleEmotionLabSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleDetailLab",
+      "displayName": "FemaleDetailLab",
+      "kind": "struct",
+      "schemaExport": "FemaleDetailLabSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleRiskAvoidList",
+      "displayName": "FemaleRiskAvoidList",
+      "kind": "struct",
+      "schemaExport": "FemaleRiskAvoidListSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleSerialMonitor",
+      "displayName": "FemaleSerialMonitor",
+      "kind": "struct",
+      "schemaExport": "FemaleSerialMonitorSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemalePaceDepth",
+      "displayName": "FemalePaceDepth",
+      "kind": "struct",
+      "schemaExport": "FemalePaceDepthSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FemaleFourSwapThree",
+      "displayName": "FemaleFourSwapThree",
+      "kind": "struct",
+      "schemaExport": "FemaleFourSwapThreeSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "Act100Segment",
+      "displayName": "Act100Segment",
+      "kind": "struct",
+      "schemaExport": "Act100SegmentSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "Act100TaskTable",
+      "displayName": "Act100TaskTable",
+      "kind": "struct",
+      "schemaExport": "Act100TaskTableSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "EpisodeCraftRow",
+      "displayName": "EpisodeCraftRow",
+      "kind": "struct",
+      "schemaExport": "EpisodeCraftRowSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TropeDrillLite",
+      "displayName": "TropeDrillLite",
+      "kind": "struct",
+      "schemaExport": "TropeDrillLiteSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ManjuTrendPitchAck",
+      "displayName": "ManjuTrendPitchAck",
+      "kind": "struct",
+      "schemaExport": "ManjuTrendPitchAckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TopicOrderGate",
+      "displayName": "TopicOrderGate",
+      "kind": "struct",
+      "schemaExport": "TopicOrderGateSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "TitleFourQ",
+      "displayName": "TitleFourQ",
+      "kind": "struct",
+      "schemaExport": "TitleFourQSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "BlurbFiveParts",
+      "displayName": "BlurbFiveParts",
+      "kind": "struct",
+      "schemaExport": "BlurbFivePartsSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "FourArcCheck",
+      "displayName": "FourArcCheck",
+      "kind": "struct",
+      "schemaExport": "FourArcCheckSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "AntiStuckTenStep",
+      "displayName": "AntiStuckTenStep",
+      "kind": "struct",
+      "schemaExport": "AntiStuckTenStepSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "LoopChapterFunction",
+      "displayName": "LoopChapterFunction",
+      "kind": "struct",
+      "schemaExport": "LoopChapterFunctionSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "LoopPlan",
+      "displayName": "LoopPlan",
+      "kind": "struct",
+      "schemaExport": "LoopPlanSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "StageSetupBeat",
+      "displayName": "StageSetupBeat",
+      "kind": "struct",
+      "schemaExport": "StageSetupBeatSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "PlatformMilestoneChecklist",
+      "displayName": "PlatformMilestoneChecklist",
+      "kind": "struct",
+      "schemaExport": "PlatformMilestoneChecklistSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "MingAnCard",
+      "displayName": "MingAnCard",
+      "kind": "struct",
+      "schemaExport": "MingAnCardSchema",
+      "description": "from nines-workflow.ts"
+    },
+    {
+      "apiName": "ForeshadowLedger",
+      "displayName": "ForeshadowLedger",
+      "kind": "struct",
+      "schemaExport": "ForeshadowLedgerSchema",
+      "description": "from story-graph.ts"
+    },
+    {
+      "apiName": "Artifact",
+      "displayName": "Artifact",
+      "kind": "struct",
+      "schemaExport": "ArtifactSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "CoreHookMotiveLines",
+      "displayName": "CoreHookMotiveLines",
+      "kind": "struct",
+      "schemaExport": "CoreHookMotiveLinesSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "CoreHookBody",
+      "displayName": "CoreHookBody",
+      "kind": "struct",
+      "schemaExport": "CoreHookBodySchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "StoryAnchor",
+      "displayName": "StoryAnchor",
+      "kind": "struct",
+      "schemaExport": "StoryAnchorSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "EpisodeOutlineBody",
+      "displayName": "EpisodeOutlineBody",
+      "kind": "struct",
+      "schemaExport": "EpisodeOutlineBodySchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "PitchPackCharacterBio",
+      "displayName": "PitchPackCharacterBio",
+      "kind": "struct",
+      "schemaExport": "PitchPackCharacterBioSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "PitchPackScriptInfo",
+      "displayName": "PitchPackScriptInfo",
+      "kind": "struct",
+      "schemaExport": "PitchPackScriptInfoSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "PitchPackBody",
+      "displayName": "PitchPackBody",
+      "kind": "struct",
+      "schemaExport": "PitchPackBodySchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "ManuscriptBody",
+      "displayName": "ManuscriptBody",
+      "kind": "struct",
+      "schemaExport": "ManuscriptBodySchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "PromptTemplate",
+      "displayName": "PromptTemplate",
+      "kind": "struct",
+      "schemaExport": "PromptTemplateSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "PromptPack",
+      "displayName": "PromptPack",
+      "kind": "struct",
+      "schemaExport": "PromptPackSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "GateCheck",
+      "displayName": "GateCheck",
+      "kind": "struct",
+      "schemaExport": "GateCheckSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "AgentRun",
+      "displayName": "AgentRun",
+      "kind": "struct",
+      "schemaExport": "AgentRunSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "RunDigest",
+      "displayName": "RunDigest",
+      "kind": "struct",
+      "schemaExport": "RunDigestSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "UsageEvent",
+      "displayName": "UsageEvent",
+      "kind": "struct",
+      "schemaExport": "UsageEventSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "Job",
+      "displayName": "Job",
+      "kind": "struct",
+      "schemaExport": "JobSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "KnowledgeDoc",
+      "displayName": "KnowledgeDoc",
+      "kind": "struct",
+      "schemaExport": "KnowledgeDocSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "AnalysisReport",
+      "displayName": "AnalysisReport",
+      "kind": "struct",
+      "schemaExport": "AnalysisReportSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "TropeClip",
+      "displayName": "TropeClip",
+      "kind": "struct",
+      "schemaExport": "TropeClipSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "GraphNode",
+      "displayName": "GraphNode",
+      "kind": "struct",
+      "schemaExport": "GraphNodeSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "GraphEdge",
+      "displayName": "GraphEdge",
+      "kind": "struct",
+      "schemaExport": "GraphEdgeSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "GraphSnapshot",
+      "displayName": "GraphSnapshot",
+      "kind": "struct",
+      "schemaExport": "GraphSnapshotSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "MemoryMeta",
+      "displayName": "MemoryMeta",
+      "kind": "struct",
+      "schemaExport": "MemoryMetaSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "MemoryVersion",
+      "displayName": "MemoryVersion",
+      "kind": "struct",
+      "schemaExport": "MemoryVersionSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "MemoryStore",
+      "displayName": "MemoryStore",
+      "kind": "struct",
+      "schemaExport": "MemoryStoreSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "DreamChange",
+      "displayName": "DreamChange",
+      "kind": "struct",
+      "schemaExport": "DreamChangeSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "DreamJob",
+      "displayName": "DreamJob",
+      "kind": "struct",
+      "schemaExport": "DreamJobSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "ProviderConfig",
+      "displayName": "ProviderConfig",
+      "kind": "struct",
+      "schemaExport": "ProviderConfigSchema",
+      "description": "from entities.ts"
+    },
+    {
+      "apiName": "CreateProjectInput",
+      "displayName": "CreateProjectInput",
+      "kind": "struct",
+      "schemaExport": "CreateProjectInputSchema",
+      "description": "from entities.ts"
+    }
+  ],
+  "actionTypes": [
+    {
+      "apiName": "CreateProject",
+      "displayName": "创建项目",
+      "kind": "action_type",
+      "parameters": [
+        "title",
+        "format",
+        "startFrom?"
+      ],
+      "sideEffects": [
+        "create Project"
+      ],
+      "criteria": [],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "GenerateCoreHookBatch",
+      "displayName": "批量生成核心梗",
+      "kind": "action_type",
+      "criteria": [
+        "ChunkPolicy"
+      ],
+      "materializes": [
+        "CoreHook"
+      ],
+      "formats": [
+        "manju",
+        "short_novel"
+      ]
+    },
+    {
+      "apiName": "CritiqueCoreHook",
+      "displayName": "评审核心梗",
+      "kind": "action_type",
+      "criteria": [
+        "CoreHookComplete"
+      ],
+      "formats": [
+        "manju"
+      ]
+    },
+    {
+      "apiName": "AdoptObject",
+      "displayName": "采纳对象",
+      "kind": "action_type",
+      "parameters": [
+        "rid",
+        "mode",
+        "expectedHash?"
+      ],
+      "criteria": [
+        "CoreHookAdoption"
+      ],
+      "sideEffects": [
+        "materialize Artifact",
+        "ActionLog"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "AckStage",
+      "displayName": "确认阶段",
+      "kind": "action_type",
+      "criteria": [
+        "HumanConfirm",
+        "StageLock"
+      ],
+      "sideEffects": [
+        "StageRun"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "AdvanceStage",
+      "displayName": "推进阶段",
+      "kind": "action_type",
+      "criteria": [
+        "StageLock"
+      ],
+      "sideEffects": [
+        "StageRun",
+        "ActionLog"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "ForceJump",
+      "displayName": "强制跳阶段",
+      "kind": "action_type",
+      "criteria": [],
+      "sideEffects": [
+        "forceJumps audit"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "LogicAck",
+      "displayName": "逻辑人工终审",
+      "kind": "action_type",
+      "criteria": [
+        "LogicAck"
+      ],
+      "sideEffects": [
+        "ActionLog"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "RunGateBattery",
+      "displayName": "跑门禁组",
+      "kind": "action_type",
+      "criteria": [],
+      "sideEffects": [
+        "GateCheck objects"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "DissectSource",
+      "displayName": "拆书",
+      "kind": "action_type",
+      "criteria": [
+        "dissectParamsCompleteness"
+      ],
+      "materializes": [
+        "DissectParams"
+      ],
+      "formats": [
+        "short_novel",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "SwapImitate",
+      "displayName": "换元仿写",
+      "kind": "action_type",
+      "criteria": [
+        "swapImitateCompleteness"
+      ],
+      "materializes": [
+        "SwapImitate"
+      ],
+      "formats": [
+        "short_novel",
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "FourSwapThree",
+      "displayName": "四换三",
+      "kind": "action_type",
+      "criteria": [
+        "validateFemaleFourSwapThree"
+      ],
+      "formats": [
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "ComposeExpectationConflict",
+      "displayName": "期待冲突设计",
+      "kind": "action_type",
+      "criteria": [
+        "expectationConflictWorkflowCompleteness"
+      ],
+      "materializes": [
+        "ExpectationConflict",
+        "ExpectationHook",
+        "ConflictDesign"
+      ],
+      "formats": [
+        "manju",
+        "short_novel",
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "UpsertCharacterDepth",
+      "displayName": "人物深度写入",
+      "kind": "action_type",
+      "criteria": [
+        "characterDepthWorkflowCompleteness"
+      ],
+      "materializes": [
+        "Character"
+      ],
+      "formats": [
+        "manju",
+        "short_novel",
+        "female_long",
+        "male_long"
+      ]
+    },
+    {
+      "apiName": "SyncRelationNet",
+      "displayName": "同步关系网",
+      "kind": "action_type",
+      "materializes": [
+        "CharacterRelation"
+      ],
+      "formats": [
+        "manju",
+        "female_long",
+        "male_long"
+      ]
+    },
+    {
+      "apiName": "GenerateEpOutline",
+      "displayName": "生成分集大纲",
+      "kind": "action_type",
+      "criteria": [
+        "validateEpisodeOutlineHandbookRow"
+      ],
+      "materializes": [
+        "EpisodeOutline"
+      ],
+      "formats": [
+        "manju",
+        "duanju"
+      ]
+    },
+    {
+      "apiName": "AcceptEpisodeRow",
+      "displayName": "接受分集行",
+      "kind": "action_type",
+      "criteria": [
+        "HumanConfirm"
+      ],
+      "formats": [
+        "manju"
+      ]
+    },
+    {
+      "apiName": "UpsertStoryGraph",
+      "displayName": "写入全剧图",
+      "kind": "action_type",
+      "criteria": [
+        "GraphConsistency"
+      ],
+      "materializes": [
+        "StoryGraph",
+        "mermaid",
+        "bible"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "MergeEpisodeGraph",
+      "displayName": "合并分集图",
+      "kind": "action_type",
+      "criteria": [
+        "GraphConsistency"
+      ],
+      "materializes": [
+        "StoryGraph",
+        "EpisodeGraph"
+      ],
+      "formats": [
+        "manju",
+        "duanju"
+      ]
+    },
+    {
+      "apiName": "UpsertForeshadow",
+      "displayName": "更新伏笔台账",
+      "kind": "action_type",
+      "criteria": [
+        "GraphConsistency"
+      ],
+      "materializes": [
+        "ForeshadowEntry"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "WriteEpisodeBodyBatch",
+      "displayName": "批量写正文",
+      "kind": "action_type",
+      "criteria": [
+        "LengthBand",
+        "LengthDecay",
+        "ChunkPolicy"
+      ],
+      "materializes": [
+        "Manuscript"
+      ],
+      "formats": [
+        "manju",
+        "duanju"
+      ]
+    },
+    {
+      "apiName": "Storyboard",
+      "displayName": "分镜",
+      "kind": "action_type",
+      "formats": [
+        "manju"
+      ]
+    },
+    {
+      "apiName": "DialoguePressure",
+      "displayName": "台词加压",
+      "kind": "action_type",
+      "criteria": [
+        "DialogueLen"
+      ],
+      "formats": [
+        "manju",
+        "duanju"
+      ]
+    },
+    {
+      "apiName": "DeAI",
+      "displayName": "去AI味",
+      "kind": "action_type",
+      "criteria": [
+        "DeAIChecklist"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "ExtendOutline",
+      "displayName": "扩展大纲",
+      "kind": "action_type",
+      "formats": [
+        "manju"
+      ]
+    },
+    {
+      "apiName": "BuildPitchPack",
+      "displayName": "组投稿包",
+      "kind": "action_type",
+      "criteria": [
+        "PitchFourPack",
+        "PitchCompleteness"
+      ],
+      "materializes": [
+        "PitchPack"
+      ],
+      "formats": [
+        "manju"
+      ]
+    },
+    {
+      "apiName": "RollbackObjectVersion",
+      "displayName": "回滚对象版本",
+      "kind": "action_type",
+      "sideEffects": [
+        "restore version"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "MemoryCASWrite",
+      "displayName": "记忆CAS写入",
+      "kind": "action_type",
+      "parameters": [
+        "path",
+        "expectedHash",
+        "content"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "DreamMerge",
+      "displayName": "Dreaming合入",
+      "kind": "action_type",
+      "criteria": [
+        "HumanConfirm"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "PushKbToProject",
+      "displayName": "知识库推入项目",
+      "kind": "action_type",
+      "materializes": [
+        "DissectParams",
+        "CoreHook"
+      ],
+      "formats": [
+        "manju",
+        "short_novel",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "MarkPayoffPaid",
+      "displayName": "标记兑现",
+      "kind": "action_type",
+      "criteria": [
+        "HasPayoffStatus"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ]
+    },
+    {
+      "apiName": "CreateScenario",
+      "displayName": "创建情景分支",
+      "kind": "action_type",
+      "materializes": [
+        "Scenario"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "UpdateScenario",
+      "displayName": "修改情景分支",
+      "kind": "action_type",
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "MergeScenario",
+      "displayName": "合并情景分支",
+      "kind": "action_type",
+      "criteria": [
+        "HumanConfirm",
+        "GraphConsistency"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "LinkExpectationToGraph",
+      "displayName": "期待/冲突/爽点挂图",
+      "kind": "action_type",
+      "criteria": [
+        "GraphConsistency"
+      ],
+      "materializes": [
+        "StoryEdge"
+      ],
+      "formats": [
+        "manju"
+      ]
+    },
+    {
+      "apiName": "ProposeObjectEdits",
+      "displayName": "LLM提案对象编辑",
+      "kind": "action_type",
+      "description": "仅提案；须再经具体写 Action 执行",
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    },
+    {
+      "apiName": "UpsertObject",
+      "displayName": "通用对象写入",
+      "kind": "action_type",
+      "parameters": [
+        "typeApiName",
+        "properties",
+        "rid?"
+      ],
+      "sideEffects": [
+        "materialize Artifact"
+      ],
+      "criteria": [],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "apiName": "objectSet",
+      "displayName": "对象集合查询",
+      "kind": "function",
+      "parameters": [
+        "typeApiName",
+        "projectId",
+        "filter?"
+      ]
+    },
+    {
+      "apiName": "searchAround",
+      "displayName": "邻域展开",
+      "kind": "function",
+      "parameters": [
+        "rid",
+        "linkTypes?",
+        "depth?"
+      ]
+    },
+    {
+      "apiName": "sliceForBible",
+      "displayName": "圣经切片",
+      "kind": "function",
+      "parameters": [
+        "projectId",
+        "currentEp?",
+        "recentEps?"
+      ]
+    },
+    {
+      "apiName": "openPayoffs",
+      "displayName": "开放兑现",
+      "kind": "function",
+      "parameters": [
+        "projectId"
+      ]
+    },
+    {
+      "apiName": "overdueForeshadows",
+      "displayName": "逾期伏笔",
+      "kind": "function",
+      "parameters": [
+        "projectId",
+        "currentEp"
+      ]
+    },
+    {
+      "apiName": "mergeEpisodeIntoStory",
+      "displayName": "合并分集到全剧",
+      "kind": "function"
+    },
+    {
+      "apiName": "storyGraphToMermaid",
+      "displayName": "图转Mermaid",
+      "kind": "function"
+    },
+    {
+      "apiName": "validateStoryGraphConsistency",
+      "displayName": "图一致性",
+      "kind": "function"
+    },
+    {
+      "apiName": "contentHash",
+      "displayName": "内容哈希",
+      "kind": "function"
+    },
+    {
+      "apiName": "renderObjectView",
+      "displayName": "渲染对象视图",
+      "kind": "function",
+      "parameters": [
+        "viewApiName",
+        "rid|projectId"
+      ]
+    },
+    {
+      "apiName": "listMappedArtifactTypes",
+      "displayName": "已映射Artifact类型",
+      "kind": "function"
+    },
+    {
+      "apiName": "completenessFor",
+      "displayName": "完备度函数分发",
+      "kind": "function",
+      "parameters": [
+        "workflowApiName",
+        "body"
+      ]
+    }
+  ],
+  "views": [
+    {
+      "apiName": "StoryContinuity",
+      "displayName": "剧情连续性",
+      "kind": "view",
+      "viewRenderer": "mermaid",
+      "description": "JSON 真相 → Mermaid"
+    },
+    {
+      "apiName": "CharacterSheet",
+      "displayName": "人设卡",
+      "kind": "view"
+    },
+    {
+      "apiName": "EpisodeCard",
+      "displayName": "分集卡",
+      "kind": "view"
+    },
+    {
+      "apiName": "CoreHookCard",
+      "displayName": "核心梗卡",
+      "kind": "view"
+    },
+    {
+      "apiName": "ExpectationBoard",
+      "displayName": "期待看板",
+      "kind": "view"
+    },
+    {
+      "apiName": "ObjectExplorer",
+      "displayName": "对象浏览器",
+      "kind": "view"
+    },
+    {
+      "apiName": "ActionAudit",
+      "displayName": "Action审计",
+      "kind": "view"
+    },
+    {
+      "apiName": "ScenarioCompare",
+      "displayName": "情景对比",
+      "kind": "view"
+    }
+  ],
+  "backingMaps": [
+    {
+      "apiName": "map_Inspiration",
+      "displayName": "Inspiration → other",
+      "kind": "backing_map",
+      "artifactType": "other",
+      "description": "ObjectType Inspiration materializes ArtifactType other"
+    },
+    {
+      "apiName": "map_MasterOutline",
+      "displayName": "MasterOutline → master_outline",
+      "kind": "backing_map",
+      "artifactType": "master_outline",
+      "description": "ObjectType MasterOutline materializes ArtifactType master_outline"
+    },
+    {
+      "apiName": "map_Framework",
+      "displayName": "Framework → framework",
+      "kind": "backing_map",
+      "artifactType": "framework",
+      "description": "ObjectType Framework materializes ArtifactType framework"
+    },
+    {
+      "apiName": "map_VolumeOutline",
+      "displayName": "VolumeOutline → volume_outline",
+      "kind": "backing_map",
+      "artifactType": "volume_outline",
+      "description": "ObjectType VolumeOutline materializes ArtifactType volume_outline"
+    },
+    {
+      "apiName": "map_ChapterOutline",
+      "displayName": "ChapterOutline → chapter_outline",
+      "kind": "backing_map",
+      "artifactType": "chapter_outline",
+      "description": "ObjectType ChapterOutline materializes ArtifactType chapter_outline"
+    },
+    {
+      "apiName": "map_BeatSheet",
+      "displayName": "BeatSheet → beat_sheet",
+      "kind": "backing_map",
+      "artifactType": "beat_sheet",
+      "description": "ObjectType BeatSheet materializes ArtifactType beat_sheet"
+    },
+    {
+      "apiName": "map_CoreHook",
+      "displayName": "CoreHook → core_hook",
+      "kind": "backing_map",
+      "artifactType": "core_hook",
+      "description": "ObjectType CoreHook materializes ArtifactType core_hook"
+    },
+    {
+      "apiName": "map_GoldFinger",
+      "displayName": "GoldFinger → gold_finger_cap",
+      "kind": "backing_map",
+      "artifactType": "gold_finger_cap",
+      "description": "ObjectType GoldFinger materializes ArtifactType gold_finger_cap"
+    },
+    {
+      "apiName": "map_WorldSetting",
+      "displayName": "WorldSetting → world_setting",
+      "kind": "backing_map",
+      "artifactType": "world_setting",
+      "description": "ObjectType WorldSetting materializes ArtifactType world_setting"
+    },
+    {
+      "apiName": "map_Character",
+      "displayName": "Character → character",
+      "kind": "backing_map",
+      "artifactType": "character",
+      "description": "ObjectType Character materializes ArtifactType character"
+    },
+    {
+      "apiName": "map_CharacterRelation",
+      "displayName": "CharacterRelation → character_graph",
+      "kind": "backing_map",
+      "artifactType": "character_graph",
+      "description": "ObjectType CharacterRelation materializes ArtifactType character_graph"
+    },
+    {
+      "apiName": "map_EpisodeOutline",
+      "displayName": "EpisodeOutline → episode_outline",
+      "kind": "backing_map",
+      "artifactType": "episode_outline",
+      "description": "ObjectType EpisodeOutline materializes ArtifactType episode_outline"
+    },
+    {
+      "apiName": "map_Manuscript",
+      "displayName": "Manuscript → manuscript",
+      "kind": "backing_map",
+      "artifactType": "manuscript",
+      "description": "ObjectType Manuscript materializes ArtifactType manuscript"
+    },
+    {
+      "apiName": "map_SceneShot",
+      "displayName": "SceneShot → scene",
+      "kind": "backing_map",
+      "artifactType": "scene",
+      "description": "ObjectType SceneShot materializes ArtifactType scene"
+    },
+    {
+      "apiName": "map_ForeshadowEntry",
+      "displayName": "ForeshadowEntry → foreshadow_ledger",
+      "kind": "backing_map",
+      "artifactType": "foreshadow_ledger",
+      "description": "ObjectType ForeshadowEntry materializes ArtifactType foreshadow_ledger"
+    },
+    {
+      "apiName": "map_StoryGraph",
+      "displayName": "StoryGraph → story_graph",
+      "kind": "backing_map",
+      "artifactType": "story_graph",
+      "memoryPath": "bible/story_graph.md",
+      "description": "ObjectType StoryGraph materializes ArtifactType story_graph"
+    },
+    {
+      "apiName": "map_EpisodeGraph",
+      "displayName": "EpisodeGraph → episode_graph",
+      "kind": "backing_map",
+      "artifactType": "episode_graph",
+      "description": "ObjectType EpisodeGraph materializes ArtifactType episode_graph"
+    },
+    {
+      "apiName": "map_PitchPack",
+      "displayName": "PitchPack → other",
+      "kind": "backing_map",
+      "artifactType": "other",
+      "description": "ObjectType PitchPack materializes ArtifactType other"
+    },
+    {
+      "apiName": "map_TopicCard",
+      "displayName": "TopicCard → topic_card",
+      "kind": "backing_map",
+      "artifactType": "topic_card",
+      "description": "ObjectType TopicCard materializes ArtifactType topic_card"
+    },
+    {
+      "apiName": "map_IpAdaptPack",
+      "displayName": "IpAdaptPack → select_score",
+      "kind": "backing_map",
+      "artifactType": "select_score",
+      "description": "ObjectType IpAdaptPack materializes ArtifactType select_score"
+    },
+    {
+      "apiName": "map_DissectParams",
+      "displayName": "DissectParams → dissect_params",
+      "kind": "backing_map",
+      "artifactType": "dissect_params",
+      "description": "ObjectType DissectParams materializes ArtifactType dissect_params"
+    },
+    {
+      "apiName": "map_SwapImitate",
+      "displayName": "SwapImitate → swap_plan",
+      "kind": "backing_map",
+      "artifactType": "swap_plan",
+      "description": "ObjectType SwapImitate materializes ArtifactType swap_plan"
+    },
+    {
+      "apiName": "map_ExpectationConflict",
+      "displayName": "ExpectationConflict → expectation_conflict",
+      "kind": "backing_map",
+      "artifactType": "expectation_conflict",
+      "description": "ObjectType ExpectationConflict materializes ArtifactType expectation_conflict"
+    },
+    {
+      "apiName": "map_Logline",
+      "displayName": "Logline → logline",
+      "kind": "backing_map",
+      "artifactType": "logline",
+      "description": "ObjectType Logline materializes ArtifactType logline"
+    },
+    {
+      "apiName": "map_BookPack",
+      "displayName": "BookPack → book_pack",
+      "kind": "backing_map",
+      "artifactType": "book_pack",
+      "description": "ObjectType BookPack materializes ArtifactType book_pack"
+    },
+    {
+      "apiName": "map_Beat20",
+      "displayName": "Beat20 → beat20",
+      "kind": "backing_map",
+      "artifactType": "beat20",
+      "description": "ObjectType Beat20 materializes ArtifactType beat20"
+    }
+  ],
+  "actionOnlyArtifactTypes": [
+    "core_hook",
+    "character",
+    "episode_outline",
+    "story_graph",
+    "episode_graph",
+    "foreshadow_ledger",
+    "expectation_conflict",
+    "manuscript",
+    "master_outline",
+    "framework",
+    "character_graph"
+  ],
+  "scannedSchemaCount": 328,
+  "counts": {
+    "objectTypes": 53,
+    "linkTypes": 20,
+    "interfaces": 6,
+    "valueTypes": 109,
+    "structs": 184,
+    "actionTypes": 37,
+    "functions": 12,
+    "views": 8,
+    "backingMaps": 26,
+    "scannedSchemas": 328
+  },
+  "contentHash": "aed9a45a39198580"
+}

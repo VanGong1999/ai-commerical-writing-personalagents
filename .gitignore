@@ -1,0 +1,61 @@
+# --- dependencies / build ---
+node_modules/
+dist/
+build/
+.turbo/
+.vite/
+*.tsbuildinfo
+.pnpm-store/
+# job-worker 实际用 api 的 uv 环境（Dockerfile / --project ../api），本锁文件不参与构建
+services/job-worker/uv.lock
+
+# --- env / local ---
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+
+# --- databases / caches ---
+*.db
+*.sqlite
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+coverage/
+*.log
+
+# --- runtime / local agent state ---
+.data/
+**/.data/
+.xzm/
+apps/*/.tanstack/
+services/api/data
+agent-memory/
+.playwright-cli/
+playwright-report/
+test-results/
+blob-report/
+
+# --- local dump / course corpora (not product source) ---
+others/
+九格智能Nines ai写作训练营/
+狂更猫写作课程/
+查理的短剧编剧课爆款短剧创作流程/
+绿江高收藏必存50本/
+晋江顶流32位作家作品合集/
+
+# --- test/runtime artifacts (screenshots, yml dumps) ---
+output/
+
+# --- public docs: tracked in full (screenshots, guides, sponsor, video) ---
+# docs-public/ is committed; keep .DS_Store out via global rule above
+
+# --- private knowledge corpus: keep README tips only ---
+knowledge/*
+llmwiki-export/*
+
+docs/

@@ -1,0 +1,17 @@
+{
+  "name": "@xiezuomanju/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tauri 2 desktop shell for AI 商业写作台 (loads Vite web app)",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "node -e \"console.log('[desktop] skip: run pnpm build:desktop after Rust+CLI install'); process.exit(0)\"",
+    "build:native": "tauri build",
+    "tauri": "tauri",
+    "typecheck": "node -e \"const fs=require('fs'); const p='src-tauri/tauri.conf.json'; if(!fs.existsSync(p)){console.error('[desktop] missing',p); process.exit(1)} console.log('[desktop] tauri.conf ok');\"",
+    "lint": "node -e \"const fs=require('fs'); const need=['src-tauri/tauri.conf.json','src-tauri/Cargo.toml']; for (const p of need){ if(!fs.existsSync(p)){ console.error('[desktop] missing',p); process.exit(1)} } console.log('[desktop] shell resources ok');\""
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.7"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "xiezuomanju",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:web": "pnpm --filter @xiezuomanju/ai-writing dev --host 127.0.0.1 --port 5173",
+    "dev:desktop": "pnpm --filter @xiezuomanju/desktop dev",
+    "dev:kb": "pnpm --filter @xiezuomanju/knowledge-base dev",
+    "dev:api": "cd services/api && uv run uvicorn app.main:app --reload --host 127.0.0.1 --no-proxy-headers --port 8000 --timeout-graceful-shutdown 8",
+    "test:api": "cd services/api && PYTHONPATH=.:../job-worker uv run pytest -q",
+    "sync:catalogs": "pnpm --filter @xiezuomanju/agent-runtime run sync-catalogs",
+    "check:stage-graphs": "pnpm --filter @xiezuomanju/agent-runtime run check-stage-graph-drift",
+    "check:loop-graphs": "pnpm --filter @xiezuomanju/agent-runtime run check-loop-graph-drift",
+    "check:ontology-registry": "pnpm --filter @xiezuomanju/ontology run check-registry-drift",
+    "sync:ontology-registry": "pnpm --filter @xiezuomanju/ontology run sync-registry",
+    "check:skill-gates": "node scripts/check-skill-gates.mjs",
+    "check:agents-launchable": "node scripts/check-agents-launchable.mjs",
+    "check:harness-ab": "node scripts/harness-ab-check.mjs",
+    "llmwiki:export": "node scripts/llmwiki-export.mjs --out llmwiki-export --force",
+    "test:llmwiki": "node --test scripts/llmwiki-export.test.mjs",
+    "backlog:append": "node scripts/backlog-append.mjs",
+    "typecheck": "pnpm -r --filter './packages/*' --filter './apps/*' typecheck",
+    "lint": "pnpm -r --filter './packages/*' --filter './apps/*' lint",
+    "build": "pnpm sync:catalogs && pnpm -r --filter './apps/*' --filter '!@xiezuomanju/desktop' build",
+    "build:desktop": "pnpm --filter @xiezuomanju/desktop build",
+    "dev:worker": "cd services/job-worker && PYTHONPATH=../api:. uv run --project ../api python main.py",
+    "dev:agent-worker": "pnpm --filter @xiezuomanju/agent-worker start",
+    "dev:agent-worker:sandboxed": "bash scripts/dev-agent-worker-sandboxed.sh",
+    "dev:scheduler": "cd services/scheduler && PYTHONPATH=../api uv run --project ../api python main.py",
+    "dev:feishu": "cd services/feishu && PYTHONPATH=../api:. uv run --project ../api python main.py",
+    "dev:stack": "echo 'Run in terminals: pnpm dev:api | pnpm dev:worker | pnpm dev:agent-worker | pnpm dev:web | pnpm dev:feishu | pnpm dev:scheduler'",
+    "dev:cli": "pnpm --filter @xiezuomanju/cli build",
+    "xzm": "node ./packages/cli/dist/index.js",
+    "docker:up": "docker compose up -d redis",
+    "docker:up:heavy": "docker compose --profile heavy up -d",
+    "docker:down": "docker compose down",
+    "test:gates": "cd services/api && PYTHONPATH=. uv run pytest -q tests/test_gates.py tests/test_gates_extended.py tests/test_gates_facade.py tests/test_gates_legacy_contract.py tests/test_gates_boundary_contract.py tests/test_gate_bridge.py tests/test_scene_count.py",
+    "test:agent-runtime": "pnpm --filter @xiezuomanju/agent-runtime test"
+  },
+  "engines": {
+    "node": ">=22.6"
+  }
+}

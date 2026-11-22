@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm sync:catalogs
+      - run: pnpm check:stage-graphs
+      - run: pnpm typecheck
+      - run: node --test scripts/local-ui-guard.test.mjs services/agent-worker/test/localAccess.test.mjs
+      - run: pnpm --filter @xiezuomanju/cli build
+      - run: node --test packages/cli/test/localAccess.test.mjs
+      - run: pnpm test:agent-runtime
+      - run: pnpm build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: API / gates tests
+        working-directory: services/api
+        run: |
+          pip install uv
+          uv sync
+          PYTHONPATH=.:../job-worker uv run pytest -q tests/test_local_access.py tests/test_gates.py tests/test_gates_extended.py tests/test_gates_facade.py tests/test_gates_legacy_contract.py tests/test_gates_boundary_contract.py tests/test_gate_bridge.py tests/test_scene_count.py tests/test_workbench_api.py tests/test_usage_rollup.py

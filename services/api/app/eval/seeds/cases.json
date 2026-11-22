@@ -1,0 +1,219 @@
+[
+  {
+    "suite_id": "suite.manju.golden.hook",
+    "title": "末世当老板·核心梗好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "九格智能Nines ai写作训练营/ai漫剧写作流程和方法.md",
+    "tags": [],
+    "expected_behavior": "产出含六要素的核心梗，有身份反差与金手指限制，开篇可分镜。",
+    "reference_markdown": "【标题钩】我在末世当老板，员工全是丧尸\n【核心梗】末世降临，男主觉醒「公司系统」，收编丧尸当员工，用企业管理逻辑求生崛起。\n【标签】末世/系统/逆袭\n【动机】保护妹妹+证明自己不是废物\n【危机】系统倒计时；妹妹被仇家盯上\n【开篇】男主自述上班→电梯停电丧尸潮→系统弹窗收编→小弟登场震惊\n【金手指限制】每日只能收编3只，越级收编扣寿命",
+    "input_json": {
+      "brief": "末世系统流，男频漫剧，要有身份反差和可分镜开篇",
+      "genre": "末世"
+    }
+  },
+  {
+    "suite_id": "suite.manju.regression.body",
+    "title": "退婚现场·分镜正文好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "九格智能Nines ai写作训练营/文件资料",
+    "tags": [],
+    "expected_behavior": "800-1200字，≤3场，非小说化，集尾有钩。",
+    "reference_markdown": "【日·内·宴会厅】\n女主当众甩出退婚书。宾客窃窃私语。\n女主：就你这废物，也配？\n男主低头，右手微微发颤。\n\n【日·内·宴会厅】\n一道金光闪过。男主抬眼。\n男主：退婚可以。彩礼，百倍还。\n保镖冲上。男主右手自动抬起——保镖飞出。\n全场死寂。\n\n【日·外·宴会厅门外】\n黑衣人递上名片。\n黑衣人：少主，家主请您回去继位。\n女主脸色煞白。\n镜头推近男主侧脸——他看着系统面板：任务一，已完成。",
+    "input_json": {
+      "brief": "退婚打脸第一集",
+      "upstream": { "core_hook": "废物女婿实为隐世继承人" }
+    }
+  },
+  {
+    "suite_id": "suite.manju.bad_case",
+    "title": "小说腔+套路比喻坏例",
+    "label": "bad",
+    "origin": "course",
+    "source_ref": "九格智能Nines ai写作训练营/去ai味儿.md",
+    "tags": ["W06", "W07"],
+    "expected_behavior": "应被 novelization 与 deai 判失败。",
+    "reference_markdown": "",
+    "input_json": {
+      "score_text": "在那温馨而略显破旧的客厅里，她像一朵凋零的牡丹，怀着复杂而难以言说的心情，仿佛整个世界都在与她作对。综上所述，她感到无比悲伤。"
+    }
+  },
+  {
+    "suite_id": "suite.manju.bad_case",
+    "title": "金手指无限制坏例",
+    "label": "bad",
+    "origin": "course",
+    "source_ref": "knowledge/02-manju/jiuge-manju-advanced.md",
+    "tags": ["W09"],
+    "expected_behavior": "金手指无限制应失败。",
+    "reference_markdown": "",
+    "input_json": {
+      "score_text": "【核心梗】男主获得无敌系统，随时秒杀任何人，一刀999，无任何代价与冷却。"
+    }
+  },
+  {
+    "suite_id": "suite.duanju.golden.topic",
+    "title": "离婚后被宠·选题好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "knowledge/03-duanju/revise20-gender-deliver.md",
+    "tags": [],
+    "expected_behavior": "爽点+共鸣+故事壳，非谜题，女频借势路径。",
+    "reference_markdown": "片名：离婚后三个哥哥把我宠上天\n爽点：身份揭晓打脸渣男\n共鸣：被婆家看不起的委屈YY\n故事壳：假离婚→真千金回归\n路径：女频借势获爱（哥哥撑腰）",
+    "input_json": {
+      "brief": "女频短剧选题，要直白片名",
+      "path": "female_borrow"
+    }
+  },
+  {
+    "suite_id": "suite.duanju.regression.scene",
+    "title": "树先生三角·场好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "查理的短剧编剧课爆款短剧创作流程/notes/27_6_3",
+    "tags": [],
+    "expected_behavior": "三角：先被尊敬→席间挨打；有信息推进变化。",
+    "reference_markdown": "【日·内·包间】\n众人起立敬酒。老板：树先生，您赏脸。\n主角点头落座，桌上满是好菜。\n推杯换盏到一半，老板突然变脸，一巴掌扇过来。\n老板：装什么装？欠的钱呢！\n主角擦血，笑：原来请吃饭，是为了这个。",
+    "input_json": {
+      "brief": "写一场先扬后抑的打脸铺垫",
+      "body": {
+        "info": "主角被请吃饭",
+        "advance": "席间翻脸讨债",
+        "change": "关系从尊敬变对立"
+      }
+    }
+  },
+  {
+    "suite_id": "suite.duanju.bad_case",
+    "title": "直线欺负开场坏例",
+    "label": "bad",
+    "origin": "course",
+    "source_ref": "查理的短剧编剧课爆款短剧创作流程/notes/27_6_3",
+    "tags": ["W12"],
+    "expected_behavior": "直线开场应被三角规则判失败。",
+    "reference_markdown": "",
+    "input_json": {
+      "score_text": "开场三个流氓围殴男主，逼他吃屎，一路羞辱到底，中间没有任何反差与回落。"
+    }
+  },
+  {
+    "suite_id": "suite.duanju.bad_case",
+    "title": "女频战神路径坏例",
+    "label": "bad",
+    "origin": "course",
+    "source_ref": "查理的短剧编剧课爆款短剧创作流程/notes/21_5_1",
+    "tags": ["W13"],
+    "expected_behavior": "女频自己开打路径错误。",
+    "reference_markdown": "",
+    "input_json": {
+      "score_text": "女主每天亲自打架复仇，靠自己计谋开打，不借势不获爱。",
+      "path": "female_fight"
+    }
+  },
+  {
+    "suite_id": "suite.male.regression.opening",
+    "title": "开篇五步好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "狂更猫写作课程/notes/04_开头五章写法与避坑.md",
+    "tags": [],
+    "expected_behavior": "五信息点齐全，有思考定目标，章末预知。",
+    "reference_markdown": "高考结束那天，我睁眼发现自己回到了高三。\n窗外是十年前的县城。\n手机震动——父亲破产的新闻推送。\n系统面板弹出：命运回放已激活。每日可回看一次关键决策点。\n我盯着面板想：先保住家里的铺面，再用信息差拿下那块地。\n今晚同学会，王磊还会当众羞辱我。\n这一次，轮到他闭嘴。",
+    "input_json": {
+      "brief": "男频都市重生开篇约2000字信息点"
+    }
+  },
+  {
+    "suite_id": "suite.male.bad_case",
+    "title": "第一章三禁坏例",
+    "label": "bad",
+    "origin": "course",
+    "source_ref": "狂更猫写作课程/notes/46_开头五章必要信息点.md",
+    "tags": ["W08"],
+    "expected_behavior": "大段打脸+炫文笔应失败。",
+    "reference_markdown": "",
+    "input_json": {
+      "score_text": "开篇三千字全是打脸冲突和大段对话，中间插入一万字世界观设定和华丽文笔炫技，没有系统思考与目标。"
+    }
+  },
+  {
+    "suite_id": "suite.male.golden.goldfinger",
+    "title": "神医金手指好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "狂更猫写作课程/notes/04_开头五章写法与避坑.md",
+    "tags": [],
+    "expected_behavior": "金手指可行动，去掉后剧情会变。",
+    "reference_markdown": "金手指：望气术。可看见病人病灶颜色，每日三次，过度使用会短暂失明。主角用它在富商化疗方案与闺蜜父危症之间制造对比，先要价500万再抬到1亿，爽点分层爆发。",
+    "input_json": {
+      "brief": "男频神医金手指设定100-200字"
+    }
+  },
+  {
+    "suite_id": "suite.common.deai.patrol",
+    "title": "去AI味改写对照",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "九格智能Nines ai写作训练营/去ai味儿.md",
+    "tags": [],
+    "expected_behavior": "改写后无比喻无总结腔。",
+    "reference_markdown": "她垂着头，肩膀微微耷拉。手指抠着衣角，一声不吭。",
+    "input_json": {
+      "score_text": "她垂着头，肩膀微微耷拉。手指抠着衣角，一声不吭。"
+    }
+  },
+  {
+    "suite_id": "suite.common.deai.patrol",
+    "title": "AI味残留抽检坏例",
+    "label": "bad",
+    "origin": "course",
+    "source_ref": "九格智能Nines ai写作训练营/去ai味儿.md",
+    "tags": ["W07"],
+    "expected_behavior": "应被 deai 判失败。",
+    "reference_markdown": "",
+    "input_json": {
+      "score_text": "她像一朵在风雨中凋零的牡丹，仿佛整个世界都在与她为敌。综上所述，她的内心充满了无尽的悲伤。"
+    }
+  },
+  {
+    "suite_id": "suite.female.regression.opening",
+    "title": "女频开篇五要素好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "knowledge/12-female-long/female-opening-five.md",
+    "tags": [],
+    "expected_behavior": "五要素齐全，前三章可出男主。",
+    "reference_markdown": "我是沈清，在这座压抑的宅院里当了三年替身。\n系统提示：七日后真千金归来，你将被弃。\n我盯着提示想：先拿到那份股权证明，再让陆景琛亲眼看见真相。\n门铃响了——陆景琛站在门外。",
+    "input_json": { "brief": "女频替身文开篇" }
+  },
+  {
+    "suite_id": "suite.short.regression.swap",
+    "title": "换元充分好例",
+    "label": "good",
+    "origin": "course",
+    "source_ref": "九格智能Nines ai写作训练营/换元法.txt",
+    "tags": [],
+    "expected_behavior": "相似度低于阈值。",
+    "reference_markdown": "",
+    "input_json": {
+      "similarity_score": 0.42,
+      "score_text": "题材都市→末世；金手指从空间变成公司系统；人物从甜宠换成兄妹求生。"
+    }
+  },
+  {
+    "suite_id": "suite.manju.e2e.autopilot",
+    "title": "漫剧自动驾驶冒烟",
+    "label": "good",
+    "origin": "synthetic",
+    "source_ref": "apps/ai-writing/src/features/studio/autopilotPipeline.ts",
+    "tags": [],
+    "expected_behavior": "主链跑通并产出可用核心梗与正文。",
+    "reference_markdown": "",
+    "input_json": {
+      "brief": "都市逆袭漫剧，闪婚隐藏身份",
+      "pipeline": "autopilot.manju"
+    }
+  }
+]

@@ -1,0 +1,9 @@
+.reference-composer { padding: 6px 10px; border-top: 1px solid var(--border); }
+.reference-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0; min-width: 0; }
+.reference-chip { max-width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; font-size: 12px; background: var(--surface-2); overflow-wrap: anywhere; }
+.reference-chip summary { cursor: pointer; color: var(--ink); }
+.reference-chip[open] { flex-basis: 100%; }
+.reference-chip blockquote { font-size: 13px; border-left: 2px solid var(--accent); padding-left: 8px; }
+.selection-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 8px; border: 1px solid var(--border); border-radius: 6px; background: var(--surface-2); }
+.reference-picker-grid { display:grid; grid-template-columns:minmax(120px,1fr) minmax(0,2fr); gap:12px; margin-top:12px; }
+@media (max-width: 640px) { .reference-picker-grid { grid-template-columns: 1fr; } .reference-picker-grid > :first-child { max-height: 140px !important; } }

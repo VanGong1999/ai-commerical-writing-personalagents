@@ -1,0 +1,3910 @@
+{
+  "version": 3,
+  "updated": "2026-11-20",
+  "count": 148,
+  "generatedAt": "2026-11-20T07:05:27.602Z",
+  "agents": [
+    {
+      "id": "orch.writing",
+      "name": "写作编排器",
+      "description": "按 format + 场景模板调度 Stage",
+      "summary": "按 format + 场景模板调度 Stage",
+      "persona": "执行主编",
+      "team": "编排",
+      "skillPath": "orchestrator/writing",
+      "when": "Stage S0_SETUP",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "stage": "S0_SETUP",
+      "modelProfile": "fast",
+      "tools": [
+        "subagent_spawn",
+        "gate_run",
+        "job_enqueue",
+        "artifact_list",
+        "project_get"
+      ]
+    },
+    {
+      "id": "topic.core_hook_batch",
+      "name": "核心梗批量",
+      "description": "漫剧核心梗 ×10~100 候选",
+      "summary": "漫剧核心梗 ×10~100 候选",
+      "persona": "灵感猎手",
+      "team": "选题",
+      "skillPath": "manju/core-hook",
+      "when": "Stage S1_HOOK_BATCH",
+      "format": [
+        "manju",
+        "short_novel"
+      ],
+      "formats": [
+        "manju",
+        "short_novel"
+      ],
+      "stage": "S1_HOOK_BATCH",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "prompt_render",
+        "prompt_validate_lock",
+        "gate_run",
+        "usage_log",
+        "scan_banned_phrases"
+      ]
+    },
+    {
+      "id": "topic.core_hook_critic",
+      "name": "核心梗评审",
+      "description": "对候选核心梗打分排序",
+      "summary": "对候选核心梗打分排序",
+      "persona": "梗味品鉴官",
+      "team": "选题",
+      "skillPath": "manju/core-hook-critic",
+      "when": "Stage S2_HOOK_SELECT",
+      "format": [
+        "manju"
+      ],
+      "formats": [
+        "manju"
+      ],
+      "stage": "S2_HOOK_SELECT",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_update",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.episode_outline",
+      "name": "前十集大纲",
+      "description": "漫剧前十集大纲表（须已 ack 小传）",
+      "summary": "漫剧前十集大纲表（须已 ack 小传）",
+      "persona": "十集蓝图师",
+      "team": "结构",
+      "skillPath": "manju/episode-outline",
+      "when": "Stage S4_EP10_OUTLINE",
+      "format": [
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt"
+      ],
+      "stage": "S4_EP10_OUTLINE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.bio_manju",
+      "name": "人物小传",
+      "description": "投稿格式人物小传（大纲前完成并写入 bible）",
+      "summary": "投稿格式人物小传（大纲前完成并写入 bible）",
+      "persona": "小传铸手",
+      "team": "人设",
+      "skillPath": "manju/bio",
+      "when": "Stage S3_BIO",
+      "format": [
+        "manju"
+      ],
+      "formats": [
+        "manju"
+      ],
+      "stage": "S3_BIO",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_update",
+        "artifact_list",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.episode_body",
+      "name": "分集正文",
+      "description": "分镜画面+台词，800-1200字；开写前须 bible 注入",
+      "summary": "分镜画面+台词，800-1200字；开写前须 bible 注入",
+      "persona": "分集主笔",
+      "team": "正文",
+      "skillPath": "manju/episode-body",
+      "when": "Stage S5_EP_BODY_BATCH",
+      "format": [
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt"
+      ],
+      "stage": "S5_EP_BODY_BATCH",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "artifact_update",
+        "bible_read",
+        "gate_run",
+        "scan_length",
+        "scan_hook_present",
+        "decay_detect",
+        "payoff_ledger",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.storyboard",
+      "name": "去小说化分镜",
+      "description": "删形容词/心理长段，改为画面+台词",
+      "summary": "删形容词/心理长段，改为画面+台词",
+      "persona": "分镜炼金师",
+      "team": "正文",
+      "skillPath": "manju/storyboard",
+      "when": "Stage S7_STORYBOARD",
+      "format": [
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt"
+      ],
+      "stage": "S7_STORYBOARD",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "scan_banned_phrases",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.length_decay_fix",
+      "name": "字数衰减校正",
+      "description": "将偷懒短稿扩回 800–1200 / ≤3 场 / 台词≤500",
+      "summary": "将偷懒短稿扩回 800–1200 / ≤3 场 / 台词≤500",
+      "persona": "字数回填官",
+      "team": "正文",
+      "skillPath": "manju/length-decay-fix",
+      "when": "Stage S6_QA",
+      "format": [
+        "manju",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S6_QA",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_length",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.bible_guard",
+      "name": "圣经注入守卫",
+      "description": "每集开写前注入人设/金手指/近集摘要/图切片/持久伏笔台账",
+      "summary": "每集开写前注入人设/金手指/近集摘要/图切片/持久伏笔台账",
+      "persona": "圣经守门人",
+      "team": "审校",
+      "skillPath": "quality/bible-guard",
+      "when": "Stage S5_EP_BODY_BATCH",
+      "format": [
+        "manju",
+        "male_long",
+        "female_long",
+        "duanju",
+        "short_novel"
+      ],
+      "formats": [
+        "manju",
+        "male_long",
+        "female_long",
+        "duanju",
+        "short_novel"
+      ],
+      "stage": "S5_EP_BODY_BATCH",
+      "modelProfile": "fast",
+      "tools": [
+        "bible_read",
+        "memory_get",
+        "memory_write",
+        "artifact_list",
+        "payoff_ledger",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "hook.foreshadow_ledger",
+      "name": "伏笔台账",
+      "description": "埋点/到期集/状态机；持久 ledger；Extend 前复盘开放钩子",
+      "summary": "埋点/到期集/状态机；持久 ledger；Extend 前复盘开放钩子",
+      "persona": "伏笔账房",
+      "team": "钩子",
+      "skillPath": "structure/foreshadow-ledger",
+      "when": "Stage S5_EP_BODY_BATCH",
+      "format": [
+        "manju",
+        "duanju",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S5_EP_BODY_BATCH",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "payoff_ledger",
+        "bible_read",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.story_graph",
+      "name": "全剧连续性图",
+      "description": "大纲确认后初始化/更新 story_graph（JSON+Mermaid）",
+      "summary": "大纲确认后初始化/更新 story_graph（JSON+Mermaid）",
+      "persona": "全剧织网师",
+      "team": "结构",
+      "skillPath": "structure/story-graph",
+      "when": "Stage S4_OUTLINE_ACK",
+      "format": [
+        "manju",
+        "ip_adapt",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S4_OUTLINE_ACK",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "payoff_ledger",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.episode_graph",
+      "name": "分集连续性图",
+      "description": "每集正文前后维护 episode_graph 并合并全剧图",
+      "summary": "每集正文前后维护 episode_graph 并合并全剧图",
+      "persona": "分集织网师",
+      "team": "结构",
+      "skillPath": "structure/episode-graph",
+      "when": "Stage S5_EP_BODY_BATCH",
+      "format": [
+        "manju",
+        "ip_adapt",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S5_EP_BODY_BATCH",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "payoff_ledger",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.de_ai",
+      "name": "去 AI 味",
+      "description": "V3.8 向去 AI 味改写",
+      "summary": "V3.8 向去 AI 味改写",
+      "persona": "去AI味审校",
+      "team": "审校",
+      "skillPath": "quality/de-ai-v3.8",
+      "when": "Stage S9_DE_AI",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "stage": "S9_DE_AI",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_banned_phrases",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.human_checklist",
+      "name": "人工校稿清单",
+      "description": "逻辑/镜头/语言/钩子清单，LogicAck 不可自动绿",
+      "summary": "逻辑/镜头/语言/钩子清单，LogicAck 不可自动绿",
+      "persona": "人工校稿官",
+      "team": "审校",
+      "skillPath": "gates/logic-ack",
+      "when": "Stage S10_HUMAN_QC",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "stage": "S10_HUMAN_QC",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "checklist_open",
+        "gate_run",
+        "artifact_create"
+      ]
+    },
+    {
+      "id": "orch.batch_writer",
+      "name": "批量正文督导",
+      "description": "串行入队；默认前3集；LengthDecay fail 则停队列",
+      "summary": "串行入队；默认前3集；LengthDecay fail 则停队列",
+      "persona": "连载督导",
+      "team": "编排",
+      "skillPath": "orchestrator/batch",
+      "when": "Stage S5_EP_BODY_BATCH",
+      "format": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ],
+      "stage": "S5_EP_BODY_BATCH",
+      "modelProfile": "fast",
+      "tools": [
+        "job_enqueue",
+        "job_cancel",
+        "artifact_list",
+        "gate_run",
+        "decay_detect"
+      ]
+    },
+    {
+      "id": "kb.report_pipeline",
+      "name": "拆书报告流水线",
+      "description": "知识库九类报告",
+      "summary": "知识库九类报告",
+      "persona": "拆书流水总管",
+      "team": "拆书",
+      "skillPath": "kb/report-pipeline",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "kb_read",
+        "kb_write_report",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "swap.master",
+      "name": "换元规划",
+      "description": "一度/二度换元映射；女频四换三（背景/人设/金手指/主线，保留主线）",
+      "summary": "一度/二度换元映射；女频四换三（背景/人设/金手指/主线，保留主线）",
+      "persona": "换元总设计师",
+      "team": "换元",
+      "skillPath": "swap/master",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "manju",
+        "ip_adapt",
+        "female_long"
+      ],
+      "formats": [
+        "short_novel",
+        "manju",
+        "ip_adapt",
+        "female_long"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "kb_read",
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log",
+        "similarity_heuristic"
+      ]
+    },
+    {
+      "id": "inspiration.expand",
+      "name": "灵感升级",
+      "description": "四层级灵感扩展",
+      "summary": "四层级灵感扩展",
+      "persona": "灵感升维师",
+      "team": "选题",
+      "skillPath": "inspiration/expand",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "web_search",
+        "usage_log",
+        "gate_run"
+      ]
+    },
+    {
+      "id": "struct.extend_outline",
+      "name": "EP11+扩展大纲",
+      "description": "基于已采纳核心梗与前十集向后扩展集纲；须复盘开放伏笔",
+      "summary": "基于已采纳核心梗与前十集向后扩展集纲；须复盘开放伏笔",
+      "persona": "续纲拓荒者",
+      "team": "结构",
+      "skillPath": "manju/extend-outline",
+      "when": "Stage S11_EXTEND",
+      "format": [
+        "manju"
+      ],
+      "formats": [
+        "manju"
+      ],
+      "stage": "S11_EXTEND",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "bible_read",
+        "payoff_ledger",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "deliver.pitch_pack",
+      "name": "投稿打包",
+      "description": "四件套：核心梗+小传+10大纲+前3正文",
+      "summary": "四件套：核心梗+小传+10大纲+前3正文",
+      "persona": "投稿打包官",
+      "team": "交付",
+      "skillPath": "manju/pitch-pack",
+      "when": "Stage S11_PITCH",
+      "format": [
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt"
+      ],
+      "stage": "S11_PITCH",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.qa_correct",
+      "name": "分集规格校正",
+      "description": "字数/场景/台词/悬念校正；禁下集预告乱加戏",
+      "summary": "字数/场景/台词/悬念校正；禁下集预告乱加戏",
+      "persona": "规格纠偏员",
+      "team": "正文",
+      "skillPath": "manju/qa-correct",
+      "when": "Stage S6_QA",
+      "format": [
+        "manju"
+      ],
+      "formats": [
+        "manju"
+      ],
+      "stage": "S6_QA",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_length",
+        "scan_hook_present",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.dialogue_pressure",
+      "name": "台词加压",
+      "description": "短狠毒台词优化",
+      "summary": "短狠毒台词优化",
+      "persona": "台词加压官",
+      "team": "正文",
+      "skillPath": "manju/dialogue-pressure",
+      "when": "Stage S8_DIALOGUE",
+      "format": [
+        "manju",
+        "duanju"
+      ],
+      "formats": [
+        "manju",
+        "duanju"
+      ],
+      "stage": "S8_DIALOGUE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.dialogue_voice",
+      "name": "台词个性化",
+      "description": "按角色与创作意图审校对白，可抽样比较声口",
+      "summary": "按角色与创作意图审校对白，可抽样比较声口",
+      "persona": "声口塑形师",
+      "team": "正文",
+      "skillPath": "manju/dialogue-voice",
+      "when": "Stage S8_DIALOGUE",
+      "format": [
+        "manju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S8_DIALOGUE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "gate_run",
+        "usage_log",
+        "done_check",
+        "skill_read"
+      ]
+    },
+    {
+      "id": "struct.cool18",
+      "name": "18爽点选型",
+      "description": "十八爽点/虐点批量，漫剧选题后默认前置",
+      "summary": "十八爽点/虐点批量，漫剧选题后默认前置",
+      "persona": "十八爽点官",
+      "team": "结构",
+      "skillPath": "structure/cool-18-models",
+      "when": "Stage S2_COOL_BATCH",
+      "format": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S2_COOL_BATCH",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.cool_expand",
+      "name": "爽虐大事件池",
+      "description": "由核心梗批量扩展爽/虐/转大事件，供粗纲排序（11课）",
+      "summary": "由核心梗批量扩展爽/虐/转大事件，供粗纲排序（11课）",
+      "persona": "爽虐池拓荒",
+      "team": "结构",
+      "skillPath": "structure/cool-plot-expand",
+      "when": "Stage S2_COOL_BATCH",
+      "format": [
+        "manju",
+        "duanju",
+        "short_novel"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel"
+      ],
+      "stage": "S2_COOL_BATCH",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.cool12",
+      "name": "十二爽点套路",
+      "description": "马斯洛五需求→十二套路选型与分集映射",
+      "summary": "马斯洛五需求→十二套路选型与分集映射",
+      "persona": "十二爽点师",
+      "team": "结构",
+      "skillPath": "structure/cool12-maslow",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "hook.episode_alts",
+      "name": "集尾钩多备选",
+      "description": "每集生成多个集尾钩备选，人选用（17课）",
+      "summary": "每集生成多个集尾钩备选，人选用（17课）",
+      "persona": "集尾钩备选官",
+      "team": "钩子",
+      "skillPath": "structure/episode-hook-alts",
+      "when": "Stage S4_EP10_OUTLINE",
+      "format": [
+        "manju",
+        "duanju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "ip_adapt"
+      ],
+      "stage": "S4_EP10_OUTLINE",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.world_setting",
+      "name": "设定包·金手指世界观",
+      "description": "五要素+金手指三大要求四大类型+世界观+开头情绪",
+      "summary": "五要素+金手指三大要求四大类型+世界观+开头情绪",
+      "persona": "世界观筑造师",
+      "team": "选题",
+      "skillPath": "topic/world-setting",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju",
+        "male_long",
+        "female_long",
+        "short_novel",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "male_long",
+        "female_long",
+        "short_novel",
+        "ip_adapt"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_update",
+        "artifact_list",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.seven_step",
+      "name": "人设七步法",
+      "description": "动机目标愿望阻碍办法结果意外收获",
+      "summary": "动机目标愿望阻碍办法结果意外收获",
+      "persona": "人设七步匠",
+      "team": "人设",
+      "skillPath": "character/seven-step",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.kartian",
+      "name": "单集卡点库",
+      "description": "悬念勾子/爽点爆点/情感钩选型",
+      "summary": "悬念勾子/爽点爆点/情感钩选型",
+      "persona": "卡点库管",
+      "team": "结构",
+      "skillPath": "structure/kartian-catalog",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju",
+        "ip_adapt",
+        "duanju"
+      ],
+      "formats": [
+        "manju",
+        "ip_adapt",
+        "duanju"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.act100_manju",
+      "name": "100集四幕",
+      "description": "漫剧百集四幕节奏骨架",
+      "summary": "漫剧百集四幕节奏骨架",
+      "persona": "百集四幕师",
+      "team": "结构",
+      "skillPath": "structure/act100-four-acts",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju"
+      ],
+      "formats": [
+        "manju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.chase_wife",
+      "name": "追妻五部曲",
+      "description": "追妻火葬场商业模板",
+      "summary": "追妻火葬场商业模板",
+      "persona": "追妻剧本官",
+      "team": "结构",
+      "skillPath": "structure/chase-wife-pentalogy",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "manju",
+        "female_long",
+        "short_novel"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.bible_big5",
+      "name": "Big5人设卡",
+      "description": "大五人格+欲望恐惧秘密",
+      "summary": "大五人格+欲望恐惧秘密",
+      "persona": "Big5人设卡官",
+      "team": "人设",
+      "skillPath": "character/big5-desire-fear",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.soul_check",
+      "name": "灵魂拷问",
+      "description": "人设驱动剧情三问",
+      "summary": "人设驱动剧情三问",
+      "persona": "灵魂拷问官",
+      "team": "人设",
+      "skillPath": "character/soul-check",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "bible_read",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.expectation",
+      "name": "期待感与冲突",
+      "description": "远近期待+冲突六要素诊断",
+      "summary": "远近期待+冲突六要素诊断",
+      "persona": "期待感架构师",
+      "team": "结构",
+      "skillPath": "structure/expect-conflict",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.face_slap",
+      "name": "打脸三阶",
+      "description": "装逼打脸三阶设计",
+      "summary": "装逼打脸三阶设计",
+      "persona": "打脸三阶官",
+      "team": "结构",
+      "skillPath": "structure/face-slap-tiers",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.immersion",
+      "name": "代入感审计",
+      "description": "代入感五维诊断",
+      "summary": "代入感五维诊断",
+      "persona": "代入感审计官",
+      "team": "审校",
+      "skillPath": "quality/immersion-audit",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.show_dont_tell",
+      "name": "展示非告知",
+      "description": "Show don't tell 改写",
+      "summary": "Show don't tell 改写",
+      "persona": "展示非告知官",
+      "team": "审校",
+      "skillPath": "quality/show-dont-tell",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prompt.four_part",
+      "name": "提示词四段式",
+      "description": "规则+指令可执行提示词工程",
+      "summary": "规则+指令可执行提示词工程",
+      "persona": "提示词四段匠",
+      "team": "其他",
+      "skillPath": "ai-collab/prompt-4part",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "prompt_render",
+        "prompt_validate_lock",
+        "artifact_create",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.market_brief",
+      "name": "市场与投稿规格",
+      "description": "漫剧题材/受众/投稿规格 briefing",
+      "summary": "漫剧题材/受众/投稿规格 briefing",
+      "persona": "市场情报官",
+      "team": "选题",
+      "skillPath": "product/manju-market-notes",
+      "when": "Stage S0_SETUP",
+      "format": [
+        "manju"
+      ],
+      "formats": [
+        "manju"
+      ],
+      "stage": "S0_SETUP",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "biz.product_align",
+      "name": "短剧产品锁",
+      "description": "解压/代入/粘度产品优先级",
+      "summary": "解压/代入/粘度产品优先级",
+      "persona": "短剧产品锁官",
+      "team": "选题",
+      "skillPath": "duanju/product/product-priority",
+      "when": "Stage S0_PRODUCT",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S0_PRODUCT",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.want_how",
+      "name": "想看-怎么看-靠什么",
+      "description": "短剧选题三公式",
+      "summary": "短剧选题三公式",
+      "persona": "想看公式师",
+      "team": "选题",
+      "skillPath": "duanju/topic/want-how-via-what",
+      "when": "Stage S1_TOPIC",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S1_TOPIC",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.cool_point_5",
+      "name": "五大爽点",
+      "description": "短剧五爽点堆叠",
+      "summary": "短剧五爽点堆叠",
+      "persona": "五大爽点官",
+      "team": "选题",
+      "skillPath": "duanju/topic/five-cool-points",
+      "when": "Stage S1_TOPIC",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S1_TOPIC",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.story_shell",
+      "name": "故事壳选型",
+      "description": "故事壳与中点选型，记录渠道和创作理由",
+      "summary": "故事壳与中点选型，记录渠道和创作理由",
+      "persona": "故事壳选型官",
+      "team": "选题",
+      "skillPath": "duanju/topic/four-shells",
+      "when": "Stage S1_TOPIC",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S1_TOPIC",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.mini_bio",
+      "name": "短剧小传五维",
+      "description": "bio-5 经典一人主线",
+      "summary": "bio-5 经典一人主线",
+      "persona": "短剧小传官",
+      "team": "人设",
+      "skillPath": "duanju/character/bio-5",
+      "when": "Stage S2_BIO",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S2_BIO",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.empathy_3",
+      "name": "共情三要素",
+      "description": "短剧共情设计",
+      "summary": "短剧共情设计",
+      "persona": "共情三要素官",
+      "team": "人设",
+      "skillPath": "duanju/character/empathy-3",
+      "when": "Stage S2_BIO",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S2_BIO",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "bible_read",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.beat20",
+      "name": "二十节拍",
+      "description": "短剧 Beat20 大纲",
+      "summary": "短剧 Beat20 大纲",
+      "persona": "二十节拍师",
+      "team": "结构",
+      "skillPath": "duanju/structure/beat-20",
+      "when": "Stage S3_BEAT20",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S3_BEAT20",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.midpoint",
+      "name": "中点五型",
+      "description": "中点转折五类型定位",
+      "summary": "中点转折五类型定位",
+      "persona": "中点五型官",
+      "team": "结构",
+      "skillPath": "duanju/structure/midpoint-5types",
+      "when": "Stage S3_BEAT20",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S3_BEAT20",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.paywall",
+      "name": "付费点十集图",
+      "description": "前十集付费/卡点布局",
+      "summary": "前十集付费/卡点布局",
+      "persona": "付费点布局官",
+      "team": "结构",
+      "skillPath": "duanju/structure/paywall-10ep",
+      "when": "Stage S3_BEAT20",
+      "format": [
+        "duanju",
+        "ip_adapt",
+        "female_long"
+      ],
+      "formats": [
+        "duanju",
+        "ip_adapt",
+        "female_long"
+      ],
+      "stage": "S3_BEAT20",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.ep_outline_duanju",
+      "name": "短剧十集大纲",
+      "description": "EP1–10 爽点/卡点/集尾钩表；人工确认前生成",
+      "summary": "EP1–10 爽点/卡点/集尾钩表；人工确认前生成",
+      "persona": "短剧十集蓝图",
+      "team": "结构",
+      "skillPath": "duanju/structure/ep-outline-cool",
+      "when": "Stage S4_EP10_DRAFT",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S4_EP10_DRAFT",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "outline_table",
+        "table_write",
+        "cool_stack_score",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "deliver.logline",
+      "name": "导语交付（别名）",
+      "description": "PRD deliver.logline → topic.logline_title",
+      "summary": "PRD deliver.logline → topic.logline_title",
+      "persona": "导语交付官",
+      "team": "交付",
+      "skillPath": "deliver/logline",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "hook_100word_check"
+      ]
+    },
+    {
+      "id": "topic.score",
+      "name": "选题评分",
+      "description": "共鸣/爽点/壳/市场四维打分",
+      "summary": "共鸣/爽点/壳/市场四维打分",
+      "persona": "选题评分官",
+      "team": "选题",
+      "skillPath": "topic/hotspot",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "graph.build",
+      "name": "关系图谱（别名）",
+      "description": "PRD graph.build → kb.graph_build / char.relation_net",
+      "summary": "PRD graph.build → kb.graph_build / char.relation_net",
+      "persona": "关系图谱师",
+      "team": "知识",
+      "skillPath": "kb/graph-build",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "kb_read",
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "scene.triple",
+      "name": "场三件事",
+      "description": "每场目标冲突转机",
+      "summary": "每场目标冲突转机",
+      "persona": "场三件事官",
+      "team": "场景",
+      "skillPath": "duanju/scene/scene-triple",
+      "when": "Stage S5_SCENE",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S5_SCENE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "scene_triple_validate",
+        "clip_candidate_extract",
+        "format_scene_header"
+      ]
+    },
+    {
+      "id": "scene.triangle",
+      "name": "三角情节",
+      "description": "三角推动场级戏剧",
+      "summary": "三角推动场级戏剧",
+      "persona": "三角情节官",
+      "team": "场景",
+      "skillPath": "duanju/scene/triangle-plot",
+      "when": "Stage S5_SCENE",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S5_SCENE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "scene.opening8",
+      "name": "开场七法",
+      "description": "短剧开场模式选型（opening-7 skill）",
+      "summary": "短剧开场模式选型（opening-7 skill）",
+      "persona": "开场七法官",
+      "team": "场景",
+      "skillPath": "duanju/scene/opening-7",
+      "when": "Stage S5_SCENE",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S5_SCENE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "clip_candidate_extract"
+      ]
+    },
+    {
+      "id": "prose.dialogue_formula",
+      "name": "台词三层",
+      "description": "态度-信息-潜台词",
+      "summary": "态度-信息-潜台词",
+      "persona": "台词三层匠",
+      "team": "正文",
+      "skillPath": "duanju/dialogue/attitude-info-subtext",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju"
+      ],
+      "formats": [
+        "duanju",
+        "manju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "hook.suspense_design",
+      "name": "悬念四属性",
+      "description": "悬念预算与一加一",
+      "summary": "悬念预算与一加一",
+      "persona": "悬念四属性官",
+      "team": "钩子",
+      "skillPath": "duanju/expectation/suspense-4attr",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.human_qc_duanju",
+      "name": "短剧人工校稿",
+      "description": "短剧人工 QC 清单；LogicAck 仅用户确认",
+      "summary": "短剧人工 QC 清单；LogicAck 仅用户确认",
+      "persona": "短剧人工校官",
+      "team": "审校",
+      "skillPath": "duanju/qc/human-qc-duanju",
+      "when": "Stage S6_HUMAN_QC",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S6_HUMAN_QC",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "checklist_open",
+        "gate_run",
+        "stage_lock",
+        "usage_log",
+        "artifact_create"
+      ]
+    },
+    {
+      "id": "dissect.params",
+      "name": "拆书参数",
+      "description": "对标拆书参数表（题材/节奏/爽点密度）",
+      "summary": "对标拆书参数表（题材/节奏/爽点密度）",
+      "persona": "拆书参数官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-params",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "kb_write_report",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.seven_steps",
+      "name": "拆书七步法",
+      "description": "目标阻碍行动结果意外转折结局",
+      "summary": "目标阻碍行动结果意外转折结局",
+      "persona": "拆书七步师",
+      "team": "拆书",
+      "skillPath": "kb/dissect-seven-steps",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "kb_write_report",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.unit_story",
+      "name": "单元故事拆解",
+      "description": "大中小单元嵌套拆解",
+      "summary": "大中小单元嵌套拆解",
+      "persona": "单元故事拆解官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-unit-story",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "kb_write_report",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.param",
+      "name": "拆书参数（别名）",
+      "description": "文档 ID dissect.param → dissect.params",
+      "summary": "文档 ID dissect.param → dissect.params",
+      "persona": "拆书参数别名官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-params",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "kb_write_report",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "kb.auto_tag",
+      "name": "知识库自动打标",
+      "description": "入库后题材/频向/桥段标签",
+      "summary": "入库后题材/频向/桥段标签",
+      "persona": "知识自动打标官",
+      "team": "知识",
+      "skillPath": "kb/auto-tag",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "kb_read",
+        "kb_write_report",
+        "usage_log",
+        "gate_run"
+      ]
+    },
+    {
+      "id": "kb.graph_build",
+      "name": "知识图谱构建",
+      "description": "从文档抽取人物/事件/关系节点边",
+      "summary": "从文档抽取人物/事件/关系节点边",
+      "persona": "知识图谱筑手",
+      "team": "知识",
+      "skillPath": "kb/graph-build",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "kb_write_report",
+        "artifact_create",
+        "usage_log",
+        "gate_run"
+      ]
+    },
+    {
+      "id": "topic.hotspot",
+      "name": "热点选题转化",
+      "description": "公开热点→可投稿选题卡（禁空蹭）",
+      "summary": "公开热点→可投稿选题卡（禁空蹭）",
+      "persona": "热点猎手",
+      "team": "选题",
+      "skillPath": "topic/hotspot",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "web_search",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "imitate.wash",
+      "name": "洗稿边界体检",
+      "description": "仿写 vs 洗稿边界与 SimilarityRisk",
+      "summary": "仿写 vs 洗稿边界与 SimilarityRisk",
+      "persona": "洗稿边界巡检",
+      "team": "审校",
+      "skillPath": "imitate/wash-boundary",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "similarity_heuristic",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "swap.plan",
+      "name": "换元计划（别名）",
+      "description": "文档 ID → swap.master",
+      "summary": "文档 ID → swap.master",
+      "persona": "换元计划官",
+      "team": "换元",
+      "skillPath": "swap/master",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "similarity_heuristic"
+      ]
+    },
+    {
+      "id": "swap.diagnose",
+      "name": "换元诊断",
+      "description": "映射表缺口与相似度风险诊断",
+      "summary": "映射表缺口与相似度风险诊断",
+      "persona": "换元诊断官",
+      "team": "换元",
+      "skillPath": "swap/master",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "similarity_heuristic",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "world.bible",
+      "name": "世界观 Bible（别名）",
+      "description": "→ topic.world_setting",
+      "summary": "→ topic.world_setting",
+      "persona": "世界观圣经官",
+      "team": "知识",
+      "skillPath": "topic/world-setting",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju",
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "manju",
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "bible_write",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "world.gold_finger",
+      "name": "金手指设定（别名）",
+      "description": "→ male.gold_finger / topic.world_setting",
+      "summary": "→ male.gold_finger / topic.world_setting",
+      "persona": "金手指设定官",
+      "team": "男频",
+      "skillPath": "male_long/gold-finger-cap",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "male_long",
+        "manju",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "manju",
+        "short_novel"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "bible_write",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.relation_net",
+      "name": "人物关系网",
+      "description": "从人设/拆书生成关系网摘要",
+      "summary": "从人设/拆书生成关系网摘要",
+      "persona": "人物关系织手",
+      "team": "人设",
+      "skillPath": "kb/graph-build",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "kb_read",
+        "artifact_list",
+        "bible_read",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.formula",
+      "name": "选题公式 / 商品思维",
+      "description": "共鸣×爽点×壳×市场选题公式体检",
+      "summary": "共鸣×爽点×壳×市场选题公式体检",
+      "persona": "选题公式官",
+      "team": "选题",
+      "skillPath": "duanju/topic/four-shells",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "swap.generate",
+      "name": "换元生成（别名）",
+      "description": "兼容旧前端 ID → swap.master",
+      "summary": "兼容旧前端 ID → swap.master",
+      "persona": "换元生成官",
+      "team": "换元",
+      "skillPath": "swap/master",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "short_novel",
+        "manju",
+        "ip_adapt"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "similarity_heuristic"
+      ]
+    },
+    {
+      "id": "scene.opening7",
+      "name": "开篇七招（规范名）",
+      "description": "opening-7；opening8 为 deprecated 别名",
+      "summary": "opening-7；opening8 为 deprecated 别名",
+      "persona": "开篇七招官",
+      "team": "场景",
+      "skillPath": "duanju/scene/opening-7",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju"
+      ],
+      "formats": [
+        "duanju",
+        "manju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "scan_hook_present"
+      ]
+    },
+    {
+      "id": "struct.female_pace",
+      "name": "女频节奏（别名）",
+      "description": "文档 ID → female.pace",
+      "summary": "文档 ID → female.pace",
+      "persona": "节奏编排师",
+      "team": "结构",
+      "skillPath": "female_long/pace-ratio",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "female_long"
+      ],
+      "formats": [
+        "female_long"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.hook_critic",
+      "name": "核心梗评审（别名）",
+      "description": "兼容文档 ID topic.hook_critic → 同 topic.core_hook_critic",
+      "summary": "兼容文档 ID topic.hook_critic → 同 topic.core_hook_critic",
+      "persona": "梗评审别名官",
+      "team": "选题",
+      "skillPath": "manju/core-hook-critic",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "manju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "manju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "artifact_update",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.revise20",
+      "name": "修改20条",
+      "description": "短剧 Revise20 改稿清单",
+      "summary": "短剧 Revise20 改稿清单",
+      "persona": "修改二十条官",
+      "team": "审校",
+      "skillPath": "duanju/revise/revise-20",
+      "when": "Stage S6_REVISE20",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S6_REVISE20",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "checklist_open",
+        "gate_run",
+        "usage_log",
+        "trope_coverage",
+        "diff_artifacts"
+      ]
+    },
+    {
+      "id": "qc.redline",
+      "name": "短剧红线",
+      "description": "合规红线扫描提示",
+      "summary": "合规红线扫描提示",
+      "persona": "短剧红线官",
+      "team": "审校",
+      "skillPath": "duanju/compliance/redline-duanju",
+      "when": "Stage S7_SUBMIT",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S7_SUBMIT",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "scan_banned_phrases",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.bridge8",
+      "name": "八桥段落场",
+      "description": "打脸碾压运气地位集体因果极限哲思覆盖",
+      "summary": "打脸碾压运气地位集体因果极限哲思覆盖",
+      "persona": "八桥段落场官",
+      "team": "结构",
+      "skillPath": "duanju/tropes/eight-tropes",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "trope_coverage",
+        "witness_suggest"
+      ]
+    },
+    {
+      "id": "qc.gender_path",
+      "name": "男女频路径",
+      "description": "男自己动手/女借势获爱路径审计",
+      "summary": "男自己动手/女借势获爱路径审计",
+      "persona": "男女频路径官",
+      "team": "审校",
+      "skillPath": "duanju/character/gender-path",
+      "when": "Stage S6_REVISE20",
+      "format": [
+        "duanju",
+        "manju"
+      ],
+      "formats": [
+        "duanju",
+        "manju"
+      ],
+      "stage": "S6_REVISE20",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "checklist_open",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "hook.one_plus_one",
+      "name": "一加一兑现",
+      "description": "爽点兑现预期再加惊喜层",
+      "summary": "爽点兑现预期再加惊喜层",
+      "persona": "一加一兑现官",
+      "team": "钩子",
+      "skillPath": "duanju/expectation/one-plus-one",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "ip_adapt",
+        "manju"
+      ],
+      "formats": [
+        "duanju",
+        "ip_adapt",
+        "manju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "deliver.submission_pack",
+      "name": "短剧投稿包",
+      "description": "小传+大纲+十集+简介+信息表",
+      "summary": "小传+大纲+十集+简介+信息表",
+      "persona": "短剧投稿官",
+      "team": "交付",
+      "skillPath": "duanju/deliver/pitch-pack",
+      "when": "Stage S7_SUBMIT",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S7_SUBMIT",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "ai.exchange",
+      "name": "交换法01",
+      "description": "结果变指令的从0到1交换流",
+      "summary": "结果变指令的从0到1交换流",
+      "persona": "交换法策士",
+      "team": "其他",
+      "skillPath": "duanju/ai_collab/exchange-01",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "prompt_render",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "ip.select_score",
+      "name": "选书四指标",
+      "description": "数据/题材/结构/人物选IP评分",
+      "summary": "数据/题材/结构/人物选IP评分",
+      "persona": "IP选书官",
+      "team": "IP",
+      "skillPath": "ip/select-score",
+      "when": "Stage S1_IP_EVAL",
+      "format": [
+        "ip_adapt",
+        "manju",
+        "duanju"
+      ],
+      "formats": [
+        "ip_adapt",
+        "manju",
+        "duanju"
+      ],
+      "stage": "S1_IP_EVAL",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "kb_read",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "ip.unit_cut",
+      "name": "单元减法",
+      "description": "拆单元故事并丢松段",
+      "summary": "拆单元故事并丢松段",
+      "persona": "IP单元减法官",
+      "team": "IP",
+      "skillPath": "ip/unit-cut",
+      "when": "Stage S2_UNIT_SPLIT",
+      "format": [
+        "ip_adapt"
+      ],
+      "formats": [
+        "ip_adapt"
+      ],
+      "stage": "S2_UNIT_SPLIT",
+      "modelProfile": "strong",
+      "tools": [
+        "kb_read",
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "ip.emotion_quant",
+      "name": "情绪量化",
+      "description": "单元/集 -10~+10 情绪曲线",
+      "summary": "单元/集 -10~+10 情绪曲线",
+      "persona": "IP情绪量化官",
+      "team": "IP",
+      "skillPath": "ip/emotion-quant",
+      "when": "Stage S3_EMOTION",
+      "format": [
+        "ip_adapt",
+        "short_novel",
+        "female_long"
+      ],
+      "formats": [
+        "ip_adapt",
+        "short_novel",
+        "female_long"
+      ],
+      "stage": "S3_EMOTION",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "ip.rebuild",
+      "name": "搭积木重构",
+      "description": "压缩策略落地新分集地图",
+      "summary": "压缩策略落地新分集地图",
+      "persona": "IP搭积木官",
+      "team": "IP",
+      "skillPath": "ip/rebuild-blocks",
+      "when": "Stage S4_COMPRESS",
+      "format": [
+        "ip_adapt"
+      ],
+      "formats": [
+        "ip_adapt"
+      ],
+      "stage": "S4_COMPRESS",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "male.upgrade_loop",
+      "name": "男频升级循环",
+      "description": "压抑-爆发-打脸-新目标循环设计",
+      "summary": "压抑-爆发-打脸-新目标循环设计",
+      "persona": "男频升级循环官",
+      "team": "男频",
+      "skillPath": "male_long/upgrade-loop",
+      "when": "Stage S4_VOLUME",
+      "format": [
+        "male_long"
+      ],
+      "formats": [
+        "male_long"
+      ],
+      "stage": "S4_VOLUME",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "male.cool_density",
+      "name": "男频爽点密度",
+      "description": "装逼打脸节奏与爽点密度体检",
+      "summary": "装逼打脸节奏与爽点密度体检",
+      "persona": "男频爽点密度官",
+      "team": "男频",
+      "skillPath": "male_long/cool-density",
+      "when": "Stage S8_COOL_DENSITY",
+      "format": [
+        "male_long"
+      ],
+      "formats": [
+        "male_long"
+      ],
+      "stage": "S8_COOL_DENSITY",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "male.gold_finger",
+      "name": "男频金手指",
+      "description": "限制型金手指与主线推进",
+      "summary": "限制型金手指与主线推进",
+      "persona": "男频金手指官",
+      "team": "男频",
+      "skillPath": "male_long/gold-finger-cap",
+      "when": "Stage S2_GOLD_FINGER",
+      "format": [
+        "male_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "short_novel"
+      ],
+      "stage": "S2_GOLD_FINGER",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_write",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "male.risk",
+      "name": "男频雷区",
+      "description": "无脑碾压/设定堆砌/水文等雷区",
+      "summary": "无脑碾压/设定堆砌/水文等雷区",
+      "persona": "男频雷区巡检",
+      "team": "男频",
+      "skillPath": "male_long/risk-list",
+      "when": "Stage S9_RISK",
+      "format": [
+        "male_long"
+      ],
+      "formats": [
+        "male_long"
+      ],
+      "stage": "S9_RISK",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "checklist_open",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "male.opening",
+      "name": "男频开篇钩",
+      "description": "冲突/悬念/设定三板斧开篇",
+      "summary": "冲突/悬念/设定三板斧开篇",
+      "persona": "男频开篇钩官",
+      "team": "男频",
+      "skillPath": "male_long/opening-hook",
+      "when": "Stage S1_TOPIC_SCAN",
+      "format": [
+        "male_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "short_novel"
+      ],
+      "stage": "S1_TOPIC_SCAN",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "scan_hook_present",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "male.no_stuck",
+      "name": "不卡文神器+搭台子",
+      "description": "狂更猫：卡文只推下一步；目标+金手指+核心爽点来源；搭台子写一段",
+      "summary": "狂更猫：卡文只推下一步；目标+金手指+核心爽点来源；搭台子写一段",
+      "persona": "不卡文搭台官",
+      "team": "男频",
+      "skillPath": "male_long/no-stuck",
+      "when": "Stage S6_BEAT",
+      "format": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S6_BEAT",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "female.pace",
+      "name": "女频节奏配比",
+      "description": "小爽大爽缓冲与三阶段节奏",
+      "summary": "小爽大爽缓冲与三阶段节奏",
+      "persona": "女频节奏配比官",
+      "team": "女频",
+      "skillPath": "female_long/pace-ratio",
+      "when": "Stage S3_VOLUME",
+      "format": [
+        "female_long"
+      ],
+      "formats": [
+        "female_long"
+      ],
+      "stage": "S3_VOLUME",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "female.risk",
+      "name": "女频雷区",
+      "description": "政策平台与创作节奏雷区清单",
+      "summary": "政策平台与创作节奏雷区清单",
+      "persona": "女频雷区巡检",
+      "team": "女频",
+      "skillPath": "female_long/risk-list",
+      "when": "Stage S8_TABOO",
+      "format": [
+        "female_long"
+      ],
+      "formats": [
+        "female_long"
+      ],
+      "stage": "S8_TABOO",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "checklist_open",
+        "scan_banned_phrases",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "female.tension",
+      "name": "感情张力拉扯",
+      "description": "分合误会揭秘关系节拍",
+      "summary": "分合误会揭秘关系节拍",
+      "persona": "感情张力拉扯官",
+      "team": "女频",
+      "skillPath": "female_long/tension-pull",
+      "when": "Stage S2_CHARACTER",
+      "format": [
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S2_CHARACTER",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.short_opening",
+      "name": "短篇开篇吸引",
+      "description": "冲突/悬念/设定钩开篇控字",
+      "summary": "冲突/悬念/设定钩开篇控字",
+      "persona": "短篇开篇猎手",
+      "team": "正文",
+      "skillPath": "short_novel/opening-attract",
+      "when": "Stage S6_BODY_CHAPTER",
+      "format": [
+        "short_novel"
+      ],
+      "formats": [
+        "short_novel"
+      ],
+      "stage": "S6_BODY_CHAPTER",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_hook_present",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.novel_body",
+      "name": "小说分章正文",
+      "description": "短篇/男频/女频长篇分章正文：2000–3000 字、情节点控长、章末节奏按创作意图处理",
+      "summary": "短篇/男频/女频长篇分章正文：2000–3000 字、情节点控长、章末节奏按创作意图处理",
+      "persona": "分章主笔",
+      "team": "正文",
+      "skillPath": "short_novel/chapter-body",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "bible_read",
+        "gate_run",
+        "scan_length",
+        "scan_hook_present",
+        "decay_detect",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.chapter_cap",
+      "name": "章纲控长",
+      "description": "梗概章纲细纲分步与批控长",
+      "summary": "梗概章纲细纲分步与批控长",
+      "persona": "章纲控长官",
+      "team": "结构",
+      "skillPath": "short_novel/chapter-outline-cap",
+      "when": "Stage S4_CHAPTER_OUTLINE",
+      "format": [
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "stage": "S4_CHAPTER_OUTLINE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.similarity",
+      "name": "相似度边界",
+      "description": "洗稿vs仿写模式声明与风险",
+      "summary": "洗稿vs仿写模式声明与风险",
+      "persona": "相似度边界官",
+      "team": "审校",
+      "skillPath": "quality/similarity-boundary",
+      "when": "Stage S2_SWAP",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "stage": "S2_SWAP",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.genre_trim",
+      "name": "题材红黑榜",
+      "description": "题材冷热过滤与改造建议",
+      "summary": "题材冷热过滤与改造建议",
+      "persona": "题材红黑榜官",
+      "team": "选题",
+      "skillPath": "topic/genre-redblack",
+      "when": "Stage S0_SETUP",
+      "format": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ],
+      "formats": [
+        "manju",
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "ip_adapt"
+      ],
+      "stage": "S0_SETUP",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.logline_title",
+      "name": "片名与一句话",
+      "description": "直白片名+logline卖点",
+      "summary": "直白片名+logline卖点",
+      "persona": "片名一句话官",
+      "team": "选题",
+      "skillPath": "deliver/logline",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "formats": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.book_pack",
+      "name": "书名+简介+开书验证",
+      "description": "狂更猫：题材+金手指+热词书名；简介卖点五步；主线/核心一句话开书验证",
+      "summary": "狂更猫：题材+金手指+热词书名；简介卖点五步；主线/核心一句话开书验证",
+      "persona": "开书三件套官",
+      "team": "选题",
+      "skillPath": "topic/book-pack",
+      "when": "Stage S1_TOPIC",
+      "format": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S1_TOPIC",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_create",
+        "artifact_list",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.ai_question",
+      "name": "AI质检反问",
+      "description": "情绪节奏钩子直白反问辅检",
+      "summary": "情绪节奏钩子直白反问辅检",
+      "persona": "AI质检反问官",
+      "team": "审校",
+      "skillPath": "qc/ai-self-question",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "checklist_open",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "scene.comedy",
+      "name": "喜剧元素嵌入",
+      "description": "冒犯+距离+优越；元素法轻量落场",
+      "summary": "冒犯+距离+优越；元素法轻量落场",
+      "persona": "喜剧元素植入官",
+      "team": "场景",
+      "skillPath": "duanju/genre_ext/comedy-elements",
+      "when": "Stage S5_SCENE",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S5_SCENE",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.unit_arc",
+      "name": "单元喜剧立项",
+      "description": "4–6固定人；麻烦制造者↔解决者；关系驱动",
+      "summary": "4–6固定人；麻烦制造者↔解决者；关系驱动",
+      "persona": "单元喜剧立项官",
+      "team": "结构",
+      "skillPath": "duanju/genre_ext/unit-sitcom",
+      "when": "Stage S1_TOPIC",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S1_TOPIC",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.unit_sitcom",
+      "name": "章回体单元剧/探案规划",
+      "description": "常驻班底/单元公式/主线串珠/第一单元示范",
+      "summary": "常驻班底/单元公式/主线串珠/第一单元示范",
+      "persona": "章回单元剧官",
+      "team": "结构",
+      "skillPath": "duanju/structure/unit-sitcom",
+      "when": "Stage S1_TOPIC",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S1_TOPIC",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "scene.location_budget",
+      "name": "地点预算",
+      "description": "少换景≤12；相似地点合并建议",
+      "summary": "少换景≤12；相似地点合并建议",
+      "persona": "地点预算官",
+      "team": "场景",
+      "skillPath": "duanju/scene/location-budget",
+      "when": "Stage S5_SCENE",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "stage": "S5_SCENE",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "location_merge_suggest"
+      ]
+    },
+    {
+      "id": "scene.solution_fanout",
+      "name": "解决方案多开",
+      "description": "讲清场次脉络，扇出 5 个具体解法供择优",
+      "summary": "讲清场次脉络，扇出 5 个具体解法供择优",
+      "persona": "方案多开官",
+      "team": "场景",
+      "skillPath": "duanju/scene/solution-fanout",
+      "when": "Stage S6_BEAT",
+      "format": [
+        "duanju",
+        "male_long",
+        "short_novel"
+      ],
+      "formats": [
+        "duanju",
+        "male_long",
+        "short_novel"
+      ],
+      "stage": "S6_BEAT",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "option_enumerate"
+      ]
+    },
+    {
+      "id": "colleague.proactive",
+      "name": "主动同事缺口扫描",
+      "description": "扫描 Stage/产物缺口并生成需批准提案",
+      "summary": "扫描 Stage/产物缺口并生成需批准提案",
+      "persona": "主动同事扫描官",
+      "team": "编排",
+      "skillPath": "colleague/proactive",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "project_get",
+        "artifact_list",
+        "checklist_open",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "mem.curator",
+      "name": "今日目标策展",
+      "description": "整理 3 条小而具体的今日写作目标",
+      "summary": "整理 3 条小而具体的今日写作目标",
+      "persona": "今日目标策展",
+      "team": "记忆",
+      "skillPath": "memory/curator",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "project_get",
+        "bible_write",
+        "bible_read",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "mem.chapter_summary",
+      "name": "章集摘要",
+      "description": "写完一章/集后写 journal 摘要供下一章 Bible 注入",
+      "summary": "写完一章/集后写 journal 摘要供下一章 Bible 注入",
+      "persona": "章集摘要官",
+      "team": "记忆",
+      "skillPath": "memory/chapter-summary",
+      "when": "Stage S5_EP_BODY_BATCH",
+      "format": [
+        "manju",
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "manju",
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S5_EP_BODY_BATCH",
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "bible_read",
+        "bible_write",
+        "payoff_ledger",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "analytics.review",
+      "name": "数据复盘建议",
+      "description": "按点击/收藏/留存快照给改稿建议",
+      "summary": "按点击/收藏/留存快照给改稿建议",
+      "persona": "数据复盘官",
+      "team": "其他",
+      "skillPath": "analytics/review",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "mem.dreams",
+      "name": "记忆梦境巩固",
+      "description": "扫描短期记忆，提升高价值条目到长期 bible/decisions",
+      "summary": "扫描短期记忆，提升高价值条目到长期 bible/decisions",
+      "persona": "梦境策展人",
+      "team": "记忆",
+      "skillPath": "memory/dreams",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "bible_read",
+        "bible_write",
+        "memory_search",
+        "artifact_create",
+        "gate_run",
+        "usage_log",
+        "skill_list",
+        "skill_read",
+        "done_check"
+      ]
+    },
+    {
+      "id": "harness.refine",
+      "name": "轨迹精炼",
+      "description": "从 run 轨迹提炼 Skill/记忆补丁（需人工批准落盘）",
+      "summary": "从 run 轨迹提炼 Skill/记忆补丁（需人工批准落盘）",
+      "persona": "轨迹精炼官",
+      "team": "编排",
+      "skillPath": "harness/refine",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "skill_list",
+        "skill_read",
+        "bible_read",
+        "gate_run",
+        "usage_log",
+        "done_check"
+      ]
+    },
+    {
+      "id": "harness.check_critic",
+      "name": "质检批判",
+      "description": "攻击质检集：读 goal/doneContract/gate 集与近期翻车，产出缺失 check 建议（人工确认）",
+      "summary": "攻击质检集：读 goal/doneContract/gate 集与近期翻车，产出缺失 check 建议（人工确认）",
+      "persona": "质检批判官",
+      "team": "编排",
+      "skillPath": "harness/check-critic",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "skill_list",
+        "skill_read",
+        "bible_read",
+        "gate_run",
+        "usage_log",
+        "done_check"
+      ]
+    },
+    {
+      "id": "scene.visualize",
+      "name": "视觉化场面",
+      "description": "空间写空→可拍画面（时代/级别/氛围→物件+动作+景别）",
+      "summary": "空间写空→可拍画面（时代/级别/氛围→物件+动作+景别）",
+      "persona": "视觉化场面官",
+      "team": "场景",
+      "skillPath": "duanju/scene/visualize-space",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju",
+        "ip_adapt"
+      ],
+      "formats": [
+        "duanju",
+        "manju",
+        "ip_adapt"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "scene.expand_ladder",
+      "name": "扩写阶梯",
+      "description": "300字梗概→纲→场，逐级胀开不注水",
+      "summary": "300字梗概→纲→场，逐级胀开不注水",
+      "persona": "扩写阶梯官",
+      "team": "场景",
+      "skillPath": "duanju/scene/expand-ladder",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "short_novel",
+        "manju"
+      ],
+      "formats": [
+        "duanju",
+        "short_novel",
+        "manju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "hook.from_cool_reverse",
+      "name": "从爽点反推钩",
+      "description": "先定爽点再反推集尾钩与前置铺垫",
+      "summary": "先定爽点再反推集尾钩与前置铺垫",
+      "persona": "爽点反推钩官",
+      "team": "钩子",
+      "skillPath": "duanju/expectation/from-cool-reverse",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.pull_male",
+      "name": "男频拉片诊断",
+      "description": "对标片六维升级（目标/体系/危机阶梯/权能/关系/中段变终点）",
+      "summary": "对标片六维升级（目标/体系/危机阶梯/权能/关系/中段变终点）",
+      "persona": "男频拉片诊断官",
+      "team": "拆书",
+      "skillPath": "duanju/dissect/pull-male",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "lapi_checklist",
+        "kb_search",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.pull_female",
+      "name": "女频拉片诊断",
+      "description": "画像×因果×信息差×终局加码升级维",
+      "summary": "画像×因果×信息差×终局加码升级维",
+      "persona": "女频拉片诊断官",
+      "team": "拆书",
+      "skillPath": "duanju/dissect/pull-female",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "lapi_checklist",
+        "kb_search",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.master_outline",
+      "name": "网文总纲",
+      "description": "一句话核心+四弧节拍轨，主线≠核心亮点",
+      "summary": "一句话核心+四弧节拍轨，主线≠核心亮点",
+      "persona": "网文总纲官",
+      "team": "结构",
+      "skillPath": "structure/master-outline",
+      "when": "Stage S4_VOLUME",
+      "format": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S4_VOLUME",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "outline_table",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.chapter_outline",
+      "name": "章纲",
+      "description": "总纲拆逐章：目标/冲突/爽点/章末钩",
+      "summary": "总纲拆逐章：目标/冲突/爽点/章末钩",
+      "persona": "章纲架构师",
+      "team": "结构",
+      "skillPath": "structure/chapter-outline",
+      "when": "Stage S5_CHAPTER",
+      "format": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S5_CHAPTER",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "outline_table",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.beat_sheet",
+      "name": "细纲情节点",
+      "description": "章纲拆情节点，控长防上下文腐烂",
+      "summary": "章纲拆情节点，控长防上下文腐烂",
+      "persona": "细纲情节点官",
+      "team": "结构",
+      "skillPath": "structure/beat-sheet",
+      "when": "Stage S6_BEAT",
+      "format": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "formats": [
+        "male_long",
+        "female_long",
+        "short_novel"
+      ],
+      "stage": "S6_BEAT",
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "outline_table",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.conflict",
+      "name": "矛盾六要素",
+      "description": "物理/情感/目标阻碍冲突设计+升级模式+优先级",
+      "summary": "物理/情感/目标阻碍冲突设计+升级模式+优先级",
+      "persona": "矛盾六要素官",
+      "team": "结构",
+      "skillPath": "structure/conflict-six",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "male_long",
+        "female_long",
+        "short_novel",
+        "duanju"
+      ],
+      "formats": [
+        "male_long",
+        "female_long",
+        "short_novel",
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.emotion_curve",
+      "name": "拆书情绪曲线",
+      "description": "对标书/本稿逐单元标 -10~+10 情绪值与上下行",
+      "summary": "对标书/本稿逐单元标 -10~+10 情绪值与上下行",
+      "persona": "情绪曲线拆书官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-emotion-curve",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "formats": [
+        "duanju",
+        "manju",
+        "short_novel",
+        "male_long",
+        "female_long"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "trope_coverage",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.style_extract",
+      "name": "文风抽取",
+      "description": "抽节奏/句式/比喻/情绪浓度，仿风格不仿文面",
+      "summary": "抽节奏/句式/比喻/情绪浓度，仿风格不仿文面",
+      "persona": "文风抽取官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-style-extract",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "formats": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_banned_phrases",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.voice_profile",
+      "name": "声口档案",
+      "description": "每角色建档（教育/性格/口头禅/句式/禁忌词），供台词个性化",
+      "summary": "每角色建档（教育/性格/口头禅/句式/禁忌词），供台词个性化",
+      "persona": "声口档案官",
+      "team": "人设",
+      "skillPath": "character/voice-profile",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "world.setting_cap",
+      "name": "设定收敛",
+      "description": "盘点主设定与次要细节，按作者需求提供收敛建议",
+      "summary": "盘点主设定与次要细节，按作者需求提供收敛建议",
+      "persona": "设定收敛官",
+      "team": "知识",
+      "skillPath": "structure/setting-cap",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "manju"
+      ],
+      "formats": [
+        "duanju",
+        "short_novel",
+        "male_long",
+        "female_long",
+        "manju"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_length",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.witness_amp",
+      "name": "两性见证放大器",
+      "description": "打脸/爽点场默认检查能否加两性在场见证",
+      "summary": "打脸/爽点场默认检查能否加两性在场见证",
+      "persona": "两性见证放大官",
+      "team": "结构",
+      "skillPath": "duanju/tropes/gender-witness",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.account_tier",
+      "name": "满级号/小号策略",
+      "description": "满级号下山目标 / 小号开挂三型",
+      "summary": "满级号下山目标 / 小号开挂三型",
+      "persona": "满级号策略官",
+      "team": "选题",
+      "skillPath": "duanju/topic/male-max-or-newbie",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.resonance_yy",
+      "name": "YY 困境映射",
+      "description": "用户困境→幻想解法，按性别差落地",
+      "summary": "用户困境→幻想解法，按性别差落地",
+      "persona": "YY困境映射官",
+      "team": "选题",
+      "skillPath": "duanju/topic/yy-dilemma-map",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.logic_heuristic",
+      "name": "逻辑启发式扫描",
+      "description": "对照 story_graph 扫因果/金手指/时间线；GraphConsistency+人工 LogicAck",
+      "summary": "对照 story_graph 扫因果/金手指/时间线；GraphConsistency+人工 LogicAck",
+      "persona": "逻辑启发式官",
+      "team": "审校",
+      "skillPath": "qc/logic-heuristic",
+      "when": "Stage S10_HUMAN_QC",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "stage": "S10_HUMAN_QC",
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "bible_read",
+        "payoff_ledger",
+        "checklist_open",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "qc.ai_detect_hint",
+      "name": "AI 味检测提示",
+      "description": "AI 味风险点+改写方向，不承诺过第三方检测",
+      "summary": "AI 味风险点+改写方向，不承诺过第三方检测",
+      "persona": "AI味检测提示官",
+      "team": "审校",
+      "skillPath": "qc/ai-detect-hint",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "critic",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_banned_phrases",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "deliver.spec8",
+      "name": "八类制作规格",
+      "description": "大纲600-800/四人小传/集约600字/80-120集规格备注",
+      "summary": "大纲600-800/四人小传/集约600字/80-120集规格备注",
+      "persona": "八类制作规格官",
+      "team": "交付",
+      "skillPath": "duanju/deliver/spec-8",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "spec_pitch_validate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "female.monetize",
+      "name": "女频变现适配",
+      "description": "平台/付费点/投稿路径适配",
+      "summary": "平台/付费点/投稿路径适配",
+      "persona": "女频变现适配官",
+      "team": "女频",
+      "skillPath": "female_long/monetize",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "female_long"
+      ],
+      "formats": [
+        "female_long"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.trope_mine",
+      "name": "桥段挖掘",
+      "description": "从对标书抽桥段入库（名称/摘要/情绪峰/换元）",
+      "summary": "从对标书抽桥段入库（名称/摘要/情绪峰/换元）",
+      "persona": "桥段挖掘官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-trope-mine",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "formats": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "kb_search",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "dissect.guess",
+      "name": "猜书对标",
+      "description": "合并/分章猜书，识别题材/金手指/梗类别/爽点结构",
+      "summary": "合并/分章猜书，识别题材/金手指/梗类别/爽点结构",
+      "persona": "猜书对标官",
+      "team": "拆书",
+      "skillPath": "kb/dissect-guess",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "*"
+      ],
+      "formats": [
+        "*"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "kb_search",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "imitate.rhythm",
+      "name": "仿节奏",
+      "description": "量化句长/段落/爽点间隔/情绪频率，仿节奏不仿文面",
+      "summary": "量化句长/段落/爽点间隔/情绪频率，仿节奏不仿文面",
+      "persona": "仿节奏官",
+      "team": "正文",
+      "skillPath": "imitate/rhythm",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "short_novel",
+        "male_long"
+      ],
+      "formats": [
+        "duanju",
+        "short_novel",
+        "male_long"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_length",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "swap.apply_outline",
+      "name": "换元改纲",
+      "description": "把换元映射分步落到大纲，保持骨架只换元素",
+      "summary": "把换元映射分步落到大纲，保持骨架只换元素",
+      "persona": "换元改纲官",
+      "team": "换元",
+      "skillPath": "swap/apply-outline",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "short_novel",
+        "duanju",
+        "manju",
+        "female_long",
+        "ip_adapt"
+      ],
+      "formats": [
+        "short_novel",
+        "duanju",
+        "manju",
+        "female_long",
+        "ip_adapt"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.antagonist_ladder",
+      "name": "对手阶梯",
+      "description": "对手够强/目标清/步骤有逻辑，假对手→真对手",
+      "summary": "对手够强/目标清/步骤有逻辑，假对手→真对手",
+      "persona": "对手阶梯官",
+      "team": "人设",
+      "skillPath": "duanju/character/antag-ladder",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.love_8step",
+      "name": "感情线八步精简",
+      "description": "相识→互补→互助→共谋，可兼职伙伴/对手",
+      "summary": "相识→互补→互助→共谋，可兼职伙伴/对手",
+      "persona": "感情线八步官",
+      "team": "人设",
+      "skillPath": "duanju/character/love-8-lite",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "char.naming",
+      "name": "命名规范",
+      "description": "男频接地气名，女频叠音，配人设标签",
+      "summary": "男频接地气名，女频叠音，配人设标签",
+      "persona": "命名规范官",
+      "team": "人设",
+      "skillPath": "duanju/character/naming-duanju",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "prose.enrich_ep",
+      "name": "单集 enrichment",
+      "description": "字数不足/悬念单薄的单集补细节与钩子，不改变情节",
+      "summary": "字数不足/悬念单薄的单集补细节与钩子，不改变情节",
+      "persona": "单集丰润笔",
+      "team": "正文",
+      "skillPath": "short_novel/enrich-ep",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "formats": [
+        "duanju",
+        "manju",
+        "short_novel"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "scan_length",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "deliver.contract_notes",
+      "name": "接活注意备忘",
+      "description": "报价/交付/一稿多投告知/版权要点，非法律意见",
+      "summary": "报价/交付/一稿多投告知/版权要点，非法律意见",
+      "persona": "接活备忘官",
+      "team": "交付",
+      "skillPath": "duanju/deliver/contract-notes",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "fast",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "checklist_open",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "topic.pitch_deck",
+      "name": "提案三件套",
+      "description": "选题一句话+卖点+目标用户/渠道，投前提案",
+      "summary": "选题一句话+卖点+目标用户/渠道，投前提案",
+      "persona": "提案三件套师",
+      "team": "选题",
+      "skillPath": "duanju/topic/pitch-deck",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    },
+    {
+      "id": "struct.female_omni",
+      "name": "女频信息差流水线",
+      "description": "观众开天眼+善良因果+终局加码，信息差写反即标错",
+      "summary": "观众开天眼+善良因果+终局加码，信息差写反即标错",
+      "persona": "女频信息差流水官",
+      "team": "女频",
+      "skillPath": "duanju/topic/female-omni",
+      "when": "按创作台 / Job 调用",
+      "format": [
+        "duanju"
+      ],
+      "formats": [
+        "duanju"
+      ],
+      "modelProfile": "strong",
+      "tools": [
+        "artifact_list",
+        "artifact_create",
+        "option_enumerate",
+        "gate_run",
+        "usage_log"
+      ]
+    }
+  ]
+}

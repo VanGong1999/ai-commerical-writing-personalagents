@@ -1,0 +1,44 @@
+{
+  "loops": [
+    {
+      "id": "propose",
+      "trigger": "cron",
+      "steps": [
+        "gap_scan",
+        "gap_scan.prioritize",
+        "approve"
+      ],
+      "edges": [],
+      "maxIterations": 1
+    },
+    {
+      "id": "consolidate",
+      "trigger": "cron",
+      "steps": [
+        "mem.dreams",
+        "approve"
+      ],
+      "edges": [],
+      "maxIterations": 1
+    },
+    {
+      "id": "measure",
+      "trigger": "event",
+      "steps": [
+        "analytics.review",
+        "revise_proposal",
+        "approve"
+      ],
+      "feedback": {
+        "signal": "analytics_delta",
+        "affects": [
+          "content"
+        ]
+      },
+      "edges": [
+        "propose"
+      ],
+      "maxIterations": 1
+    }
+  ]
+}

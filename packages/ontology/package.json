@@ -1,0 +1,27 @@
+{
+  "name": "@xiezuomanju/ontology",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./registry": "./ontology-registry.json"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test src/**/*.test.ts",
+    "sync-registry": "node --experimental-strip-types ./scripts/sync-registry.ts",
+    "check-registry-drift": "node --experimental-strip-types ./scripts/check-registry-drift.ts"
+  },
+  "dependencies": {
+    "@xiezuomanju/domain": "workspace:*",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.8.2"
+  }
+}

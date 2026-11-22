@@ -1,0 +1,17 @@
+(version 1)
+(deny default)
+(import "system.sb")
+
+;; 允许进程自身基本运行与读时钟/内存信息
+(allow process*)
+(allow sysctl-read)
+(allow mach-lookup)
+
+;; 仅允许访问本机 API（127.0.0.1/::1）与模型网关；禁止其它外网
+(allow network-outbound (remote ip "127.0.0.1:*"))
+(allow network-outbound (remote ip "::1:*"))
+
+;; 只读仓库，允许写 .data 与 /private/tmp（会话日志/临时文件）
+(allow file-read* (subpath "__REPO_ROOT__"))
+(allow file-write* (subpath "__REPO_ROOT__/.data"))
+(allow file-write* (subpath "/private/tmp"))

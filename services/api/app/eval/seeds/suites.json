@@ -1,0 +1,219 @@
+[
+  {
+    "id": "suite.manju.golden.hook",
+    "name": "漫剧·核心梗黄金集",
+    "kind": "process",
+    "tier": "golden",
+    "format": "manju",
+    "target_agent_id": "topic.core_hook_batch",
+    "rubric_keys": [
+      "manju.hook.six_elements",
+      "manju.hook.identity_gap",
+      "manju.hook.goldfinger_limit",
+      "manju.hook.openable_3shots"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "minPassRate": 1.0, "vetoBlocks": true },
+    "description": "九格核心梗好例，定义「好的下限」。"
+  },
+  {
+    "id": "suite.manju.regression.body",
+    "name": "漫剧·分集正文回归集",
+    "kind": "process",
+    "tier": "regression",
+    "format": "manju",
+    "target_agent_id": "prose.episode_body",
+    "rubric_keys": [
+      "common.length_band_manju",
+      "common.scene_count",
+      "common.novelization",
+      "common.deai.no_simile",
+      "common.deai.no_summary",
+      "common.redline",
+      "manju.body.ep_tail_hook",
+      "manju.body.dialogue_push",
+      "common.hook_presence"
+    ],
+    "trials_k": 3,
+    "thresholds_json": { "minPassRate": 0.9, "vetoBlocks": true, "minPassHatK": 0.7 },
+    "description": "漫剧正文必过回归；接近100%通过率。"
+  },
+  {
+    "id": "suite.manju.bad_case",
+    "name": "漫剧·错题集",
+    "kind": "process",
+    "tier": "bad_case",
+    "format": "manju",
+    "target_agent_id": "prose.episode_body",
+    "rubric_keys": [
+      "common.novelization",
+      "common.deai.no_simile",
+      "manju.hook.goldfinger_limit",
+      "common.hook_presence"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "expectFail": true },
+    "description": "曾经踩过的坑，不应再犯。"
+  },
+  {
+    "id": "suite.duanju.regression.scene",
+    "name": "短剧·场级正文回归集",
+    "kind": "process",
+    "tier": "regression",
+    "format": "duanju",
+    "target_agent_id": "orch.batch_writer",
+    "rubric_keys": [
+      "duanju.scene_triple",
+      "duanju.ep1_hook",
+      "duanju.triangle",
+      "duanju.dialogue_subtext",
+      "common.deai.emotion_action",
+      "common.redline",
+      "common.hook_presence"
+    ],
+    "trials_k": 3,
+    "thresholds_json": { "minPassRate": 0.85, "vetoBlocks": true },
+    "description": "查理场三件事+三角+台词。"
+  },
+  {
+    "id": "suite.duanju.golden.topic",
+    "name": "短剧·选题黄金集",
+    "kind": "process",
+    "tier": "golden",
+    "format": "duanju",
+    "target_agent_id": "topic.want_how",
+    "rubric_keys": [
+      "duanju.topic.want_how",
+      "duanju.topic.not_mystery",
+      "duanju.gender_path"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "minPassRate": 1.0 },
+    "description": "选题三问好例。"
+  },
+  {
+    "id": "suite.duanju.bad_case",
+    "name": "短剧·错题集",
+    "kind": "process",
+    "tier": "bad_case",
+    "format": "duanju",
+    "rubric_keys": [
+      "duanju.triangle",
+      "duanju.gender_path",
+      "duanju.topic.not_mystery"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "expectFail": true },
+    "description": "直线欺负、女频战神路径、谜题壳。"
+  },
+  {
+    "id": "suite.male.regression.opening",
+    "name": "男频·开篇回归集",
+    "kind": "process",
+    "tier": "regression",
+    "format": "male_long",
+    "target_agent_id": "male.opening",
+    "rubric_keys": [
+      "male.opening.five_points",
+      "male.opening.no_three_bans",
+      "male.opening.reader_expect",
+      "common.deai.no_simile",
+      "common.hook_presence"
+    ],
+    "trials_k": 3,
+    "thresholds_json": { "minPassRate": 0.85, "vetoBlocks": true },
+    "description": "狂更猫开篇五信息点回归。"
+  },
+  {
+    "id": "suite.male.golden.goldfinger",
+    "name": "男频·金手指黄金集",
+    "kind": "process",
+    "tier": "golden",
+    "format": "male_long",
+    "target_agent_id": "male.gold_finger",
+    "rubric_keys": ["male.goldfinger.actionable"],
+    "trials_k": 1,
+    "thresholds_json": { "minPassRate": 1.0 },
+    "description": "金手指可行动好例。"
+  },
+  {
+    "id": "suite.male.bad_case",
+    "name": "男频·错题集",
+    "kind": "process",
+    "tier": "bad_case",
+    "format": "male_long",
+    "rubric_keys": [
+      "male.opening.no_three_bans",
+      "male.goldfinger.actionable",
+      "male.loop.cool_cycle"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "expectFail": true },
+    "description": "第一章三禁、贴皮金手指。"
+  },
+  {
+    "id": "suite.common.deai.patrol",
+    "name": "全格式·去AI味巡检集",
+    "kind": "process",
+    "tier": "patrol",
+    "format": "*",
+    "target_agent_id": "qc.de_ai",
+    "rubric_keys": [
+      "common.deai.no_simile",
+      "common.deai.no_summary",
+      "common.deai.short_sentence",
+      "common.deai.emotion_action",
+      "common.voice_diversity"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "minPassRate": 0.8 },
+    "description": "每日巡检抽样用。"
+  },
+  {
+    "id": "suite.manju.e2e.autopilot",
+    "name": "漫剧·自动驾驶端到端",
+    "kind": "e2e",
+    "tier": "challenge",
+    "format": "manju",
+    "pipeline": "autopilot.manju",
+    "rubric_keys": [
+      "manju.hook.six_elements",
+      "common.length_band_manju",
+      "common.novelization",
+      "common.deai.no_simile",
+      "common.hook_presence",
+      "common.redline"
+    ],
+    "trials_k": 1,
+    "thresholds_json": { "minPassRate": 0.7, "vetoBlocks": true },
+    "description": "端到端：事有没有办成。"
+  },
+  {
+    "id": "suite.female.regression.opening",
+    "name": "女频·开篇回归集",
+    "kind": "process",
+    "tier": "regression",
+    "format": "female_long",
+    "target_agent_id": "prose.novel_body",
+    "rubric_keys": [
+      "female.opening.five",
+      "common.deai.emotion_action",
+      "common.hook_presence"
+    ],
+    "trials_k": 2,
+    "thresholds_json": { "minPassRate": 0.8 },
+    "description": "女频开篇五要素。"
+  },
+  {
+    "id": "suite.short.regression.swap",
+    "name": "短篇·换元回归集",
+    "kind": "process",
+    "tier": "regression",
+    "format": "short_novel",
+    "target_agent_id": "swap.master",
+    "rubric_keys": ["short.similarity"],
+    "trials_k": 1,
+    "thresholds_json": { "minPassRate": 1.0, "vetoBlocks": true },
+    "description": "换元相似度门禁。"
+  }
+]

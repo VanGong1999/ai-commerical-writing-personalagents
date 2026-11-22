@@ -1,0 +1,2906 @@
+{
+  "schema_version": 1,
+  "source": {
+    "path": "services/api/app/gates.py",
+    "revision": "pre-consolidation HEAD",
+    "sha256": "c3225e3ad11ce21cd306c46068e05209fb71577c681330fbe77297c3b3e3dd9b"
+  },
+  "comparison": "Gate check ids and results are the compatibility contract; complete original outputs retained for message review. No Unicode drift cases are included.",
+  "profiles": {
+    "empty": {},
+    "full": {
+      "body": {
+        "goal": "已填写的真实内容",
+        "conflict": "已填写的真实内容",
+        "turn": "已填写的真实内容",
+        "scene_header": "已填写的真实内容",
+        "clip_candidate": "已填写的真实内容",
+        "motivation": "已填写的真实内容",
+        "openingStructure": "已填写的真实内容",
+        "name": "已填写的真实内容",
+        "role": "已填写的真实内容",
+        "want": "已填写的真实内容",
+        "fear": "已填写的真实内容",
+        "flaw": "已填写的真实内容",
+        "target": "已填写的真实内容",
+        "suspend": "已填写的真实内容",
+        "answer": "已填写的真实内容",
+        "cost": "已填写的真实内容",
+        "payoff": "已填写的真实内容",
+        "cool_focus": "已填写的真实内容",
+        "cool_per_ep": "已填写的真实内容",
+        "how": "已填写的真实内容",
+        "via_what": "已填写的真实内容",
+        "logline": "已填写的真实内容",
+        "synopsis": "已填写的真实内容",
+        "characters": "已填写的真实内容",
+        "a_motive": "已填写的真实内容",
+        "b_motive": "已填写的真实内容",
+        "escalation": "已填写的真实内容",
+        "world": "已填写的真实内容",
+        "identity": "已填写的真实内容",
+        "goldFinger": "已填写的真实内容",
+        "hook": "已填写的真实内容",
+        "hotspot": "已填写的真实内容",
+        "emotion": "已填写的真实内容",
+        "attitude": "已填写的真实内容",
+        "info": "已填写的真实内容",
+        "subtext": "已填写的真实内容",
+        "product": "已填写的真实内容",
+        "audience": "已填写的真实内容",
+        "budget": "已填写的真实内容",
+        "genre": "已填写的真实内容",
+        "triple": {
+          "info": "情报",
+          "progress": "推进",
+          "change": "变化"
+        },
+        "script_body": "人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。人物跨过门槛，发现账册已经被人换走。",
+        "riskFlags": [],
+        "pains": [
+          "失业",
+          "欠债",
+          "失亲"
+        ],
+        "open_hooks": [
+          "钥匙失踪",
+          "幕后主使"
+        ],
+        "story_shell": "人物",
+        "shell_reason": "通过反复选择重建自我认同",
+        "midpoint_type": "成长回自己",
+        "pay_model": "轻付费",
+        "dose": "元素",
+        "comedy_inserts": [
+          {
+            "offense": "反讽",
+            "distance": "闹剧"
+          }
+        ],
+        "settings": [
+          "异能"
+        ],
+        "leadCount": 1,
+        "multiPov": false,
+        "tragedyRatio": 0.2,
+        "planted": true,
+        "suddenPower": false,
+        "midpoint": "身份反转",
+        "ruleFieldCount": 2
+      },
+      "text": "【场景1】旧车站 内 夜\n林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。林晚沿着旧站台寻找留下钥匙的人。",
+      "format": "manju",
+      "requested_chars": 900,
+      "max_chars": 1200,
+      "min_chars": 800,
+      "max_scenes": 3,
+      "hook_flag": true,
+      "used": 10,
+      "budget": 100,
+      "acked": true,
+      "required": [
+        "motivation"
+      ],
+      "extra_banned": [],
+      "beats": [
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        },
+        {
+          "summary": "人物选择改变局势"
+        }
+      ],
+      "expect": 20,
+      "slots": [
+        "第3集",
+        "第6集",
+        "第9集"
+      ],
+      "shell": "复仇",
+      "tropes": [
+        "复仇",
+        "身份",
+        "误会"
+      ],
+      "path": "male",
+      "index": 10,
+      "total": 20,
+      "score": 0.1,
+      "unique_count": 3,
+      "max": 12,
+      "current_chars": 900,
+      "prev_chars": 1000,
+      "ratio": 0.7,
+      "logline": "女主寻找失踪亲人，却发现所有线索指向自己。",
+      "counts": {
+        "coreHook": 1,
+        "character": 1,
+        "episodeOutline": 10,
+        "manuscript": 3
+      },
+      "bible": "人物始终以保护妹妹为首要动机",
+      "strict": true,
+      "flagged": false,
+      "title": "月台归人",
+      "checks": [
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        },
+        {
+          "pass": true
+        }
+      ],
+      "units": [
+        "第一单元"
+      ],
+      "stack": [
+        "身份反转",
+        "复仇",
+        "权力反转"
+      ],
+      "min": 3,
+      "rules": [
+        "不能复活"
+      ],
+      "graph": {
+        "nodes": [
+          {
+            "id": "lead"
+          }
+        ],
+        "edges": []
+      },
+      "editable_instruction": "必须遵守规则",
+      "required_phrases": [
+        "必须"
+      ],
+      "locked_hash": "h74c4812d040a",
+      "current_locked_system": "LOCK"
+    }
+  },
+  "cases": [
+    {
+      "name": "FormatSelected",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "format_selected",
+          "name": "格式开关",
+          "result": "fail",
+          "message": "未选择合法写作格式，禁止开跑"
+        }
+      ]
+    },
+    {
+      "name": "FormatSelected",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "format_selected",
+          "name": "格式开关",
+          "result": "pass",
+          "message": "格式已选定：manju"
+        }
+      ]
+    },
+    {
+      "name": "ChunkPolicy",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "chunk_policy",
+          "name": "分块策略",
+          "result": "pass",
+          "message": "分块策略合规"
+        }
+      ]
+    },
+    {
+      "name": "ChunkPolicy",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "chunk_policy",
+          "name": "分块策略",
+          "result": "pass",
+          "message": "分块策略合规"
+        }
+      ]
+    },
+    {
+      "name": "LogicAck",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "logic_ack",
+          "name": "逻辑人工确认",
+          "result": "fail",
+          "message": "逻辑门禁不可自动通过，需人工 LogicAck"
+        }
+      ]
+    },
+    {
+      "name": "LogicAck",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "logic_ack",
+          "name": "逻辑人工确认",
+          "result": "pass",
+          "message": "人工已确认逻辑"
+        }
+      ]
+    },
+    {
+      "name": "PromptLock",
+      "profile": "empty",
+      "expected_error": {
+        "type": "KeyError",
+        "message": "'editable_instruction'"
+      }
+    },
+    {
+      "name": "PromptLock",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "prompt_lock_hash",
+          "name": "锁定区完整性",
+          "result": "pass",
+          "message": "锁定区哈希一致"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookAdoption",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "motivation",
+          "name": "动机",
+          "result": "fail",
+          "message": "缺少动机线，强采纳不可用"
+        },
+        {
+          "id": "opening",
+          "name": "开篇结构",
+          "result": "fail",
+          "message": "缺少开篇结构"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookAdoption",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "motivation",
+          "name": "动机",
+          "result": "pass",
+          "message": "动机已填写"
+        },
+        {
+          "id": "opening",
+          "name": "开篇结构",
+          "result": "pass",
+          "message": "开篇结构已填写"
+        }
+      ]
+    },
+    {
+      "name": "Budget",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "budget",
+          "name": "Token 预算",
+          "result": "pass",
+          "message": "未设置预算"
+        }
+      ]
+    },
+    {
+      "name": "Budget",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "budget",
+          "name": "Token 预算",
+          "result": "pass",
+          "message": "已用 10/100"
+        }
+      ]
+    },
+    {
+      "name": "Schema",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "schema",
+          "name": "结构字段",
+          "result": "pass",
+          "message": "必填字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "Schema",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "schema",
+          "name": "结构字段",
+          "result": "pass",
+          "message": "必填字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "LengthBand",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "length_band",
+          "name": "字数区间",
+          "result": "fail",
+          "message": "字数 0 不在 [800, 1200]（软界 [775, 1225]）。请补写约 800 字后再 gate_run。"
+        }
+      ]
+    },
+    {
+      "name": "LengthBand",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "length_band",
+          "name": "字数区间",
+          "result": "pass",
+          "message": "字数 893 合规"
+        }
+      ]
+    },
+    {
+      "name": "SceneCount",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "scene_count",
+          "name": "场景数",
+          "result": "warn",
+          "message": "未识别到明确场景标头，需人工复核场景数；不以动作、分镜或自然段推算"
+        }
+      ]
+    },
+    {
+      "name": "SceneCount",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "scene_count",
+          "name": "场景数",
+          "result": "pass",
+          "message": "明确场景标头 1 个"
+        }
+      ]
+    },
+    {
+      "name": "Ep1Hook",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "ep1_hook",
+          "name": "第一集钩子",
+          "result": "warn",
+          "message": "集尾钩子待语义复核：检查未解决冲突、人物选择与后果；关键词或问号不能作为质量结论"
+        }
+      ]
+    },
+    {
+      "name": "Ep1Hook",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "ep1_hook",
+          "name": "第一集钩子",
+          "result": "pass",
+          "message": "已填写肯定钩子标记，效果可结合情境复核"
+        }
+      ]
+    },
+    {
+      "name": "HookPresence",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "hook_presence",
+          "name": "集尾钩子",
+          "result": "warn",
+          "message": "集尾钩子待语义复核：检查未解决冲突、人物选择与后果；关键词或问号不能作为质量结论"
+        }
+      ]
+    },
+    {
+      "name": "HookPresence",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "hook_presence",
+          "name": "集尾钩子",
+          "result": "pass",
+          "message": "已填写肯定钩子标记，效果可结合情境复核"
+        }
+      ]
+    },
+    {
+      "name": "Novelization",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "novelization",
+          "name": "小说腔",
+          "result": "pass",
+          "message": "未检出明显小说腔"
+        }
+      ]
+    },
+    {
+      "name": "Novelization",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "novelization",
+          "name": "小说腔",
+          "result": "pass",
+          "message": "未检出明显小说腔"
+        }
+      ]
+    },
+    {
+      "name": "DeAIChecklist",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "deai_checklist",
+          "name": "去 AI 味风格建议",
+          "result": "pass",
+          "message": "未发现词语线索；不代表已证明文本质量或作者身份"
+        }
+      ]
+    },
+    {
+      "name": "DeAIChecklist",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "deai_checklist",
+          "name": "去 AI 味风格建议",
+          "result": "pass",
+          "message": "未发现词语线索；不代表已证明文本质量或作者身份"
+        }
+      ]
+    },
+    {
+      "name": "SceneTriple",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "scene_triple",
+          "name": "场三件事",
+          "result": "fail",
+          "message": "缺少：目标、冲突、转机"
+        }
+      ]
+    },
+    {
+      "name": "SceneTriple",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "scene_triple",
+          "name": "场三件事",
+          "result": "pass",
+          "message": "目标/冲突/转机齐全"
+        }
+      ]
+    },
+    {
+      "name": "SceneTripleGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "scene_triple",
+          "name": "场三件事",
+          "result": "fail",
+          "message": "缺少：目标、冲突、转机"
+        }
+      ]
+    },
+    {
+      "name": "SceneTripleGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "scene_triple",
+          "name": "场三件事",
+          "result": "pass",
+          "message": "目标/冲突/转机齐全"
+        }
+      ]
+    },
+    {
+      "name": "EpisodeStandaloneGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "episode_standalone",
+          "name": "单集独立能打",
+          "result": "fail",
+          "message": "需场头+三件套+可剪线索+剧本≥120字"
+        }
+      ]
+    },
+    {
+      "name": "EpisodeStandaloneGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "episode_standalone",
+          "name": "单集独立能打",
+          "result": "pass",
+          "message": "场级原子完整"
+        }
+      ]
+    },
+    {
+      "name": "EpisodeStandalone",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "episode_standalone",
+          "name": "单集独立能打",
+          "result": "fail",
+          "message": "需场头+三件套+可剪线索+剧本≥120字"
+        }
+      ]
+    },
+    {
+      "name": "EpisodeStandalone",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "episode_standalone",
+          "name": "单集独立能打",
+          "result": "pass",
+          "message": "场级原子完整"
+        }
+      ]
+    },
+    {
+      "name": "BeatCompleteness",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "beat_completeness",
+          "name": "二十节拍完整",
+          "result": "fail",
+          "message": "节拍数 0 < 20"
+        }
+      ]
+    },
+    {
+      "name": "BeatCompleteness",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "beat_completeness",
+          "name": "二十节拍完整",
+          "result": "pass",
+          "message": "节拍 20 齐全"
+        }
+      ]
+    },
+    {
+      "name": "PaywallCoverage",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "paywall_coverage",
+          "name": "付费点覆盖",
+          "result": "fail",
+          "message": "付费/卡点槽位 0 < 3"
+        }
+      ]
+    },
+    {
+      "name": "PaywallCoverage",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "paywall_coverage",
+          "name": "付费点覆盖",
+          "result": "pass",
+          "message": "已标 3 个付费/卡点"
+        }
+      ]
+    },
+    {
+      "name": "ShellGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "course_shell",
+          "name": "ShellGate",
+          "result": "fail",
+          "message": "检查故事壳、理由、付费模式与中点"
+        }
+      ]
+    },
+    {
+      "name": "ShellGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "course_shell",
+          "name": "ShellGate",
+          "result": "pass",
+          "message": "检查故事壳、理由、付费模式与中点"
+        }
+      ]
+    },
+    {
+      "name": "Shell",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "shell",
+          "name": "故事壳",
+          "result": "fail",
+          "message": "未选定合法故事壳（升级/复仇/情感/身份）"
+        }
+      ]
+    },
+    {
+      "name": "Shell",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "shell",
+          "name": "故事壳",
+          "result": "pass",
+          "message": "壳类型：复仇"
+        }
+      ]
+    },
+    {
+      "name": "PayMotive",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "pay_motive",
+          "name": "付费动机三问",
+          "result": "fail",
+          "message": "想看/怎么看/靠什么未齐"
+        }
+      ]
+    },
+    {
+      "name": "PayMotive",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "pay_motive",
+          "name": "付费动机三问",
+          "result": "pass",
+          "message": "选题三问齐全"
+        }
+      ]
+    },
+    {
+      "name": "RedlineHard",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "redline_hard",
+          "name": "硬红线",
+          "result": "pass",
+          "message": "未命中硬红线模式"
+        }
+      ]
+    },
+    {
+      "name": "RedlineHard",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "redline_hard",
+          "name": "硬红线",
+          "result": "pass",
+          "message": "未命中硬红线模式"
+        }
+      ]
+    },
+    {
+      "name": "OnePlusOne",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "one_plus_one",
+          "name": "悬念一加一",
+          "result": "fail",
+          "message": "未闭合悬念少于 2"
+        }
+      ]
+    },
+    {
+      "name": "OnePlusOne",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "one_plus_one",
+          "name": "悬念一加一",
+          "result": "pass",
+          "message": "未闭合悬念 2 个"
+        }
+      ]
+    },
+    {
+      "name": "GenderPath",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "gender_path",
+          "name": "男女频路径",
+          "result": "fail",
+          "message": "未锁定男频/女频路径"
+        }
+      ]
+    },
+    {
+      "name": "GenderPath",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "gender_path",
+          "name": "男女频路径",
+          "result": "pass",
+          "message": "路径：male"
+        }
+      ]
+    },
+    {
+      "name": "HumanConfirm",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "human_confirm",
+          "name": "人工确认",
+          "result": "fail",
+          "message": "关键节点需人工确认，不可自动绿"
+        }
+      ]
+    },
+    {
+      "name": "HumanConfirm",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "human_confirm",
+          "name": "人工确认",
+          "result": "pass",
+          "message": "人工已确认"
+        }
+      ]
+    },
+    {
+      "name": "PitchCompleteness",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "pitch_completeness",
+          "name": "投稿包完整",
+          "result": "fail",
+          "message": "缺：logline、synopsis、characters"
+        }
+      ]
+    },
+    {
+      "name": "PitchCompleteness",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "pitch_completeness",
+          "name": "投稿包完整",
+          "result": "pass",
+          "message": "导语/大纲/人物齐全"
+        }
+      ]
+    },
+    {
+      "name": "GenreTrim",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "genre_trim",
+          "name": "题材参考",
+          "result": "warn",
+          "message": "未评估：没有明确题材。可跳过此项；如作者已选定，请传 payload.genre 原文。"
+        }
+      ]
+    },
+    {
+      "name": "GenreTrim",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "genre_trim",
+          "name": "题材参考",
+          "result": "pass",
+          "message": "题材原文「已填写的真实内容」。所查参考词无匹配。行情与具体内容须另行核实。"
+        }
+      ]
+    },
+    {
+      "name": "EightTropeCoverage",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "eight_trope_coverage",
+          "name": "八桥段覆盖",
+          "result": "warn",
+          "message": "未提供标签，覆盖未评估"
+        }
+      ]
+    },
+    {
+      "name": "EightTropeCoverage",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "eight_trope_coverage",
+          "name": "八桥段覆盖",
+          "result": "pass",
+          "message": "提供了 3 个不同标签"
+        }
+      ]
+    },
+    {
+      "name": "MidpointPosition",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "midpoint_position",
+          "name": "中点位置",
+          "result": "fail",
+          "message": "未标注中点节拍序号"
+        }
+      ]
+    },
+    {
+      "name": "MidpointPosition",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "midpoint_position",
+          "name": "中点位置",
+          "result": "pass",
+          "message": "中点在第 10 拍"
+        }
+      ]
+    },
+    {
+      "name": "SimilarityRisk",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "similarity_risk",
+          "name": "相似度风险",
+          "result": "warn",
+          "message": "缺少分数，重合未评估"
+        }
+      ]
+    },
+    {
+      "name": "SimilarityRisk",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "similarity_risk",
+          "name": "相似度风险",
+          "result": "pass",
+          "message": "相似度 0.1 低于参考线"
+        }
+      ]
+    },
+    {
+      "name": "LocationBudget",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "location_budget",
+          "name": "地点预算",
+          "result": "pass",
+          "message": "独立地点 0 ≤ 12"
+        }
+      ]
+    },
+    {
+      "name": "LocationBudget",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "location_budget",
+          "name": "地点预算",
+          "result": "pass",
+          "message": "独立地点 3 ≤ 12"
+        }
+      ]
+    },
+    {
+      "name": "LocationBudgetGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "location_budget",
+          "name": "地点预算",
+          "result": "pass",
+          "message": "独立地点 0 ≤ 12"
+        }
+      ]
+    },
+    {
+      "name": "LocationBudgetGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "location_budget",
+          "name": "地点预算",
+          "result": "pass",
+          "message": "独立地点 3 ≤ 12"
+        }
+      ]
+    },
+    {
+      "name": "DialogueFormula",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "dialogue_formula",
+          "name": "台词三层",
+          "result": "fail",
+          "message": "缺少：态度、信息、潜台词"
+        }
+      ]
+    },
+    {
+      "name": "DialogueFormula",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "dialogue_formula",
+          "name": "台词三层",
+          "result": "pass",
+          "message": "态度/信息/潜台词齐全"
+        }
+      ]
+    },
+    {
+      "name": "DialogueFormulaGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "dialogue_formula",
+          "name": "台词三层",
+          "result": "fail",
+          "message": "缺少：态度、信息、潜台词"
+        }
+      ]
+    },
+    {
+      "name": "DialogueFormulaGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "dialogue_formula",
+          "name": "台词三层",
+          "result": "pass",
+          "message": "态度/信息/潜台词齐全"
+        }
+      ]
+    },
+    {
+      "name": "VoiceDiversity",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "voice_diversity",
+          "name": "声口多样性",
+          "result": "warn",
+          "message": "缺少重合分，声口未评估"
+        }
+      ]
+    },
+    {
+      "name": "VoiceDiversity",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "voice_diversity",
+          "name": "声口多样性",
+          "result": "pass",
+          "message": "声口重合 0.10"
+        }
+      ]
+    },
+    {
+      "name": "VoiceDiversityGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "voice_diversity",
+          "name": "声口多样性",
+          "result": "warn",
+          "message": "缺少重合分，声口未评估"
+        }
+      ]
+    },
+    {
+      "name": "VoiceDiversityGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "voice_diversity",
+          "name": "声口多样性",
+          "result": "pass",
+          "message": "声口重合 0.10"
+        }
+      ]
+    },
+    {
+      "name": "FemaleOmniscience",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "female_omniscience",
+          "name": "女频全知风险",
+          "result": "pass",
+          "message": "未检出全知剧透模式"
+        }
+      ]
+    },
+    {
+      "name": "FemaleOmniscience",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "female_omniscience",
+          "name": "女频全知风险",
+          "result": "pass",
+          "message": "未检出全知剧透模式"
+        }
+      ]
+    },
+    {
+      "name": "FemaleOmniscienceGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "female_omniscience",
+          "name": "女频全知风险",
+          "result": "pass",
+          "message": "未检出全知剧透模式"
+        }
+      ]
+    },
+    {
+      "name": "FemaleOmniscienceGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "female_omniscience",
+          "name": "女频全知风险",
+          "result": "pass",
+          "message": "未检出全知剧透模式"
+        }
+      ]
+    },
+    {
+      "name": "ComedyDose",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "comedy_dose",
+          "name": "喜剧剂量",
+          "result": "warn",
+          "message": "缺少剂量或场面信息，未评估"
+        }
+      ]
+    },
+    {
+      "name": "ComedyDose",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "comedy_dose",
+          "name": "喜剧剂量",
+          "result": "warn",
+          "message": "已提供：元素 / 轻付费 / 插入点 1 个。可按作者的剂量要求核对具体场面。"
+        }
+      ]
+    },
+    {
+      "name": "ComedyDoseGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "comedy_dose",
+          "name": "喜剧剂量",
+          "result": "warn",
+          "message": "缺少剂量或场面信息，未评估"
+        }
+      ]
+    },
+    {
+      "name": "ComedyDoseGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "comedy_dose",
+          "name": "喜剧剂量",
+          "result": "warn",
+          "message": "已提供：元素 / 轻付费 / 插入点 1 个。可按作者的剂量要求核对具体场面。"
+        }
+      ]
+    },
+    {
+      "name": "RelationDriver",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "relation_driver",
+          "name": "关系驱动",
+          "result": "fail",
+          "message": "缺少：甲方动机、乙方动机、冲突升级点"
+        }
+      ]
+    },
+    {
+      "name": "RelationDriver",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "relation_driver",
+          "name": "关系驱动",
+          "result": "pass",
+          "message": "双方动机与冲突升级齐全"
+        }
+      ]
+    },
+    {
+      "name": "RelationDriverGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "relation_driver",
+          "name": "关系驱动",
+          "result": "fail",
+          "message": "缺少：甲方动机、乙方动机、冲突升级点"
+        }
+      ]
+    },
+    {
+      "name": "RelationDriverGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "relation_driver",
+          "name": "关系驱动",
+          "result": "pass",
+          "message": "双方动机与冲突升级齐全"
+        }
+      ]
+    },
+    {
+      "name": "LengthDecay",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "length_decay",
+          "name": "字数衰减",
+          "result": "inconclusive",
+          "message": "未提供当前集字数"
+        }
+      ]
+    },
+    {
+      "name": "LengthDecay",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "length_decay",
+          "name": "字数衰减",
+          "result": "pass",
+          "message": "字数 900（上集 1000）合规"
+        }
+      ]
+    },
+    {
+      "name": "Logline100Ack",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "logline_100_ack",
+          "name": "100字测试",
+          "result": "fail",
+          "message": "缺少 100 字测试文案（须人写/人改，禁 AI 直出简介冒充）"
+        }
+      ]
+    },
+    {
+      "name": "Logline100Ack",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "logline_100_ack",
+          "name": "100字测试",
+          "result": "pass",
+          "message": "100 字测试已人工确认"
+        }
+      ]
+    },
+    {
+      "name": "PitchFourPack",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "pitch_four_pack",
+          "name": "投稿四件套",
+          "result": "fail",
+          "message": "缺：核心梗、人物小传、前十集大纲、前三集正文"
+        }
+      ]
+    },
+    {
+      "name": "PitchFourPack",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "pitch_four_pack",
+          "name": "投稿四件套",
+          "result": "pass",
+          "message": "核心梗+小传+10大纲+前3正文齐全"
+        }
+      ]
+    },
+    {
+      "name": "OutlineNoEvenActs",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "outline_no_even_acts",
+          "name": "大纲节奏用词",
+          "result": "warn",
+          "message": "未提供大纲，节奏用词未评估"
+        }
+      ]
+    },
+    {
+      "name": "OutlineNoEvenActs",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "outline_no_even_acts",
+          "name": "大纲节奏用词",
+          "result": "pass",
+          "message": "未检出均分摊平话术"
+        }
+      ]
+    },
+    {
+      "name": "OOC",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "ooc",
+          "name": "人设一致性",
+          "result": "warn",
+          "message": "未注入 bible，无法做 OOC 启发式"
+        }
+      ]
+    },
+    {
+      "name": "OOC",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "ooc",
+          "name": "人设一致性",
+          "result": "pass",
+          "message": "未自动标红（终审仍须人工 LogicAck）"
+        }
+      ]
+    },
+    {
+      "name": "PuzzleShell",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "puzzle_shell",
+          "name": "谜题壳闸",
+          "result": "pass",
+          "message": "非谜题壳，跳过"
+        }
+      ]
+    },
+    {
+      "name": "PuzzleShell",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "puzzle_shell",
+          "name": "谜题壳闸",
+          "result": "pass",
+          "message": "非谜题壳，跳过"
+        }
+      ]
+    },
+    {
+      "name": "PuzzleShellGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "puzzle_shell",
+          "name": "谜题壳闸",
+          "result": "pass",
+          "message": "非谜题壳，跳过"
+        }
+      ]
+    },
+    {
+      "name": "PuzzleShellGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "puzzle_shell",
+          "name": "谜题壳闸",
+          "result": "pass",
+          "message": "非谜题壳，跳过"
+        }
+      ]
+    },
+    {
+      "name": "GoldFingerMinimal",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "gold_finger_minimal",
+          "name": "金手指极简",
+          "result": "warn",
+          "message": "缺少能力规则，篇幅未评估"
+        }
+      ]
+    },
+    {
+      "name": "GoldFingerMinimal",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "gold_finger_minimal",
+          "name": "金手指极简",
+          "result": "pass",
+          "message": "规则字数 8，提供的字段数 2"
+        }
+      ]
+    },
+    {
+      "name": "GoldFingerMinimalGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "gold_finger_minimal",
+          "name": "金手指极简",
+          "result": "warn",
+          "message": "缺少能力规则，篇幅未评估"
+        }
+      ]
+    },
+    {
+      "name": "GoldFingerMinimalGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "gold_finger_minimal",
+          "name": "金手指极简",
+          "result": "pass",
+          "message": "规则字数 8，提供的字段数 2"
+        }
+      ]
+    },
+    {
+      "name": "SettingCap",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "setting_cap",
+          "name": "设定数量",
+          "result": "warn",
+          "message": "缺少设定清单或数量，未评估"
+        }
+      ]
+    },
+    {
+      "name": "SettingCap",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "setting_cap",
+          "name": "设定数量",
+          "result": "pass",
+          "message": "共 1 项；参考值 12，可结合作者指定的主设定上限复核"
+        }
+      ]
+    },
+    {
+      "name": "SettingCapGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "setting_cap",
+          "name": "设定数量",
+          "result": "warn",
+          "message": "缺少设定清单或数量，未评估"
+        }
+      ]
+    },
+    {
+      "name": "SettingCapGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "setting_cap",
+          "name": "设定数量",
+          "result": "pass",
+          "message": "共 1 项；参考值 12，可结合作者指定的主设定上限复核"
+        }
+      ]
+    },
+    {
+      "name": "ClassicNarrative",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "classic_narrative",
+          "name": "经典叙事锁",
+          "result": "pass",
+          "message": "一主角一视角"
+        }
+      ]
+    },
+    {
+      "name": "ClassicNarrative",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "classic_narrative",
+          "name": "经典叙事锁",
+          "result": "pass",
+          "message": "一主角一视角"
+        }
+      ]
+    },
+    {
+      "name": "ClassicNarrativeGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "classic_narrative",
+          "name": "经典叙事锁",
+          "result": "pass",
+          "message": "一主角一视角"
+        }
+      ]
+    },
+    {
+      "name": "ClassicNarrativeGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "classic_narrative",
+          "name": "经典叙事锁",
+          "result": "pass",
+          "message": "一主角一视角"
+        }
+      ]
+    },
+    {
+      "name": "TragedyBudget",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "tragedy_budget",
+          "name": "悲剧预算",
+          "result": "inconclusive",
+          "message": "未提供悲剧占比"
+        }
+      ]
+    },
+    {
+      "name": "TragedyBudget",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "tragedy_budget",
+          "name": "悲剧预算",
+          "result": "pass",
+          "message": "悲剧占比 0.2"
+        }
+      ]
+    },
+    {
+      "name": "TragedyBudgetGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "tragedy_budget",
+          "name": "悲剧预算",
+          "result": "inconclusive",
+          "message": "未提供悲剧占比"
+        }
+      ]
+    },
+    {
+      "name": "TragedyBudgetGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "tragedy_budget",
+          "name": "悲剧预算",
+          "result": "pass",
+          "message": "悲剧占比 0.2"
+        }
+      ]
+    },
+    {
+      "name": "AntiDeus",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "anti_deus",
+          "name": "反机械降神",
+          "result": "pass",
+          "message": "未检出无铺垫开挂"
+        }
+      ]
+    },
+    {
+      "name": "AntiDeus",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "anti_deus",
+          "name": "反机械降神",
+          "result": "pass",
+          "message": "未检出无铺垫开挂"
+        }
+      ]
+    },
+    {
+      "name": "AntiDeusGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "anti_deus",
+          "name": "反机械降神",
+          "result": "pass",
+          "message": "未检出无铺垫开挂"
+        }
+      ]
+    },
+    {
+      "name": "AntiDeusGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "anti_deus",
+          "name": "反机械降神",
+          "result": "pass",
+          "message": "未检出无铺垫开挂"
+        }
+      ]
+    },
+    {
+      "name": "ShowDontTell",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "show_dont_tell",
+          "name": "展示非告知",
+          "result": "pass",
+          "message": "Tell 句 0 处"
+        }
+      ]
+    },
+    {
+      "name": "ShowDontTell",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "show_dont_tell",
+          "name": "展示非告知",
+          "result": "pass",
+          "message": "Tell 句 0 处"
+        }
+      ]
+    },
+    {
+      "name": "ShowDontTellGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "show_dont_tell",
+          "name": "展示非告知",
+          "result": "pass",
+          "message": "Tell 句 0 处"
+        }
+      ]
+    },
+    {
+      "name": "ShowDontTellGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "show_dont_tell",
+          "name": "展示非告知",
+          "result": "pass",
+          "message": "Tell 句 0 处"
+        }
+      ]
+    },
+    {
+      "name": "HotTopicDepth",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "hot_topic_depth",
+          "name": "热点深度",
+          "result": "inconclusive",
+          "message": "未提供热点"
+        }
+      ]
+    },
+    {
+      "name": "HotTopicDepth",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "hot_topic_depth",
+          "name": "热点深度",
+          "result": "pass",
+          "message": "热点已绑情绪核"
+        }
+      ]
+    },
+    {
+      "name": "HotTopicDepthGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "hot_topic_depth",
+          "name": "热点深度",
+          "result": "inconclusive",
+          "message": "未提供热点"
+        }
+      ]
+    },
+    {
+      "name": "HotTopicDepthGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "hot_topic_depth",
+          "name": "热点深度",
+          "result": "pass",
+          "message": "热点已绑情绪核"
+        }
+      ]
+    },
+    {
+      "name": "FormatContract",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "format_contract",
+          "name": "格式合同",
+          "result": "pass",
+          "message": "格式合同可接受"
+        }
+      ]
+    },
+    {
+      "name": "FormatContract",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "format_contract",
+          "name": "格式合同",
+          "result": "pass",
+          "message": "格式合同可接受"
+        }
+      ]
+    },
+    {
+      "name": "FormatContractGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "format_contract",
+          "name": "格式合同",
+          "result": "pass",
+          "message": "格式合同可接受"
+        }
+      ]
+    },
+    {
+      "name": "FormatContractGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "format_contract",
+          "name": "格式合同",
+          "result": "pass",
+          "message": "格式合同可接受"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookComplete",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "core_hook_complete",
+          "name": "核心梗齐全",
+          "result": "fail",
+          "message": "缺字段：世界观、身份反差、金手指、追剧点"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookComplete",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "core_hook_complete",
+          "name": "核心梗齐全",
+          "result": "pass",
+          "message": "四步字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookCompleteGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "core_hook_complete",
+          "name": "核心梗齐全",
+          "result": "fail",
+          "message": "缺字段：世界观、身份反差、金手指、追剧点"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookCompleteGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "core_hook_complete",
+          "name": "核心梗齐全",
+          "result": "pass",
+          "message": "四步字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "DialogueLen",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "dialogue_len",
+          "name": "台词长度",
+          "result": "pass",
+          "message": "长度 0 ≤ 500"
+        }
+      ]
+    },
+    {
+      "name": "DialogueLen",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "dialogue_len",
+          "name": "台词长度",
+          "result": "pass",
+          "message": "长度 893 ≤ 1200"
+        }
+      ]
+    },
+    {
+      "name": "DialogueLenGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "dialogue_len",
+          "name": "台词长度",
+          "result": "pass",
+          "message": "长度 0 ≤ 500"
+        }
+      ]
+    },
+    {
+      "name": "DialogueLenGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "dialogue_len",
+          "name": "台词长度",
+          "result": "pass",
+          "message": "长度 893 ≤ 1200"
+        }
+      ]
+    },
+    {
+      "name": "GraphConsistency",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "graph_consistency",
+          "name": "剧情图一致性",
+          "result": "pass",
+          "message": "图结构校验通过（终审仍须人工 LogicAck）"
+        }
+      ]
+    },
+    {
+      "name": "GraphConsistency",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "graph_consistency",
+          "name": "剧情图一致性",
+          "result": "pass",
+          "message": "图结构校验通过（终审仍须人工 LogicAck）"
+        }
+      ]
+    },
+    {
+      "name": "GraphConsistencyGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "graph_consistency",
+          "name": "剧情图一致性",
+          "result": "pass",
+          "message": "图结构校验通过（终审仍须人工 LogicAck）"
+        }
+      ]
+    },
+    {
+      "name": "GraphConsistencyGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "graph_consistency",
+          "name": "剧情图一致性",
+          "result": "pass",
+          "message": "图结构校验通过（终审仍须人工 LogicAck）"
+        }
+      ]
+    },
+    {
+      "name": "TitleClarity",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "title_clarity",
+          "name": "片名清晰",
+          "result": "fail",
+          "message": "片名长度 0 不在 [2,24]"
+        }
+      ]
+    },
+    {
+      "name": "TitleClarity",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "title_clarity",
+          "name": "片名清晰",
+          "result": "pass",
+          "message": "片名可检索"
+        }
+      ]
+    },
+    {
+      "name": "TitleClarityGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "title_clarity",
+          "name": "片名清晰",
+          "result": "fail",
+          "message": "片名长度 0 不在 [2,24]"
+        }
+      ]
+    },
+    {
+      "name": "TitleClarityGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "title_clarity",
+          "name": "片名清晰",
+          "result": "pass",
+          "message": "片名可检索"
+        }
+      ]
+    },
+    {
+      "name": "StageLock",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "stage_lock",
+          "name": "产品锁",
+          "result": "fail",
+          "message": "缺少：product、audience、budget"
+        }
+      ]
+    },
+    {
+      "name": "StageLock",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "stage_lock",
+          "name": "产品锁",
+          "result": "pass",
+          "message": "字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "StageLockGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "stage_lock",
+          "name": "产品锁",
+          "result": "fail",
+          "message": "缺少：product、audience、budget"
+        }
+      ]
+    },
+    {
+      "name": "StageLockGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "stage_lock",
+          "name": "产品锁",
+          "result": "pass",
+          "message": "字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "BioComplete",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "bio_complete",
+          "name": "人设完整",
+          "result": "fail",
+          "message": "缺少：name、role、want、fear、flaw"
+        }
+      ]
+    },
+    {
+      "name": "BioComplete",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "bio_complete",
+          "name": "人设完整",
+          "result": "pass",
+          "message": "字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "BioCompleteGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "bio_complete",
+          "name": "人设完整",
+          "result": "fail",
+          "message": "缺少：name、role、want、fear、flaw"
+        }
+      ]
+    },
+    {
+      "name": "BioCompleteGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "bio_complete",
+          "name": "人设完整",
+          "result": "pass",
+          "message": "字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "Empathy",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "empathy",
+          "name": "共情三困境",
+          "result": "fail",
+          "message": "需共情目标 + 三个困境"
+        }
+      ]
+    },
+    {
+      "name": "Empathy",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "empathy",
+          "name": "共情三困境",
+          "result": "pass",
+          "message": "共情目标与三困境齐全"
+        }
+      ]
+    },
+    {
+      "name": "EmpathyGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "empathy",
+          "name": "共情三困境",
+          "result": "fail",
+          "message": "需共情目标 + 三个困境"
+        }
+      ]
+    },
+    {
+      "name": "EmpathyGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "empathy",
+          "name": "共情三困境",
+          "result": "pass",
+          "message": "共情目标与三困境齐全"
+        }
+      ]
+    },
+    {
+      "name": "SuspenseBudget",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "suspense_budget",
+          "name": "悬念预算",
+          "result": "fail",
+          "message": "缺少：suspend、answer、cost、payoff"
+        }
+      ]
+    },
+    {
+      "name": "SuspenseBudget",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "suspense_budget",
+          "name": "悬念预算",
+          "result": "pass",
+          "message": "字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "SuspenseBudgetGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "suspense_budget",
+          "name": "悬念预算",
+          "result": "fail",
+          "message": "缺少：suspend、answer、cost、payoff"
+        }
+      ]
+    },
+    {
+      "name": "SuspenseBudgetGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "suspense_budget",
+          "name": "悬念预算",
+          "result": "pass",
+          "message": "字段齐全"
+        }
+      ]
+    },
+    {
+      "name": "PriorityLock",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "logic_ack",
+          "name": "逻辑人工确认",
+          "result": "fail",
+          "message": "逻辑门禁不可自动通过，需人工 LogicAck"
+        }
+      ]
+    },
+    {
+      "name": "PriorityLock",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "logic_ack",
+          "name": "逻辑人工确认",
+          "result": "pass",
+          "message": "人工已确认逻辑"
+        }
+      ]
+    },
+    {
+      "name": "PriorityLockGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "logic_ack",
+          "name": "逻辑人工确认",
+          "result": "fail",
+          "message": "逻辑门禁不可自动通过，需人工 LogicAck"
+        }
+      ]
+    },
+    {
+      "name": "PriorityLockGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "logic_ack",
+          "name": "逻辑人工确认",
+          "result": "pass",
+          "message": "人工已确认逻辑"
+        }
+      ]
+    },
+    {
+      "name": "Revise20Pass",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "revise20",
+          "name": "修改20体检",
+          "result": "fail",
+          "message": "已完成 0/20 项"
+        }
+      ]
+    },
+    {
+      "name": "Revise20Pass",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "revise20",
+          "name": "修改20体检",
+          "result": "pass",
+          "message": "20 项检查全部完成"
+        }
+      ]
+    },
+    {
+      "name": "Revise20PassGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "revise20",
+          "name": "修改20体检",
+          "result": "fail",
+          "message": "已完成 0/20 项"
+        }
+      ]
+    },
+    {
+      "name": "Revise20PassGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "revise20",
+          "name": "修改20体检",
+          "result": "pass",
+          "message": "20 项检查全部完成"
+        }
+      ]
+    },
+    {
+      "name": "UnitPlan",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "unit_plan",
+          "name": "单元计划",
+          "result": "fail",
+          "message": "单元数不足 1"
+        }
+      ]
+    },
+    {
+      "name": "UnitPlan",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "unit_plan",
+          "name": "单元计划",
+          "result": "pass",
+          "message": "单元数 1"
+        }
+      ]
+    },
+    {
+      "name": "UnitPlanGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "unit_plan",
+          "name": "单元计划",
+          "result": "fail",
+          "message": "单元数不足 1"
+        }
+      ]
+    },
+    {
+      "name": "UnitPlanGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "unit_plan",
+          "name": "单元计划",
+          "result": "pass",
+          "message": "单元数 1"
+        }
+      ]
+    },
+    {
+      "name": "CoolFocus",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "cool_focus",
+          "name": "爽点聚焦",
+          "result": "fail",
+          "message": "缺少主爽点标注"
+        }
+      ]
+    },
+    {
+      "name": "CoolFocus",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "cool_focus",
+          "name": "爽点聚焦",
+          "result": "pass",
+          "message": "主爽点已标注"
+        }
+      ]
+    },
+    {
+      "name": "CoolFocusGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "cool_focus",
+          "name": "爽点聚焦",
+          "result": "fail",
+          "message": "缺少主爽点标注"
+        }
+      ]
+    },
+    {
+      "name": "CoolFocusGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "cool_focus",
+          "name": "爽点聚焦",
+          "result": "pass",
+          "message": "主爽点已标注"
+        }
+      ]
+    },
+    {
+      "name": "CoolStackMin",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "cool_stack",
+          "name": "爽点堆栈",
+          "result": "fail",
+          "message": "堆栈 0 < 3"
+        }
+      ]
+    },
+    {
+      "name": "CoolStackMin",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "cool_stack",
+          "name": "爽点堆栈",
+          "result": "pass",
+          "message": "堆栈 3 ≥ 3"
+        }
+      ]
+    },
+    {
+      "name": "CoolStackMinGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "cool_stack",
+          "name": "爽点堆栈",
+          "result": "fail",
+          "message": "堆栈 0 < 3"
+        }
+      ]
+    },
+    {
+      "name": "CoolStackMinGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "cool_stack",
+          "name": "爽点堆栈",
+          "result": "pass",
+          "message": "堆栈 3 ≥ 3"
+        }
+      ]
+    },
+    {
+      "name": "RuleComplexity",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "rule_complexity",
+          "name": "规则复杂度",
+          "result": "pass",
+          "message": "规则 0 ≤ 5"
+        }
+      ]
+    },
+    {
+      "name": "RuleComplexity",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "rule_complexity",
+          "name": "规则复杂度",
+          "result": "pass",
+          "message": "规则 1 ≤ 12"
+        }
+      ]
+    },
+    {
+      "name": "RuleComplexityGate",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "rule_complexity",
+          "name": "规则复杂度",
+          "result": "pass",
+          "message": "规则 0 ≤ 5"
+        }
+      ]
+    },
+    {
+      "name": "RuleComplexityGate",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "rule_complexity",
+          "name": "规则复杂度",
+          "result": "pass",
+          "message": "规则 1 ≤ 12"
+        }
+      ]
+    },
+    {
+      "name": "CoolPerEp",
+      "profile": "empty",
+      "expected": [
+        {
+          "id": "cool_per_ep",
+          "name": "每集爽点",
+          "result": "fail",
+          "message": "缺少每集爽点标注"
+        }
+      ]
+    },
+    {
+      "name": "CoolPerEp",
+      "profile": "full",
+      "expected": [
+        {
+          "id": "cool_per_ep",
+          "name": "每集爽点",
+          "result": "pass",
+          "message": "每集爽点已标注"
+        }
+      ]
+    },
+    {
+      "name": "PromptLock",
+      "label": "missing_required_phrase",
+      "payload": {
+        "editable_instruction": "",
+        "required_phrases": [
+          "必须"
+        ],
+        "locked_hash": "h74c4812d040a",
+        "current_locked_system": "LOCK"
+      },
+      "expected": [
+        {
+          "id": "prompt_lock_hash",
+          "name": "锁定区完整性",
+          "result": "pass",
+          "message": "锁定区哈希一致"
+        },
+        {
+          "id": "required_必须",
+          "name": "必含指令：必须",
+          "result": "fail",
+          "message": "可变指令缺少必含短语「必须」"
+        }
+      ]
+    },
+    {
+      "name": "MidpointPosition",
+      "label": "legacy_index_payload",
+      "payload": {
+        "index": 10,
+        "total": 20
+      },
+      "expected": [
+        {
+          "id": "midpoint_position",
+          "name": "中点位置",
+          "result": "pass",
+          "message": "中点在第 10 拍"
+        }
+      ]
+    },
+    {
+      "name": "MidpointPosition",
+      "label": "legacy_index_outside_range",
+      "payload": {
+        "index": 2,
+        "total": 20
+      },
+      "expected": [
+        {
+          "id": "midpoint_position",
+          "name": "中点位置",
+          "result": "warn",
+          "message": "中点第 2 拍偏离建议区间 [8,13]"
+        }
+      ]
+    },
+    {
+      "name": "Budget",
+      "label": "small_budget_rounding",
+      "payload": {
+        "used": 1,
+        "budget": 2
+      },
+      "expected": [
+        {
+          "id": "budget",
+          "name": "Token 预算",
+          "result": "warn",
+          "message": "已用 1/2，接近上限"
+        }
+      ]
+    },
+    {
+      "name": "SimilarityRisk",
+      "label": "legacy_near_threshold",
+      "payload": {
+        "score": 0.61
+      },
+      "expected": [
+        {
+          "id": "similarity_risk",
+          "name": "相似度风险",
+          "result": "warn",
+          "message": "相似度 0.61 偏高，注意仿写边界"
+        }
+      ]
+    },
+    {
+      "name": "PaywallCoverage",
+      "label": "null_slots",
+      "payload": {
+        "slots": [
+          null,
+          null,
+          null
+        ]
+      },
+      "expected": [
+        {
+          "id": "paywall_coverage",
+          "name": "付费点覆盖",
+          "result": "pass",
+          "message": "已标 3 个付费/卡点"
+        }
+      ]
+    },
+    {
+      "name": "CoreHookAdoption",
+      "label": "string_risk_flags",
+      "payload": {
+        "body": {
+          "motivation": "动机",
+          "openingStructure": "开篇",
+          "riskFlags": "risk"
+        }
+      },
+      "expected": [
+        {
+          "id": "motivation",
+          "name": "动机",
+          "result": "pass",
+          "message": "动机已填写"
+        },
+        {
+          "id": "opening",
+          "name": "开篇结构",
+          "result": "pass",
+          "message": "开篇结构已填写"
+        },
+        {
+          "id": "risk",
+          "name": "红线题材",
+          "result": "warn",
+          "message": "风险标记：r、i、s、k"
+        }
+      ]
+    },
+    {
+      "name": "StageLock",
+      "label": "empty_containers",
+      "payload": {
+        "body": {
+          "product": [],
+          "audience": {},
+          "budget": []
+        }
+      },
+      "expected": [
+        {
+          "id": "stage_lock",
+          "name": "产品锁",
+          "result": "fail",
+          "message": "缺少：product、audience、budget"
+        }
+      ]
+    },
+    {
+      "name": "SceneCount",
+      "label": "zero_max_scenes",
+      "payload": {
+        "text": "场1：甲",
+        "max_scenes": 0
+      },
+      "expected": [
+        {
+          "id": "scene_count",
+          "name": "场景数",
+          "result": "pass",
+          "message": "明确场景标头 1 个"
+        }
+      ]
+    },
+    {
+      "name": "ChunkPolicy",
+      "label": "zero_max_chars",
+      "payload": {
+        "requested_chars": 5,
+        "max_chars": 0
+      },
+      "expected": [
+        {
+          "id": "chunk_policy",
+          "name": "分块策略",
+          "result": "pass",
+          "message": "分块策略合规"
+        }
+      ]
+    },
+    {
+      "name": "LengthDecay",
+      "label": "fractional_length",
+      "payload": {
+        "current_chars": 799.9,
+        "min_chars": 799
+      },
+      "expected": [
+        {
+          "id": "length_decay",
+          "name": "字数衰减",
+          "result": "pass",
+          "message": "字数 799 合规"
+        }
+      ]
+    },
+    {
+      "name": "PitchFourPack",
+      "label": "format_on_legacy_full_pack",
+      "payload": {
+        "counts": {
+          "coreHook": 1,
+          "character": 1,
+          "episodeOutline": 10,
+          "manuscript": 3,
+          "format": "short_novel"
+        }
+      },
+      "expected": [
+        {
+          "id": "pitch_four_pack",
+          "name": "投稿四件套",
+          "result": "pass",
+          "message": "核心梗+小传+10大纲+前3正文齐全"
+        }
+      ]
+    },
+    {
+      "name": "ClassicNarrative",
+      "label": "multipov_empty_leads",
+      "payload": {
+        "body": {
+          "leads": [],
+          "multiPov": true
+        }
+      },
+      "expected": [
+        {
+          "id": "classic_narrative",
+          "name": "经典叙事锁",
+          "result": "fail",
+          "message": "短剧须一主角一视角"
+        }
+      ]
+    },
+    {
+      "name": "GoldFingerMinimal",
+      "label": "field_count_without_text",
+      "payload": {
+        "body": {
+          "ruleFieldCount": 2
+        }
+      },
+      "expected": [
+        {
+          "id": "gold_finger_minimal",
+          "name": "金手指极简",
+          "result": "warn",
+          "message": "缺少能力规则，篇幅未评估，提供的字段数 2"
+        }
+      ]
+    },
+    {
+      "name": "SettingCap",
+      "label": "optional_setting_measurement",
+      "payload": {
+        "body": {
+          "settingCount": 3
+        }
+      },
+      "expected": [
+        {
+          "id": "setting_cap",
+          "name": "设定数量",
+          "result": "warn",
+          "message": "共 3 项；参考值 2，可结合作者指定的主设定上限复核"
+        }
+      ]
+    },
+    {
+      "name": "GraphConsistency",
+      "label": "dangling_edge",
+      "payload": {
+        "graph": {
+          "nodes": [
+            {
+              "id": "lead"
+            }
+          ],
+          "edges": [
+            {
+              "from": "lead",
+              "to": "missing"
+            }
+          ]
+        }
+      },
+      "expected": [
+        {
+          "id": "graph_consistency",
+          "name": "剧情图一致性",
+          "result": "fail",
+          "message": "dangling_edge:lead->missing"
+        }
+      ]
+    },
+    {
+      "name": "GenreTrim",
+      "label": "original_genre_preserved",
+      "payload": {
+        "body": {
+          "genre": " 末世诡异 "
+        },
+        "blacklist": [
+          "末世",
+          "诡异"
+        ]
+      },
+      "expected": [
+        {
+          "id": "genre_trim",
+          "name": "题材参考",
+          "result": "warn",
+          "message": "题材原文「 末世诡异 」。参考词匹配：末世、诡异。行情与具体内容须另行核实。"
+        }
+      ]
+    }
+  ]
+}

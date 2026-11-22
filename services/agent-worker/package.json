@@ -1,0 +1,29 @@
+{
+  "name": "@xiezuomanju/agent-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --experimental-strip-types src/index.js",
+    "start": "node --experimental-strip-types src/index.js",
+    "test": "node --test test/**/*.test.mjs",
+    "check:syntax": "node scripts/check-syntax.mjs"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/exporter-trace-otlp-http": "0.57.2",
+    "@opentelemetry/sdk-node": "0.57.2",
+    "@sinclair/typebox": "^0.34.13",
+    "@xiezuomanju/agent-runtime": "workspace:*",
+    "@xiezuomanju/domain": "workspace:*",
+    "ioredis": "^5.4.2",
+    "marked": "16.4.2",
+    "openai": "^4.77.0",
+    "parse5": "6.0.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
