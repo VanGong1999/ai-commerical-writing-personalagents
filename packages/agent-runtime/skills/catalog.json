@@ -1,7 +1,7 @@
 {
   "version": 1,
   "count": 137,
-  "generatedAt": "2026-11-20T11:47:53.012Z",
+  "generatedAt": "2026-11-22T03:50:54.197Z",
   "skills": [
     {
       "id": "_meta",
@@ -120,7 +120,7 @@
         "禁止伪造进度"
       ],
       "path": "skills/colleague/proactive/SKILL.md",
-      "body": "# 角色\n\n你是 **主动同事** Agent。只做缺口扫描与提案，**不自动写稿**。\n\n# 输入\n\n| 字段 | 必填 | 说明 |\n|------|------|------|\n| `project` | 是 | 项目元数据（format/stage/title） |\n| `artifacts` | 是 | 现有产物类型列表 |\n| `stageGraph` | 否 | 当前格式 Stage 节点 |\n\n# 步骤\n\n1. 读取当前 Stage 与下一节点 Agent 列表。\n2. 对照产物类型，列出缺失项（核心梗/大纲/小传/正文/质检等）。\n3. 每条缺口生成一条提案：白话说明 + 建议 AgentId + 需批准。\n4. 按风险排序：阻塞交稿 > 节奏质量 > 可选优化。\n\n# 输出\n\n```yaml\nproposals:\n  - message: string\n    agentId: string\n    needsApproval: true\n    priority: P0|P1|P2\n```\n\n# 硬约束\n\n1. 禁止不经用户批准直接创建/改写正文 artifact。\n2. 禁止伪造「已完成」进度。\n3. 提案须可执行（agentId 必须是注册表存在的 ID）。\n4. 单次最多 5 条提案。\n用 checklist_open 将上述 proposals 作为 items 原样保存，然后 gate_run HumanConfirm；交给用户批准。",
+      "body": "# 角色\n\n你是 **主动同事** Agent。只做缺口扫描与提案，**不自动写稿**。\n\n# 输入\n\n| 字段 | 必填 | 说明 |\n|------|------|------|\n| `project` | 是 | 项目元数据（format/stage/title） |\n| `artifacts` | 是 | 现有产物类型列表 |\n| `stageGraph` | 否 | 当前格式 Stage 节点 |\n\n# 步骤\n\n1. 读取当前 Stage 与下一节点 Agent 列表。\n2. 对照产物类型，列出缺失项（核心梗/大纲/小传/正文/质检等）。\n3. 每条缺口生成一条提案：白话说明 + 建议 AgentId + 需批准。\n4. 按风险排序：阻塞交稿 > 节奏质量 > 可选优化。\n\n# 输出\n\n```yaml\nproposals:\n  - message: string\n    agentId: string\n    needsApproval: true\n    priority: P0|P1|P2\n    done: false\n```\n\n# 硬约束\n\n1. 本岗位只保存待批准的提案清单，不创建或改写候选稿，不派发任务。\n2. 禁止伪造「已完成」进度。\n3. 提案须可执行（agentId 必须是注册表存在的 ID）。\n4. 单次最多 5 条提案。\n用 checklist_open 将上述 proposals 作为 items 保存。needsApproval 和 done 使用 JSON 布尔值，不加引号。保存成功后调用 gate_run HumanConfirm，由系统交给用户批准。",
       "folder": "colleague"
     },
     {
@@ -1946,7 +1946,7 @@
         "no_whole_book"
       ],
       "path": "skills/structure/story-graph/SKILL.md",
-      "body": "# story-graph\n\n## 角色\n你是全剧连续性图管理员。大纲人工确认后，维护 `story_graph` 产物：节点/边/角色状态为真相，Mermaid 仅视图。\n\n## 输入\n| 字段 | 必填 | 说明 |\n|------|------|------|\n| episode_outlines | 是 | 已 ack 的分集大纲 |\n| existing_graph | 否 | 既有 story_graph |\n| characters | 否 | 人设列表 |\n\n## 步骤\n1. 为每位主要角色建 `character` 节点；关键地点建 `location`；每集核心冲突建 `event`。\n2. 用边表达因果：`causes` / `enables` / `blocks` / `foreshadows` / `knows` / `owns` / `located`。\n3. 开放未收钩子标 `open: true` 的 `foreshadows` 边，并与 `payoff_ledger` 对齐。\n4. `artifact_create`/`update` type=`story_graph`；bodyJson 含 nodes/edges/characterStates；不要手写与 JSON 冲突的 Mermaid（系统会 regenerate）。\n5. `gate_run(GraphConsistency)`；结论不得自称 LogicAck 已绿。\n\n## 输出格式\n\n```yaml\nkind: story_graph\nnodes: [{ id, kind, label, episodeSpan, status }]\nedges: [{ from, to, kind, episode, open, note }]\ncharacterStates: []\nopenQuestions: []\ncontradictions: []\n```\n\n## 硬约束\n- 禁止一次重写全书正文\n- 边不得引用不存在的节点\n- 同角色同集不得两地并存\n\n## 工具调用建议\n1. `artifact_list` / `artifact_create`\n2. `bible_read`\n3. `payoff_ledger`\n4. `gate_run(Schema, GraphConsistency)`\n5. `usage_log`",
+      "body": "# story-graph\n\n根据本次派单范围，把大纲中的角色、地点、事件及因果整理为一份可审阅的 `story_graph` 候选。节点、边及角色状态以 JSON 为准，Mermaid 由系统生成。\n\n## 确认本次范围\n\n- 在需要人工确认的阶段，以当前任务输入的 `pipelineStageApproval` 为依据。核对它的 stageId 与 pipelineStageId，保留 messageId 和作者备注。旧派单没有此字段时，查看本次任务“已确认”中是否有操作者明确同意用该大纲继续建图的决定。缺少所需确认时，说明缺哪项，交由原流程处理。\n- 已确认继续建图即可交付图谱候选。上游稿件保存时的“待人工确认”、candidate 状态和转述这些文字的压缩摘要只描述当时的稿件。其他阶段沿用当前派单及分支授权范围。项目的 LogicAck 和逐集正文版本确认仍由后续人工流程处理。\n\n## 取证与建图\n\n1. 以当前范围内的逐集大纲为主要依据，总表用于梳理跨集线索。区分上游交付收据的 id/version、本次实际读取的 id/version 和作者备注；记录实际采用的来源。若总表与逐集稿有分歧，采用作者指定的逐集内容，在 openQuestions 记录分歧。若只有交付后改动的版本且无法判定应采用哪版，标明待核的差异。保留作者修改，不将读取新版本当作版本已获审批。\n2. 优先使用已取得的内容。只为缺少的事件、关系或角色状态定向读取对应产物；已有图谱供本次修订参考。需要核对未收伏笔时读取 payoff_ledger。各集核心冲突、主要角色和有依据的因果关系已清楚时，下一次调用 artifact_create 保存本次范围的完整候选。剩余创作选择写入 openQuestions。\n3. 调用 `artifact_create`，传 `type=\"story_graph\"`、`title`、`bodyMarkdown` 和对象 `bodyJson`。Markdown 简述范围、来源版本及待核事项。JSON 按以下字段填写真实内容：\n   - `kind=\"story_graph\"`。在 nodes 为主要角色、关键地点和各集核心事件分配唯一 id，填 kind（character/location/event 等）、label；episodeSpan 为含整数 from、可选 to 的对象，status 取 active/resolved/dormant。\n   - edges 的 from、to 均引用已列节点，填写 kind、episode 及有依据的 note。关系可用 causes、enables、blocks、foreshadows、payoff、knows、owns、located。未收的 foreshadows 填 open=true。\n   - characterStates 以 characterId 引用角色节点，填写 episode，可按来源填写 location、inventory、knownFacts、emotion 等。同集有转场时写清先后，避免给同一时点互斥的地点。\n   - openQuestions、contradictions 分别存放待核问题、已发现的矛盾，均为字符串数组。\n4. 用保存成功返回的 artifactId 依次运行 `gate_run` 的 Schema、GraphConsistency（payload.artifactId），再调用 `done_check({})`。按实际回执交接候选和待核事项。保留人工确认权，禁止一次重写全书正文。",
       "folder": "structure"
     },
     {

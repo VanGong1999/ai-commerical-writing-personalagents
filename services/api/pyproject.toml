@@ -1,5 +1,6 @@
 [project]
 name = "xiezuomanju-api"
+license = { text = "Apache-2.0" }
 version = "0.2.0"
 description = "AI 商业化写作台Always-On-MultiAgents FastAPI"
 requires-python = ">=3.12"

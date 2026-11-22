@@ -1,5 +1,6 @@
 {
   "name": "@xiezuomanju/desktop",
+  "license": "Apache-2.0",
   "version": "0.1.0",
   "private": true,
   "description": "Tauri 2 desktop shell for AI 商业写作台 (loads Vite web app)",

@@ -1,19 +1,22 @@
 # AI 商业写作台 · 把灵感带到交稿的多智能体工作台(ai-commerical-writing-always-on-personal-multiAgents)
 
+[快速了解_项目介绍和指南](https://vangong1999.github.io/ai-commerical-writing-personalagents/docs-public/site/)
+
 **把一句模糊灵感交给一支会拆题、会记忆、会协作、会自检、能从中断中恢复的 AI 写作创作团队，让选题、人物、大纲、正文、质检与投稿整理从分散聊天变成一条可追踪、可修改、可交付的创作流水线。**
 
 > **开发中 · Early Preview**：项目仍在快速迭代，欢迎 Star、Fork、提交 Issue 和真实作品反馈。当前更适合研究、试用和二次开发，不应被当作已经完成商业化验收的 SaaS 产品。
 
-**作者**：VanGong · [gongfan1213@163.com](mailto:gongfan1213@163.com)
+**作者**：VanGong · [gongfan1213@163.com](mailto:gongfan1213@163.com)  
+**License**：[Apache-2.0](./LICENSE)（见 [NOTICE](./NOTICE)）
 
 从一句核心梗，到人物小传、分集大纲、正文与投稿包，这个项目尝试把商业写作中反复发生的工作，组织成一套作者可以指挥、检查、修改和继续推进的一句话批量生成生产流程。
 
 它面向漫剧、短剧、短篇网文、男频长篇、女频长篇与 IP 改编。你可以在 Web 创作台里逐步写，也可以让总编派活、让专职 AI 同事协作，再从飞书接收进度与确认请求。
 
-> **147 个注册 Agent · 137 项 Skill · 82个Tools· 多种智能流水线· 六种创作格式**  
+> **148 个注册 Agent · 137 项 Skill · 82 个 Tools · 多种智能流水线 · 六种创作格式**
 > 数量来自当前仓库目录快照，代表职责与方法的覆盖，不代表每个岗位都经过同等强度的真实任务验收。
 
-[快速启动](#快速启动) · [功能全景](#功能全景) · [AI 同事](#ai-同事) · [多智能体能力全景](#多智能体能力全景从一句需求到可检查交付) · [Agent 工作台](#agent-工作台) · [工程如何约束模型](#工程如何约束模型) · [模型选型与限流](#模型选型限流并发与成本) · [技术债与下一步](#技术债与下一步)
+[产品介绍站](https://vangong1999.github.io/ai-commerical-writing-personalagents/docs-public/site/) · [和其他写作项目有何不同](#和其他写作项目有何不同) · [Agent / Skill / Tool 目录](./docs-public/site/index.html#directory) · [界面功能规格](./docs-public/site/index.html#atlas) · [Graph / Loop / Context 原理](./docs-public/site/index.html#architecture) · [快速启动](#快速启动) · [功能全景](#功能全景) · [AI 同事](#ai-同事) · [多智能体能力全景](#多智能体能力全景从一句需求到可检查交付) · [Agent 工作台](#agent-工作台) · [工程如何约束模型](#工程如何约束模型) · [模型选型与限流](#模型选型限流并发与成本) · [技术债与下一步](#技术债与下一步)
 
 English: [README.en.md](./README.en.md)
 
@@ -26,6 +29,29 @@ English: [README.en.md](./README.en.md)
 [观看 AI 商业写作台产品巡览（WebM，约 30 秒）](./docs-public/assets/video/ai-writing-workbench-tour.webm)
 
 视频展示项目列表、创作台、AI 同事、历史对话浏览和知识库页面；历史对话部分仅浏览已有记录，没有发送新消息。页面中的项目、用量和会话来自本地开发联调数据，不代表线上服务承诺。
+
+### 产品介绍站与操作指南
+
+想先看懂产品再启动代码，打开：
+
+→ [多智能体产品介绍站](./docs-public/site/index.html)
+
+站点用截图、流程动画和分步指南介绍：Agent 编排、Fleet / Subagents、记忆、知识库、质量门禁、长任务恢复，以及六种创作格式。
+
+**站内分区**
+
+- [能力目录](./docs-public/site/index.html#directory)：从公开 catalog 动态展示每个 Agent 的职责、Skill 方法摘要，以及 Tool 的类别、风险与调用定位
+- [界面功能规格](./docs-public/site/index.html#atlas)：逐项说明页面目标、操作、输入、输出、状态、权限、证据和失败恢复；并解释 AI 同事如何借鉴 Grokbot 风格的常驻助手、主动提案、信任控制、记忆与人类确认
+- [Graph / Loop / Context Engineering 原理](./docs-public/site/index.html#architecture)：按顺序展示任务图、工具循环和上下文装配，适合从上到下阅读
+
+**开跑前建议先读**
+
+- [Token 与可靠性说明](./docs-public/site/index.html#efficiency)
+- [注意事项 / 已知风险](./docs-public/site/index.html#warnings)
+
+其中覆盖：工具搜索空转、Subagents 失败、模型限流、契约漂移、撤权上下文、大文件定位、摘要遗忘，以及 **15 分钟 / 800 步** 任务边界。提前看这些，能少踩无效重试和 Token 浪费。
+
+
 
 ## 你可以怎样用它
 
@@ -56,6 +82,60 @@ English: [README.en.md](./README.en.md)
 | 多个 Agent 同时修改同一件东西 | 版本校验、CAS、Action 日志、候选与采纳分离 | 保留修改来源，减少无声覆盖 |
 | 任务跑一半断了，不知道该不该重试 | Session 日志、租约、心跳、checkpoint、写操作账本 | 区分可重试请求与结果存疑的写入 |
 | 模型频繁调用，把账号打到限流 | 共享请求闸、冷却、退避、可选 Provider 切换 | 控制负载，让容量不足成为可解释状态 |
+
+## 和其他写作项目有何不同
+
+多数通用 AI 写作工具面向「把一段话写长、改顺、润色」；本项目面向的是**国内商业内容生产里已经成型的品类与过稿路径**——不是泛文学聊天，而是围绕平台口味、题材节奏、可拍/可追更约束，把灵感推进到可检查、可改稿、可投稿整理的流水线。
+
+### 面向的品类：六种创作格式
+
+| 品类 | 典型交付物 | 商业语境（简化） |
+| --- | --- | --- |
+| 漫剧 | 核心梗、十集大纲、分集正文、分镜与投稿包 | 强画面、强冲突、短周期爆点，便于改编拍摄 |
+| 短剧 | 选题、爽点/卡点、分场剧本 | 竖屏可拍、付费卡点与情绪链 |
+| 短篇网文 | 开篇、成稿、修订 | 篇幅紧、一次读完或短篇频道过稿 |
+| 男频长篇 | 金手指、升级循环、卷章与正文 | 追更、爽点落地、长线留存 |
+| 女频长篇 | 微塑、关系与情绪线、卷纲与正文 | 人物选择、情绪递进、长线关系兑现 |
+| IP 改编 | 源作拆解、单元故事、剧本压缩 | 在授权边界内压缩成可拍/可卖单元 |
+
+### 对照的七类平台数据源（名字与种类写全）
+
+选题与热点侧对齐国内常见分发场；采集只碰**公开榜单元数据/摘要**，不是替你挂载平台、也不是收入预测。七类如下：
+
+| # | 平台 / 来源（全称） | 种类 | 本项目主要用来看什么 |
+| --- | --- | --- | --- |
+| 1 | **番茄小说**（字节跳动旗下免费/福利向网文平台） | 网文连载平台 | 大众网文题材、开篇与标题趋势 |
+| 2 | **飞卢小说网** | 男频网文平台 | 男频点击/热度向题材与节奏 |
+| 3 | **红果短剧 / 抖音漫剧**（字节系短剧·漫剧分发；界面常写作「红果/抖音漫剧」） | 短剧 · 漫剧分发 | 短周期热点、可拍题材与分发参考 |
+| 4 | **晋江文学城** | 女频网文平台 | 关系、情绪线与女频题材 |
+| 5 | **起点中文网**（阅文集团） | 男频长篇网文平台 | 月票/排行向长篇男频与升级追更 |
+| 6 | **七猫小说**（读者集团等） | 大众网文平台 | 通俗题材与商业化观察 |
+| 7 | **手动录入榜单 / 社会热点** | 作者自建来源 | 补无法自动采集的榜单、链接与个人判断 |
+
+> 说明：前六类是公开平台榜单观察位；第七类是手动源。不是七个都能无条件自动抓取的「官方开放 API」。
+
+### 「卖字」还是「卖 IP」？两条路，不是二选一口号
+
+商业写作里常见两套变现逻辑，本项目**同时覆盖**，由作者按格式与目标选主路径：
+
+| 路径 | 更贴近哪些格式 / 平台 | 文字要解决什么 | 系统侧强调什么 |
+| --- | --- | --- | --- |
+| **卖阅读 / 卖连载（常说的「卖字」）** | 番茄、七猫、起点、飞卢、晋江；短篇与长篇网文 | 开篇留人、章节钩子、追更节奏、付费点兑现 | 章/卷结构、字数与节奏门禁、去空转、可改的正文版本 |
+| **卖可拍性 / 卖改编素材（常说的「卖 IP 潜力」）** | 红果短剧、抖音漫剧；漫剧、短剧、IP 改编格式 | 场面可视、动作可拍、人物辨识、单元故事可拆 | 画面感与分场/分镜、冲突与卡点、投稿包与来源边界 |
+
+实际业务里两者常交叉：网文先过稿验证题材，再谈漫改/短剧改编；短剧剧本也可能先按平台口味「过稿」再进入拍摄。**本仓库不承诺帮你卖出版权或算出收入**，只把「过平台口味所需的结构化工作」做成可指挥、可检查的流水线。
+
+### 和其他 AI 写作项目差在哪
+
+| 常见写法 | 本项目 |
+| --- | --- |
+| 一个聊天框 + 通用润色提示词 | 按**漫剧 / 短剧 / 男女频网文 / IP 改编**分 Stage、岗位与 Prompt pack |
+| 输出一大段「像小说的文字」 | 力求**画面感与可执行单元**：场景、动作、冲突、卡点、分集/分章可改 |
+| 不管平台口味 | 对照番茄、飞卢、红果/抖音漫剧、晋江、起点、七猫等公开榜做选题辅助 |
+| 「写完了」靠模型自述 | Gate、产物版本、Done Contract、作者采纳；过稿判断仍归人与平台编辑 |
+| 只做长文生成器 | 总编派活、AI 同事、Fleet、知识库拆书换元、飞书确认，面向**商业过稿生产**而不只是灵感聊天 |
+
+一句话：**别的工具帮你把字写顺；这个项目试图帮你按国内商业品类，把字写成「能追更」或「能拿去谈拍摄/改编」的候选稿，并留下可检查的过程。** 最终能不能过审、能不能成交，仍取决于作者审美、平台规则与商务结果。
 
 ## 功能全景
 
@@ -90,8 +170,6 @@ English: [README.en.md](./README.en.md)
 ![同事、编组、例程与群聊入口](./docs-public/assets/readme-picture/ai同事舰队和提议.png)
 
 截图中的群聊成员数不等于 Fleet 执行并发，也不等于在途模型请求数。
-
-
 
 ### AI 同事
 
@@ -335,14 +413,15 @@ Agent Worker 和 Personal Agent 使用同一套上下文原则，但根据交互
 | :---: | :---: | :---: | :---: |
 | ![主界面](./docs-public/assets/readme-picture/主界面.png) | ![创作台首页](./docs-public/assets/readme-picture/创作台首页.png) | ![灵感选题](./docs-public/assets/readme-picture/灵感选题界面.png) | ![测试多书](./docs-public/assets/readme-picture/测试多书.png) |
 | ![智能体全景图鉴](./docs-public/assets/readme-picture/智能体全景图鉴.png) | ![智能体图鉴](./docs-public/assets/readme-picture/智能体图鉴.png) | ![漫剧主线编组](./docs-public/assets/readme-picture/agent工作台-漫剧主线编组30个智能体协作.png) | ![守护任务中心](./docs-public/assets/readme-picture/agent工作台后台任务-守护任务中心.png) |
-| ![运行中任务](./docs-public/assets/readme-picture/运行中任务.png) | ![Agent 窗口 1](./docs-public/assets/readme-picture/agent-window-1.png) | ![Agent 窗口 2](./docs-public/assets/readme-picture/agent-window-2.png) | ![Agent 窗口 3](./docs-public/assets/readme-picture/agent-window-3.png) |
-| ![多智能体交接](./docs-public/assets/readme-picture/多智能体交接.png) | ![多智能体 handoff](./docs-public/assets/readme-picture/多智能体handoff.png) | ![多智能体质量评测](./docs-public/assets/readme-picture/多智能体质量评测.png) | ![右下角 AI 助手](./docs-public/assets/readme-picture/右下角AI助手.png) |
-| ![AI 同事资料](./docs-public/assets/readme-picture/AI同事当中同事资料.png) | ![新增 AI 同事](./docs-public/assets/readme-picture/ai同事当中新增同事.png) | ![信任设置](./docs-public/assets/readme-picture/ai同事-song-right-信任.png) | ![同事记忆](./docs-public/assets/readme-picture/colleague-song-right-记忆.png) |
-| ![同事例程](./docs-public/assets/readme-picture/ai同事例程.png) | ![编组预设](./docs-public/assets/readme-picture/ai同事编组预设.png) | ![舰队和提议](./docs-public/assets/readme-picture/ai同事舰队和提议.png) | ![舰队提议](./docs-public/assets/readme-picture/ai同事-舰队提议部分.png) |
-| ![知识库](./docs-public/assets/readme-picture/kb.png) | ![知识库分析报告](./docs-public/assets/readme-picture/知识库分析报告.png) | ![拆书换元](./docs-public/assets/readme-picture/知识库拆书换元.png) | ![桥段库](./docs-public/assets/readme-picture/kb-tropes.png) |
-| ![热点采集](./docs-public/assets/readme-picture/热点采集.png) | ![爬虫数据源](./docs-public/assets/readme-picture/知识库爬虫数据源.png) | ![热点榜单](./docs-public/assets/readme-picture/热点榜单.png) | ![爬虫报告](./docs-public/assets/readme-picture/知识库爬虫报告.png) |
-| ![写作指令](./docs-public/assets/readme-picture/写作指令面板prompt.png) | ![Skills](./docs-public/assets/readme-picture/助手方法库skills界面.png) | ![记忆](./docs-public/assets/readme-picture/memory.png) | ![AI 用量](./docs-public/assets/readme-picture/AI用量页面.png) |
-| ![数据看板](./docs-public/assets/readme-picture/数据看板.png) | ![设置](./docs-public/assets/readme-picture/settings.png) | ![飞书 Personal Agent](./docs-public/assets/readme-picture/飞书personalagent.png) | ![飞书自动执行提案](./docs-public/assets/readme-picture/飞书自动执行提案.png) |
+| ![后台任务](./docs-public/assets/readme-picture/agent工作台后台任务.png) | ![运行中任务](./docs-public/assets/readme-picture/运行中任务.png) | ![Agent 窗口 1](./docs-public/assets/readme-picture/agent-window-1.png) | ![Agent 窗口 2](./docs-public/assets/readme-picture/agent-window-2.png) |
+| ![Agent 窗口 3](./docs-public/assets/readme-picture/agent-window-3.png) | ![多智能体交接](./docs-public/assets/readme-picture/多智能体交接.png) | ![多智能体 handoff](./docs-public/assets/readme-picture/多智能体handoff.png) | ![多智能体质量评测](./docs-public/assets/readme-picture/多智能体质量评测.png) |
+| ![右下角 AI 助手](./docs-public/assets/readme-picture/右下角AI助手.png) | ![AI 同事资料](./docs-public/assets/readme-picture/AI同事当中同事资料.png) | ![新增 AI 同事](./docs-public/assets/readme-picture/ai同事当中新增同事.png) | ![信任设置](./docs-public/assets/readme-picture/ai同事-song-right-信任.png) |
+| ![同事记忆](./docs-public/assets/readme-picture/colleague-song-right-记忆.png) | ![同事例程](./docs-public/assets/readme-picture/ai同事例程.png) | ![编组预设](./docs-public/assets/readme-picture/ai同事编组预设.png) | ![舰队和提议](./docs-public/assets/readme-picture/ai同事舰队和提议.png) |
+| ![舰队提议](./docs-public/assets/readme-picture/ai同事-舰队提议部分.png) | ![知识库](./docs-public/assets/readme-picture/kb.png) | ![知识库分析报告](./docs-public/assets/readme-picture/知识库分析报告.png) | ![拆书换元](./docs-public/assets/readme-picture/知识库拆书换元.png) |
+| ![桥段库](./docs-public/assets/readme-picture/kb-tropes.png) | ![热点采集](./docs-public/assets/readme-picture/热点采集.png) | ![爬虫数据源](./docs-public/assets/readme-picture/知识库爬虫数据源.png) | ![热点榜单](./docs-public/assets/readme-picture/热点榜单.png) |
+| ![爬虫报告](./docs-public/assets/readme-picture/知识库爬虫报告.png) | ![写作指令](./docs-public/assets/readme-picture/写作指令面板prompt.png) | ![Skills](./docs-public/assets/readme-picture/助手方法库skills界面.png) | ![记忆](./docs-public/assets/readme-picture/memory.png) |
+| ![AI 用量](./docs-public/assets/readme-picture/AI用量页面.png) | ![数据看板](./docs-public/assets/readme-picture/数据看板.png) | ![设置](./docs-public/assets/readme-picture/settings.png) | ![飞书 Personal Agent](./docs-public/assets/readme-picture/飞书personalagent.png) |
+| ![飞书自动执行提案](./docs-public/assets/readme-picture/飞书自动执行提案.png) | ![飞书定时提醒](./docs-public/assets/readme-picture/飞书定时提醒.png) | | |
 
 ### 七类榜单数据源
 
@@ -384,6 +463,21 @@ Agent Worker 和 Personal Agent 使用同一套上下文原则，但根据交互
 - **长任务上下文**：稳定前缀、工具结果微压缩、摘要、Handoff 和近期工具往返保护；压缩后仍需保留约束与证据。
 - **热点与联网**：返回可核验的来源链接和时间；搜索不可用或缺少来源时如实暴露状态。抓取限公开、授权与摘要场景，不把付费全文抓取作为默认功能。
 
+#### 剧本与小说素材库（可导入本仓知识库）
+
+公开素材与拉片合集见：[VanGong1999/skills](https://github.com/VanGong1999/skills)（剧本｜热门短剧剧本｜拉片分析）。可把其中的**网络公开短剧剧本、小说样例**，以及你本地整理的语料（例如「晋江顶流 32 位作家作品合集」「绿江高收藏必存 50 本」等）**上传/导入本项目知识库**，走拆书、分析报告、桥段沉淀，再在创作台里做**仿写、换元、人物/场景/动机置换**，生成新方案候选。
+
+配套还可参考：
+
+| 仓库 | 用途 |
+| --- | --- |
+| [skills](https://github.com/VanGong1999/skills) | 剧本 / 短剧剧本 / 拉片分析素材 |
+| [screen-creative-skills](https://github.com/VanGong1999/screen-creative-skills) | 影视创作 Skills |
+| [juben](https://github.com/VanGong1999/juben) | 影视创作 Agents |
+| [ai-commerical-writing-knowledgebase](https://github.com/VanGong1999/ai-commerical-writing-knowledgebase) | 蒸馏方法论知识库（不随本仓默认分发） |
+
+**版权边界**：拆书与换元用于研究结构、节奏与可复用桥段，**不代替版权与授权判断**；付费全文、未获授权作品不要导入；过稿与商用须自行确认来源合法性。相关合集默认不随本开源仓打包分发。
+
 #### 导出到 LLM Wiki
 
 仓库内置了一个无外部服务依赖的导出适配器。它读取 `knowledge/`，不改写原文，将 113 篇分类蒸馏文档导出为带 frontmatter 的 LLM Wiki `raw/` 来源包，同时生成 manifest、分类索引和提示词/版权边界报告。
@@ -394,14 +488,6 @@ node scripts/llmwiki-export.mjs check --out llmwiki-export
 ```
 
 把 `llmwiki-export/raw/` 交给 LLM Wiki 的 raw/ingest 流程。`00-meta` 不作为知识正文导入；`15-prompts` 会标记为 `kind: prompts`，只能作为受控参考资料，不能当作系统指令执行。详见 [LLM Wiki 导出包](./llmwiki-export/README.md) 和 [来源边界报告](./llmwiki-export/reports/content-boundaries.md)。
-
-# 私有 LLM Wiki 导出包（不随本仓库分发）
-
-导入项目的蒸馏知识库
-
-https://github.com/VanGong1999/ai-commerical-writing-knowledgebase
-
-方法参考此仓库当中的README
 
 ### 工作台、评测与交付
 
@@ -474,7 +560,7 @@ Web、飞书与 CLI 共享控制面。跨进程模型容量通过 Redis 协调�
 
 | 配置项 | 是否必需 | 怎么配 | 说明 |
 | --- | --- | --- | --- |
-| **聊天模型（LLM）** | **必需** | `.env` 的 `DEEPSEEK_*` / `MINIMAX_*` / `OPENAI_COMPAT_*`，或 Web **设置 → AI 服务商** | 填 Base URL、API Key、模型 ID；启动后以设置页当前默认为准 |
+| **聊天模型（LLM）** | **必需** | `.env` 的 `DEEPSEEK_`* / `MINIMAX_*` / `OPENAI_COMPAT_*`，或 Web **设置 → AI 服务商** | 填 Base URL、API Key、模型 ID；启动后以设置页当前默认为准 |
 | Redis | 本地推荐 | `pnpm docker:up`（读 `REDIS_URL`） | 跨进程队列与流量闸；无 Redis 时能力会降级 |
 | 联网搜索 | 可选 | 优先用已启用且带搜索能力的 Provider；或 `BOCHA_API_KEY` / `SERPER_API_KEY` | 未配置时界面会显示「联网搜索未启用」 |
 | Embedding | 可选 | `EMBEDDING_BASE_URL` + `EMBEDDING_API_KEY` + `EMBEDDING_MODEL` | 知识库语义检索；未配时走内存/hash 回退，不等于完整向量库 |
@@ -597,6 +683,11 @@ pnpm build
 诚实地说，它的吸引力目前主要来自 **问题选择和工程野心**，而不是“已经证明生成内容比所有模型都好”。148 个 Agent、137 个 Skill 和六种格式是覆盖面，不是质量保证；写作审美、长篇一致性、平台适配和最终商业价值仍需要人工验收。项目也仍有契约统一、可观测性、并发长跑和真实作品 A/B 评测等技术债。
 
 因此，最适合给它的定位是：**一个面向 AI 写作生产流程的、正在开发中的工程型开源项目**。如果你关心“怎样把模型的不确定性约束在可检查的工作流里”，它值得 Star 和 Fork；如果你只想要开箱即用、稳定交付的成稿服务，则应先看清当前的 Early Preview 边界。
+
+## 许可证
+
+本仓库源代码以 **Apache License 2.0** 发布，全文见 [LICENSE](./LICENSE)，版权声明见 [NOTICE](./NOTICE)。  
+`knowledge/` 等未随仓分发的课程/语料、以及第三方榜单摘要与用户自有内容，**不在**本许可证默认覆盖范围内；使用时请自行确认版权与授权边界。
 
 ## 支持作者与后续更新
 

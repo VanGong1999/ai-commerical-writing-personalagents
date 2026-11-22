@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08111f" />
+    <meta name="description" content="AI 商业写作台：一支可协作、可检查、可恢复的开源多智能体编剧团队。" />
+    <title>AI 商业写作台 · 多智能体创作工作台</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="AI 商业写作台首页">
+        <span class="brand-mark">X</span>
+        <span><b>AI 商业写作台</b><small>OPEN-SOURCE MULTI-AGENT STUDIO</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#capabilities">能力</a>
+        <a href="#directory">目录</a>
+        <a href="#materials">素材库</a>
+        <a href="#ai-gaps">问题与解法</a>
+        <a href="#efficiency">Token 与可靠性</a>
+        <a href="#warnings">注意事项</a>
+        <a href="#atlas">界面规格</a>
+        <a href="#architecture">原理</a>
+        <a href="#workflow">流程</a>
+        <a href="#gallery">界面</a>
+        <a href="#guide">上手</a>
+      </nav>
+      <div class="header-actions">
+        <a class="text-link" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <button class="menu-button" type="button" aria-label="打开菜单" aria-expanded="false">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse-dot"></span> EARLY PREVIEW · 开源研究项目</div>
+          <h1>让一群 AI<br /><em>真正协作起来。</em></h1>
+          <p class="hero-lead">面向网文作者、编剧、IP 工作室和小型内容团队，把一句模糊灵感交给一支会拆题、会记忆、会协作、会自检、能从中断中恢复的 AI 编剧团队。</p>
+          <p class="hero-note">从选题、人物、大纲、正文到质检和投稿整理，把分散的聊天变成一条可追踪、可修改、可交付的创作流水线。</p>
+          <div class="hero-cta">
+            <a class="button button-primary" href="#guide">从第一个项目开始 <span>↓</span></a>
+            <a class="button button-ghost" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents" target="_blank" rel="noreferrer">阅读源码与 README ↗</a>
+          </div>
+          <div class="hero-proof"><span>◆</span> 不把“模型说完成”当作完成 · 每个交付都有证据</div>
+        </div>
+        <div class="hero-art reveal reveal-delay" aria-label="产品执行流程示意图">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="hero-terminal">
+            <div class="terminal-top"><span class="terminal-dots"><i></i><i></i><i></i></span><span>run / manju.pipeline</span><span>● LIVE</span></div>
+            <div class="terminal-line dim">01  context.manifest      loaded</div>
+            <div class="terminal-line"><b>02</b>  agent.fleet            <mark>3 members online</mark></div>
+            <div class="terminal-line"><b>03</b>  artifact.create         <strong>core_hook v4</strong></div>
+            <div class="terminal-line"><b>04</b>  gate.run                <strong class="ok">PASS · 8 checks</strong></div>
+            <div class="terminal-line"><b>05</b>  human.confirm           <span class="wait">awaiting author</span></div>
+            <div class="terminal-footer"><span>receipt_7f3a…</span><span>tokens 18.4k · cache 82%</span></div>
+          </div>
+          <div class="floating-card card-agent"><span class="mini-avatar">01</span><span><b>总编 / Chief</b><small>正在拆解任务</small></span><i>↗</i></div>
+          <div class="floating-card card-gate"><span class="check-icon">✓</span><span><b>Done Contract</b><small>证据已落盘</small></span></div>
+        </div>
+      </section>
+
+      <section class="signal-strip">
+        <div class="section-shell signal-inner">
+          <span>ONE IDEA</span><b>→</b><span>147+ AGENTS</span><b>→</b><span>137 SKILLS</span><b>→</b><span>82 TOOLS</span><b>→</b><span>TRACEABLE DELIVERY</span>
+        </div>
+      </section>
+
+      <section class="positioning section-shell reveal" id="positioning">
+        <div class="positioning-kicker"><span class="section-kicker">POSITION / FOR COMMERCIAL STORYTELLERS</span><span class="positioning-live"><i></i>从灵感到可交付内容</span></div>
+        <div class="positioning-hero"><div><h2>不是更多聊天窗口，<br /><em>是一套面向商业化写作的 AI 内容生产系统。</em></h2><p>给网文作者、编剧、IP 工作室和小型内容团队：把一句灵感推进成更少 AI 味、更有画面感、能连载、能拍摄、能改编、能交付的候选作品。</p></div><div class="positioning-proof"><b>让文字更像作品，<br />而不是模型输出。</b><span>方法、证据、版本与作者判断一起进入流程。</span></div></div>
+        <div class="audience-row"><span>番茄小说</span><span>晋江文学城</span><span>红果 / 抖音短剧</span><span>七猫小说</span><span>起点中文网</span><span>漫剧 · 短剧 · 电视剧 · IP</span></div>
+        <div class="positioning-bottom"><div><b>你可以用它做什么</b><p>选题、人物、总纲、分集、正文、分镜、拆书换元、质检与投稿包，按不同平台和内容形态组织成可追踪的商业写作流水线。</p></div><div><b>它和普通 AI 写作的区别</b><p>不只把字写长：用岗位、Skill、Tool、来源、Gate、版本、确认和恢复机制，减少套话与空泛解释，保留画面、动作、冲突、节奏与可拍性。</p></div></div>
+      </section>
+
+      <section class="system-map section-shell reveal" id="system-map">
+        <div class="section-heading"><div><div class="section-kicker">SYSTEM / THE WRITING OPERATING SYSTEM</div><h2>147+ 个岗位，<em>一条看得见的生产线。</em></h2></div><p>不是把模型复制成一排窗口，而是把每个局部工作放进有输入、有边界、有证据的协作系统。</p></div>
+        <div class="metric-rail"><div class="metric-card metric-agents"><strong>147+</strong><span>CORE AGENTS</span><small>核心协作岗位；公开目录随仓库持续更新</small></div><div class="metric-card metric-tools"><strong>82</strong><span>TOOLS</span><small>读取、检索、写入、门禁、记忆与编排工具</small></div><div class="metric-card metric-skills"><strong>137</strong><span>SKILLS</span><small>按格式、阶段和岗位按需加载的方法</small></div><div class="metric-card metric-recovery"><strong>∞</strong><span>TRACEABLE</span><small>可视、可暂停、可恢复、可重试的 Run</small></div></div>
+        <div class="control-map" aria-label="从目标到可交付作品的透明执行流程"><div class="control-node node-goal"><span>01</span><b>作者目标</b><small>灵感 / 平台 / 交付物</small></div><i>→</i><div class="control-node node-team"><span>02</span><b>Agent 组 / Fleet</b><small>总编、编剧、责编、评审</small></div><i>→</i><div class="control-node node-method"><span>03</span><b>Skill + Tool</b><small>方法、检索、写入、引用</small></div><i>→</i><div class="control-node node-gate"><span>04</span><b>Gate / Receipt</b><small>结构、字数、逻辑、来源</small></div><i>→</i><div class="control-node node-delivery"><span>05</span><b>版本产物</b><small>可比较、可采纳、可继续</small></div></div>
+        <div class="control-features"><div><span>↻</span><b>随时暂停与恢复</b><small>保留 checkpoint、交接和已完成产物</small></div><div><span>◌</span><b>失败可定位与重试</b><small>知道哪个 Agent、Tool 或 Gate 卡住</small></div><div><span>◉</span><b>主动型 Personal Agent</b><small>按信任、群组和权限提出下一步</small></div><div><span>✓</span><b>作者始终有最终决定权</b><small>候选、版本、采纳和发布都可回看</small></div></div>
+      </section>
+
+      <section class="commercial-map section-shell reveal" id="commercial-map">
+        <div class="section-heading"><div><div class="section-kicker">WORKFLOWS / FROM PLATFORM FIT TO IP VALUE</div><h2>一套底盘，<em>四条商业化路径。</em></h2></div><p>不同平台和内容形态需要不同的节奏、画面、关系与交付，不用一套万能提示词硬写到底。</p></div>
+        <div class="commercial-grid">
+          <article class="commercial-card manju"><span class="commercial-no">01 / MANJU</span><h3>漫剧</h3><p>核心梗 → 十集结构 → 分集正文 → 分镜 / 投稿包</p><div class="commercial-flow"><b>强钩子</b><i>→</i><b>可视动作</b><i>→</i><b>卡点交付</b></div><small>画面优先 · 节奏密集 · 便于改编制作</small></article>
+          <article class="commercial-card shortdrama"><span class="commercial-no">02 / SHORT DRAMA</span><h3>短剧 / 红果</h3><p>选题 → 爽点池 → 分场 → 卡点 → 付费与追更节奏</p><div class="commercial-flow"><b>冲突</b><i>→</i><b>反转</b><i>→</i><b>情绪兑现</b></div><small>可拍可演 · 单元清楚 · 适配短周期生产</small></article>
+          <article class="commercial-card webnovel"><span class="commercial-no">03 / WEB NOVEL</span><h3>网文连载</h3><p>开篇 → 人物 / 金手指 → 卷章 → 正文 → 追更与质检</p><div class="commercial-flow"><b>留人</b><i>→</i><b>升级</b><i>→</i><b>追更</b></div><small>番茄 · 晋江 · 七猫 · 起点等平台的结构化准备</small></article>
+          <article class="commercial-card ip"><span class="commercial-no">04 / IP ADAPTATION</span><h3>电视剧 / IP</h3><p>源作拆解 → 单元重组 → 人物关系 → 可拍提案 → 投稿包</p><div class="commercial-flow"><b>来源</b><i>→</i><b>置换</b><i>→</i><b>开发</b></div><small>保留来源边界 · 强化人物与场面 · 面向后续开发</small></article>
+        </div>
+        <div class="commercial-note"><b>重点不是“让 AI 代写”，而是让商业写作更接近真实生产。</b><span>系统通过来源引用、人物与项目事实、分阶段交接、画面化约束、反 AI 味质检和人工采纳，降低空泛、套话、逻辑漂移与不可拍表达的概率；最终平台判断、版权判断和商业结果仍由作者与市场决定。</span></div>
+      </section>
+
+      <section class="learning-system section-shell reveal" id="learning-system">
+        <div class="section-heading"><div><div class="section-kicker">MEMORY / THAT GETS BETTER WITH YOU</div><h2>跨 Session 的经验，<em>变成下一次的起点。</em></h2></div><p>项目事实、岗位经验、个人偏好和运行教训分层保存；Refining 与 Dreaming 负责整理可审阅变化，Personal Agent 再提出下一步。</p></div>
+        <div class="learning-layout"><div class="memory-orbit"><div class="orbit-core"><b>你的创作系统</b><small>个性化 · 可追溯 · 可控</small></div><div class="orbit-node orbit-rsi"><span>RSI</span><small>运行经验<br />沉淀信号</small></div><div class="orbit-node orbit-refine"><span>REFINING</span><small>读取 Run / Receipt<br />提议 Skill / memory patch</small></div><div class="orbit-node orbit-dream"><span>DREAMING</span><small>整理日志与转录<br />形成可审阅变化</small></div><div class="orbit-node orbit-cross"><span>CROSS-SESSION</span><small>跨会话复用<br />不必每次重讲</small></div></div><div class="learning-list"><article><span>01</span><div><b>从失败中学习</b><p>把失败节点、返工原因、人工反馈和通过的版本整理成可复用经验，减少下一次重复踩坑。</p></div></article><article><span>02</span><div><b>让记忆保持干净</b><p>Refining 读取 Run Trace 与 Receipt，提议 Skill 或记忆补丁；项目事实与个人偏好分开，避免旧建议污染所有项目。</p></div></article><article><span>03</span><div><b>主动发现下一步</b><p>Dreaming 整理日志与转录，形成去重、索引更新等可审阅变化；Personal Agent 再按信任等级提出下一步。</p></div></article><article><span>04</span><div><b>把研究变成素材资产</b><p>报告、爬虫、公开榜单和知识库保留来源、时间与分析结果，继续服务于选题、拆书、换元和 IP 开发。</p></div></article></div></div>
+      </section>
+
+      <section class="intro section-shell reveal">
+        <div class="section-kicker">01 / WHY THIS EXISTS</div>
+        <div class="intro-grid">
+          <h2>把隐形工作摊开，<br /><em>让每一步都能被检查。</em></h2>
+          <div class="intro-text"><p>普通聊天适合讨论一个点。一部作品却要管理事实、版本、依赖、角色、工具、质检和中断恢复。这个项目把这些隐形工作变成可见的控制面，让作者知道谁在做什么、依据是什么、下一步该交给谁。</p><p class="muted">模型负责扩展方案与执行局部工作；工程系统负责边界、证据、版本和失败处理；作者保留选择、审美与最终发布权。</p></div>
+        </div>
+      </section>
+
+      <section class="materials section-shell" id="materials">
+        <div class="section-heading reveal"><div><div class="section-kicker">02 / OPEN MATERIALS &amp; METHOD</div><h2>把公开素材，<em>变成可引用的创作证据。</em></h2></div><p>先拆书、拉片和沉淀方法，再回到创作台做仿写、换元与方案生成。</p></div>
+        <div class="materials-grid">
+          <article class="material-card reveal">
+            <div class="material-card-top"><span class="material-icon">▤</span><span class="material-label">公开素材 / 剧本与小说</span></div>
+            <h3>skills</h3>
+            <p>剧本、热门短剧剧本与拉片分析合集。适合导入网络公开短剧剧本、小说样例和拆解资料，作为选题、结构、节奏与桥段研究的来源。</p>
+            <div class="tag-row"><span>剧本</span><span>短剧</span><span>拉片分析</span></div>
+            <a class="material-link" href="https://github.com/VanGong1999/skills" target="_blank" rel="noreferrer">打开 skills 仓库 ↗</a>
+          </article>
+          <article class="material-card featured reveal reveal-delay">
+            <div class="material-card-top"><span class="material-icon">✦</span><span class="material-label">规范蒸馏源库 / LLM Wiki 交付包</span></div>
+            <h3>ai-commerical-writing-knowledgebase</h3>
+            <p>面向商业化写作的方法论知识库。围绕漫剧、短剧、短片网文、男频与女频中长篇、IP 改编，沉淀结构、人物、质检规则、Prompt 和元数据索引。</p>
+            <div class="tag-row"><span>knowledge/</span><span>llmwiki-export/</span><span>方法论</span></div>
+            <a class="material-link" href="https://github.com/VanGong1999/ai-commerical-writing-knowledgebase" target="_blank" rel="noreferrer">打开知识库仓库 ↗</a>
+          </article>
+        </div>
+        <div class="materials-flow reveal"><span>公开资料</span><b>→</b><span>上传 / 导入知识库</span><b>→</b><span>拆书与分析报告</span><b>→</b><span>桥段沉淀</span><b>→</b><span>仿写 · 换元 · 置换</span></div>
+        <p class="materials-note reveal">导入前请确认资料的公开范围、版权与平台使用规则。知识库用于研究与创作辅助，生成的新方案仍需人工复核与独立创作判断。</p>
+      </section>
+
+      <section class="ai-gaps section-shell" id="ai-gaps">
+        <div class="section-heading reveal"><div><div class="section-kicker">03 / AI WRITING GAPS → SYSTEM RESPONSES</div><h2>先看清 AI 的短板，<em>再决定怎样使用它。</em></h2></div><p>AI 可以加速局部工作，却不能替作者完成判断。这个项目把常见失控点拆开，并用流程、证据和人工确认把它们放回正确的位置。</p></div>
+        <div class="ai-gaps-intro reveal"><span class="ai-gaps-quote">“AI 是概率抽卡器，最终质量取决于使用工具的人。”</span><span class="ai-gaps-source">— AI 写作问题汇总中的核心判断</span></div>
+        <div class="ai-subheading reveal"><span>常见问题</span><small>AI 直出最容易在哪些地方失控</small></div>
+        <div class="ai-gaps-grid">
+          <article class="gap-card reveal"><span class="gap-number">01</span><h3>长文会衰减，设定会失忆</h3><p>一次输出有可控上限，长对话越拉越长，人物口吻、前文事实和场景细节越容易漂移。续写只能反复摘取前文，依然可能出现 OOC 与前后矛盾。</p><div class="gap-tags"><span>上下文丢失</span><span>人设漂移</span></div></article>
+          <article class="gap-card reveal"><span class="gap-number">02</span><h3>逻辑漏洞不会自动消失</h3><p>AI 能指出“看起来像问题”的地方，却不可靠地判断因果、伏笔、动机和生活逻辑。机械降神、危机不升级、前后反转互相打架，往往会在自查后继续存在。</p><div class="gap-tags"><span>逻辑断裂</span><span>自查失真</span></div></article>
+          <article class="gap-card reveal"><span class="gap-number">03</span><h3>套路旧，AI 味重</h3><p>训练数据带来高频结构与陈词滥调。华丽空泛、官方书面词、同义堆叠、机械标点和“像……一样”的比喻，都会让文本显得像未经处理的模型输出。</p><div class="gap-tags"><span>概率抽卡</span><span>文本痕迹</span></div></article>
+          <article class="gap-card reveal"><span class="gap-number">04</span><h3>剧本需要画面，模型常给小说</h3><p>心理解释、环境渲染和表情堆叠并不等于可拍的动作。台词可能啰嗦、干巴、脱离人设，场景缺少具体调度，制作时只能逐句返工。</p><div class="gap-tags"><span>镜头不清</span><span>台词返工</span></div></article>
+          <article class="gap-card reveal"><span class="gap-number">05</span><h3>大纲、梗和换元不能一键交付</h3><p>自动整理会损失情节和衔接，核心事件容易回到老套路。直接把原文翻成剧本，也只是逐集搬运，无法自动获得短剧或漫剧所需的冲突密度。</p><div class="gap-tags"><span>信息损失</span><span>核心事件老套</span></div></article>
+          <article class="gap-card reveal"><span class="gap-number">06</span><h3>经验、市场与合规无法外包</h3><p>模型没有作者的生活阅历、审美和真实体感，也不能替你做选题取舍、平台判断和版权边界判断。它还可能胡编来源、擅自加戏，或把敏感内容推向风险区。</p><div class="gap-tags"><span>判断力缺口</span><span>合规风险</span></div></article>
+        </div>
+        <div class="response-heading reveal"><div><div class="section-kicker">HOW THIS PROJECT RESPONDS</div><h3>把“让 AI 写完”，改成“让系统帮助你做对决定”。</h3></div><span class="ai-subheading-note">项目如何应对</span></div>
+        <div class="response-grid">
+          <article class="response-card featured reveal"><span class="response-icon">◌</span><div><h3>上下文工程</h3><p>项目事实、人物 Bible、素材引用、岗位记忆和阶段产物分层保存。每个 Agent 只接收当前任务需要的证据，减少串项目、忘设定和无关信息污染。</p><small>对应：长文衰减 · 人设漂移</small></div></article>
+          <article class="response-card reveal"><span class="response-icon">⌘</span><div><h3>分阶段编排与专业岗位</h3><p>把选题、人物、结构、正文、拆书、换元和质检拆成可交接的岗位与阶段。不同格式使用不同的任务边界，不让一个窗口承担整部作品。</p><small>对应：小说化 · 大纲丢情节 · 一键改编</small></div></article>
+          <article class="response-card reveal"><span class="response-icon">✓</span><div><h3>质量门禁与交付证据</h3><p>用 Schema、字数、结构、钩子、逻辑线索、格式和合规规则做门禁，并保存 Run、Receipt 与版本，让“模型说完成”变成可以查看、比较和复核的交付。</p><small>对应：逻辑漏洞 · 格式错误 · 假完成</small></div></article>
+          <article class="response-card reveal"><span class="response-icon">◉</span><div><h3>人机协作与候选比较</h3><p>作者可以比较多个候选、采纳某个版本、指出缺口，再把结果交给下游 Agent。系统把选择权留在作者手里，AI 负责扩展方案和执行局部工作。</p><small>对应：判断力缺口 · 过度依赖</small></div></article>
+          <article class="response-card reveal"><span class="response-icon">▤</span><div><h3>知识库、拆书与来源追踪</h3><p>把公开剧本、小说样例和方法论导入知识库，生成分析报告、引用片段和桥段沉淀。素材先成为可追溯证据，再服务于仿写、换元和人物／场景／动机置换。</p><small>对应：素材不足 · 套路化 · 盲目找剧情</small></div></article>
+          <article class="response-card reveal"><span class="response-icon">↻</span><div><h3>可恢复的长任务执行</h3><p>租约、心跳、checkpoint、重试和暂停恢复，让任务遇到限流、掉线或人工中断时保留已有产物。失败会暴露在流程里，而不是悄悄变成一份残稿。</p><small>对应：长任务失控 · 重复生成断层</small></div></article>
+        </div>
+        <div class="ai-gaps-bottom reveal"><div><b>作者仍然负责什么？</b><p>逻辑复核、情绪与节奏、人物立场、生活真实感、选题取舍、版权与合规，以及最终的 20% 精修。项目帮助你更快看到问题、保留证据、反复比较，不替你完成这些判断。</p></div><a class="button button-primary" href="#guide">看五分钟上手流程 ↓</a></div>
+      </section>
+
+      <section class="efficiency section-shell" id="efficiency">
+        <div class="section-heading reveal"><div><div class="section-kicker">04 / TOKEN ECONOMY &amp; RELIABILITY</div><h2>少发送无关上下文，<em>把预算花在真正的创作上。</em></h2></div><p>节省 Token 不是把内容偷偷删掉，而是让稳定部分可缓存、让变化部分按任务加载，让每次调用都知道自己为什么需要这些信息。</p></div>
+        <div class="efficiency-summary reveal"><div><b>为什么普通工具容易越用越贵？</b><p>把完整系统提示、所有工具 Schema、整段聊天记录和全部资料塞进每一轮，会重复支付同一批输入 Token；上下文越长，模型越容易忽略真正相关的内容，返工和无脑重试又会继续放大成本。</p></div><span class="efficiency-equation">固定前缀缓存<br /><i>＋</i>任务相关增量<br /><i>＋</i>可追踪的重试</span></div>
+        <div class="efficiency-grid">
+          <article class="efficiency-card featured reveal"><span class="efficiency-icon">◫</span><div><h3>提示词缓存友好</h3><p>System Prompt 被拆成固定顺序的 Slot。角色、Skill 元信息、工具索引和合同组成稳定前缀，并计算 prefix hash；同一岗位连续执行时，静态部分不必每轮重新组织，能更好利用模型的 KV / Prompt Cache。</p><small>作用：减少重复输入 · 提高多轮复用率</small></div></article>
+          <article class="efficiency-card reveal"><span class="efficiency-icon">⌁</span><div><h3>Agent、Skill、Tool 动态加载</h3><p>Agent 默认只看到 Skill 名称和摘要，需要时才读取正文；任务相关的 Skill Catalog 排在动态后缀，工具也按已知能力优先、未知能力再搜索。这样不会把 137 个 Skill 和整套工具 Schema 一起塞进每一次调用。</p><small>作用：最小上下文 · 更少工具干扰</small></div></article>
+          <article class="efficiency-card reveal"><span class="efficiency-icon">◌</span><div><h3>上下文分层与预算</h3><p>角色、合同、核心事实、经验教训、个性化偏好和运行时信息分别占位，并有字符预算。必需约束超预算会停下来要求拆分或整理，不会静默截断关键设定。</p><small>作用：控制长度 · 保住关键约束</small></div></article>
+          <article class="efficiency-card reveal"><span class="efficiency-icon">◎</span><div><h3>用户偏好变成可复用配置</h3><p>用户明确表达的文风、节奏、题材禁区、交付格式、常用模型和反馈可以沉淀到 personalization Slot。后续任务只注入与当前项目相关的偏好，避免每次重新解释，也避免把别的项目习惯串进来。</p><small>作用：减少重复沟通 · 支持个性化工作台</small></div></article>
+          <article class="efficiency-card reveal"><span class="efficiency-icon">⌘</span><div><h3>用来源与引用降低幻觉</h3><p>知识库引用保留来源、版本和范围，项目事实与分析报告成为可回查的 Context Ref。Agent 先检索相关证据再生成，Gate 和 Receipt 记录它用了什么，发现编造时可以沿着证据链定位。</p><small>作用：少凭空补全 · 方便复核与纠错</small></div></article>
+          <article class="efficiency-card reveal"><span class="efficiency-icon">↻</span><div><h3>全流程透明，从失败点恢复</h3><p>Run Trace 会展示 Agent、工具、产物、Gate、失败和人工确认发生在哪里。遇到限流、掉线或暂停时，系统从最近的 checkpoint 继续，只重跑未完成的阶段，复用已经通过的产物、引用和缓存前缀，不必从头重发整段上下文。</p><small>作用：定位失败 · 少重跑 · 少发 Token</small></div></article>
+        </div>
+        <div class="efficiency-flow reveal"><div class="efficiency-flow-step"><b>固定层</b><span>role · contract · tool index</span><small>稳定、可哈希、适合缓存</small></div><b class="efficiency-arrow">→</b><div class="efficiency-flow-step"><b>任务层</b><span>ranked skills · core facts</span><small>只装配本次需要的能力</small></div><b class="efficiency-arrow">→</b><div class="efficiency-flow-step"><b>个性化层</b><span>preferences · lessons</span><small>沿用确认过的工作习惯</small></div><b class="efficiency-arrow">→</b><div class="efficiency-flow-step"><b>运行层</b><span>refs · outputs · receipt</span><small>可回查、可恢复、可纠错</small></div></div>
+        <div class="efficiency-note reveal"><b>怎样理解“比别的工具省 Token”？</b><p>它指的是系统减少了重复提示词、无关工具定义、整段历史和失败重试带来的浪费。实际节省量取决于模型供应商是否支持缓存、任务长度、缓存命中率、调用次数和你选择的上下文范围，页面不承诺固定百分比。</p><a class="text-link" href="#architecture">查看 Graph / Loop / Context 原理 ↗</a></div>
+      </section>
+
+      <section class="warnings section-shell" id="warnings">
+        <div class="section-heading reveal"><div><div class="section-kicker">05 / READ BEFORE YOU RUN</div><h2>先了解这些限制，<em>再把任务交给系统。</em></h2></div><p>这是当前版本的真实使用边界。提前缩小能力范围、降低并发和拆短任务，通常比失败后反复重试更省 Token。</p></div>
+        <div class="warning-banner reveal"><span class="warning-mark">!</span><div><b>正常功能验收已过（含 S11_DONE），但系统仍处于 Early Preview。</b><p>核心错误已经修复，剩余风险主要集中在共享契约、并行开发后的字段一致性、权限派生上下文、重复错误策略和长任务稳定性。模型、Provider、工具搜索和上下文压缩仍可能在边界条件下失败。</p></div></div>
+        <div class="warnings-grid">
+          <article class="warning-card reveal"><span class="warning-number">01</span><h3>tool_search 可能反复找不到工具</h3><p>当工具名、参数或 Agent 权限不匹配时，模型可能连续搜索、换关键词、再搜索。这类空转会消耗大量 Token，却没有推进任务。</p><div class="warning-action"><b>建议</b><span>按自己的工作流删减 tools、agents、skills，只保留常用和当前阶段需要的能力；已知工具直接调用，连续两轮找不到就停下来改任务边界。</span></div></article>
+          <article class="warning-card reveal"><span class="warning-number">02</span><h3>Subagents 仍可能失败</h3><p>子任务会受到模型返回不完整、并发闸、Provider 限流、强顺序依赖和上下文过大的影响。当前策略适合独立候选或只读侦查，不适合把整本书拆给大量写手并行硬灌。</p><div class="warning-action"><b>建议</b><span>每次并行控制在 2–3 个，嵌套深度 1；大纲未确认、正文有强依赖时保持串行。</span></div></article>
+          <article class="warning-card reveal"><span class="warning-number">03</span><h3>中国模型优先 DeepSeek</h3><p>本项目一次任务会连续触发编排、Agent、工具循环和质检。历史经验显示，DeepSeek 更适合作为正式写稿主力；MiniMax 和其他易限流 API 在多轮工具调用时更容易排队或返回 429。</p><div class="warning-action"><b>建议</b><span>DeepSeek 全局并发从 6–8 起步；使用 MiniMax 时先把 workerConcurrencyCap、任务组和子任务并发都降到 ≤2。</span></div></article>
+          <article class="warning-card reveal"><span class="warning-number">04</span><h3>MiniMax 的失败率不要被低估</h3><p>项目历史日志观察到约 8.9% 的 MiniMax 429“准备重试”记录，接近你在实际使用中感受到的约 10% 波动。它不是完整 attempt 级失败率，重试后成功和未记录的上游尝试都可能改变真实比例。</p><div class="warning-action"><b>建议</b><span>把 MiniMax 当备用或小流量对照，减少 Fleet 和 fanout；不要因为增加 Worker 就假设任务会更快。</span></div></article>
+          <article class="warning-card reveal"><span class="warning-number">05</span><h3>中文、表情与英文会让 Token 估算失真</h3><p>中文字符、emoji、混合 JSON、英文标识符和工具参数的计数方式不同，字符预算不能直接等同于模型 Token。上下文压缩可能仍超出有效窗口，摘要也可能在错误时机触发。</p><div class="warning-action"><b>建议</b><span>不要把估算值当硬上限；长任务先拆段，保留项目事实和产物引用，发现摘要遗漏或早期摘要被遗忘时，直接新开窗口并从已保存产物继续。</span></div></article>
+          <article class="warning-card reveal"><span class="warning-number">06</span><h3>长任务请控制在可恢复范围</h3><p>任务超过约 15 分钟后，模型往返、工具调用、压缩和限流叠加，漂移与失败概率都会上升。步骤太多时，即使系统保留了 checkpoint，也可能需要人工重新确认上下文。</p><div class="warning-action"><b>建议</b><span>单个任务尽量控制在 15 分钟以内、800 步以内；写完阶段产物就停下来验收，必要时开新窗口继续。</span></div></article>
+        </div>
+        <div class="remaining-risks reveal">
+          <div class="remaining-risks-head"><div><div class="section-kicker">SUBAGENTS / FAILURE GUIDE</div><h3>Subagents 失败时，先对照错误类型。</h3></div><p>下面的“建议值”是起步档，不是 Provider 配额承诺；先看 Run Trace 的错误码和失败子任务，再决定是否重跑。</p></div>
+          <div class="remaining-risk-grid">
+            <article><span>输出</span><h4>返回不完整或结果不可用</h4><p>子 Agent 可能只返回半截文本、没有 handoff，或要求 terminal proof 但证明不可用。不要把父 Agent 的一句“已完成”当作交付证据。</p></article>
+            <article><span>限流</span><h4>全局闸 / Provider 429</h4><p>本机等待超时、上游 RPM、TPM、5 小时窗或周窗都可能让子任务排队、重试后失败；提高并发只会放大突发。</p></article>
+            <article><span>硬限制</span><h4>并行超过 3 或深度超过 1</h4><p>当前运行时硬限制是单次 parallel 最多 3 个、嵌套深度 1。超过时会出现 <code>parallel_size_exceeded</code> 或 <code>depth_exceeded</code>，不是模型能力不足。</p></article>
+            <article><span>能力</span><h4>嵌套不可用或角色不允许</h4><p>某些流水线成员会隐藏 <code>subagent_spawn</code>；子任务默认不能再派生，scout 还是只读。出现 <code>nested_unavailable</code> 时应改任务边界，不要重复调用。</p></article>
+            <article><span>上下文</span><h4>引用无效、过大或绑定失败</h4><p>并行任务共享的 <code>contextRefs</code> 必须来自当前项目、带版本和范围；引用过多、过长、版本失配或快照 ID 不支持，都可能导致 <code>invalid_delegated_context</code>。</p></article>
+            <article><span>权限</span><h4>工具 / 项目 / 角色范围不足</h4><p>scout 不能写产物，planner 工具有限，reviewer 需要明确候选引用；缺项目、工具不在 allowlist 或角色映射缺失时，子任务会启动失败或无法交付。</p></article>
+            <article><span>状态</span><h4>子任务非 succeeded</h4><p>取消、超时、模型错误、Gate 未通过或 worker 崩溃都会让父任务收到 failed / cancelled / unknown。并行结果会保留失败原因，不能当成全量成功。</p></article>
+            <article><span>持久化</span><h4>写入证据未落盘</h4><p>子任务执行成功但步骤或 delegation 结果持久化失败时，系统会拒绝把它伪装成成功；先检查 checkpoint / receipt，再决定恢复或人工确认。</p></article>
+          </div>
+          <div class="warning-action"><b>强顺序依赖的正确用法</b><span>大纲未确认、上一集产物未验收、同一共享产物会互相覆盖时保持串行；Subagents 更适合独立创意候选、只读侦查、规划和评审 fanout，不适合把全书正文同时灌给多个写手。</span></div>
+        </div>
+        <div class="warning-checklist reveal">
+          <div><div class="section-kicker">CONFIG QUICK START</div><h3>按模型改哪几个值？</h3><p style="color:var(--muted);font-size:11px;line-height:1.7;margin-top:10px;">先改全局闸，再改 Fleet，最后决定是否开 Subagents；三层会叠加，不能只改一层。</p></div>
+          <ol>
+            <li><b>DeepSeek 日常：</b><code>workerConcurrencyCap=6–8</code>，Fleet <code>maxConcurrency=4</code>，每次 Subagents <code>2–3</code>，嵌套深度 <code>1</code>。</li>
+            <li><b>MiniMax / 其它易限流 API：</b>全局闸和 Fleet 先设 <code>≤2</code>，Subagents <code>1–2</code>，正文串行；观察 429、排队超时和任务调用数后再逐步加。</li>
+            <li><b>环境兜底：</b><code>AGENT_WORKER_CONCURRENCY</code> 只在设置页没有写入时作默认，同时也是每个 Worker 的启动并发上限；改大后要重启 Worker。需要平滑突发可调 <code>LLM_MIN_REQUEST_INTERVAL_S</code>，等待名额看 <code>LLM_ADMISSION_WAIT_S</code>。</li>
+            <li><b>CLI / Web：</b>设置 → 流量治理。DeepSeek 示例：<code>pnpm xzm settings set-llm-traffic --body '{"workerConcurrencyCap":8,"fleetDefaultConcurrency":4}'</code>；易限流 Provider 示例改为 <code>{"workerConcurrencyCap":2,"fleetDefaultConcurrency":2}</code>。已有 Fleet 的显式并发需单独核对。</li>
+          </ol>
+          <a class="text-link" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents/blob/master/docs-public/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B%E9%99%90%E6%B5%81%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D.md" target="_blank" rel="noreferrer">深入阅读：模型选型、限流、并发与自动回复 ↗</a>
+        </div>
+        <div class="warning-checklist reveal"><div><div class="section-kicker">RECOVERY ORDER</div><h3>失败后的 6 步</h3></div><ol><li>先看 Run Trace、错误码、子任务状态和最近 checkpoint。</li><li>把 parallel fanout 降到 1–2，易限流 Provider 先停掉大 Fleet。</li><li>有依赖的 Stage 改串行，先验收上游产物再继续。</li><li>缩小 <code>contextRefs</code>，保留当前项目的版本、UTF-16 <code>start/end</code> 偏移和精确 <code>quote</code>；最多 8 条引用、每条最多 4,000 字符、合计最多 12,000 字符。</li><li>检查项目存在、role 映射、tools allowlist 和信任/确认状态。</li><li>结果不确定时先核对已结束子任务的 run ID、receipt 和 artifact 版本，再从 checkpoint 恢复或只重跑缺失项，不要原样盲重试。</li></ol><a class="text-link" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents/blob/master/docs-public/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B%E9%99%90%E6%B5%81%E5%B9%B6%E5%8F%91%E4%B8%8E%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D.md" target="_blank" rel="noreferrer">深入阅读完整模型与限流指南（见 §7）↗</a></div>
+        <div class="remaining-risks reveal"><div class="remaining-risks-head"><div class="section-kicker">KNOWN ENGINEERING RISKS</div><h3>目前还没有完全收敛的四类问题</h3></div><div class="remaining-risk-grid"><article><span>P0</span><h4>Schema / 契约漂移</h4><p>六个 Cursor 窗口并行推进后，工具参数、Skill 示例和前后端 DTO 可能混用 `input_schema` 与 `inputSchema`。模型按文档调用，仍可能被另一层拒绝。</p></article><article><span>P1</span><h4>撤权后的派生上下文</h4><p>新请求会拦截失效权限，但旧摘要、缓存和子 Agent 结果若已混入撤权内容，全路径重建与清理仍是后续设计。</p></article><article><span>P1</span><h4>重复错误后的策略升级</h4><p>同一个错误指纹出现多次时，停止原样重试、切换路径或升级人工的策略还不够完善，模型可能继续搜工具、换参数和空转。</p></article><article><span>提示</span><h4>大文件定位可能失败</h4><p>模型读取大文件时可能找不到目标段落、误判已读范围或只记住摘要。请提供章节、行号、关键词或精确文件范围，避免让模型反复全文搜索。</p></article></div></div>
+        <div class="warning-checklist reveal"><div><div class="section-kicker">SAFE START</div><h3>第一次使用前，先做这 5 个动作。</h3></div><ol><li>删掉当前阶段不用的 tools、agents、skills。</li><li>DeepSeek 从低并发开始，MiniMax 先设 ≤2。</li><li>先跑一个核心梗、人物小传或单场景，不要直接开全集。</li><li>盯住 Run Trace、失败节点、摘要覆盖范围和最近 checkpoint。</li><li>摘要开始遗漏早期事实时，新开窗口，从已保存产物和引用继续。</li></ol><a class="text-link" href="../模型选型限流并发与自动回复.md" target="_blank" rel="noreferrer">阅读完整模型与限流说明 ↗</a></div>
+      </section>
+
+      <section class="capabilities section-shell" id="capabilities">
+        <div class="section-heading reveal"><div><div class="section-kicker">02 / CAPABILITY MAP</div><h2>一支团队，<em>十一种能力。</em></h2></div><p>从自然语言目标到可检查交付，每一层都有自己的职责与护栏。</p></div>
+        <div class="capability-grid" id="capability-grid">
+          <article class="capability-card featured reveal" data-kind="orchestration"><span class="card-number">01</span><div class="card-icon">⌘</div><h3>任务拆解与编排</h3><p>识别格式、阶段、项目范围和交付物，决定哪些岗位并行、哪些必须接力。</p><div class="tag-row"><span>Stage Graph</span><span>Fleet</span><span>Dependency</span></div></article>
+          <article class="capability-card reveal" data-kind="roles"><span class="card-number">02</span><div class="card-icon">◎</div><h3>专业岗位协作</h3><p>选题、人物、世界观、结构、正文、质检、拆书和投稿各有专职方法。</p><div class="tag-row"><span>148 Agents</span><span>Role Contract</span></div></article>
+          <article class="capability-card reveal" data-kind="context"><span class="card-number">03</span><div class="card-icon">◌</div><h3>上下文与记忆</h3><p>项目事实、Bible、岗位经验和资料引用分层保存，减少串项目与设定漂移。</p><div class="tag-row"><span>Context Slots</span><span>Handoff</span></div></article>
+          <article class="capability-card reveal" data-kind="tools"><span class="card-number">04</span><div class="card-icon">⌁</div><h3>工具与权限治理</h3><p>已知工具直接调用，未知能力按需发现；写入、危险动作和权限都有边界。</p><div class="tag-row"><span>Tool Loop</span><span>Policy Gate</span></div></article>
+          <article class="capability-card reveal" data-kind="quality"><span class="card-number">05</span><div class="card-icon">✓</div><h3>质量门禁</h3><p>Schema、字数、结构、逻辑、钩子、合规与 Done Contract 把“假完成”挡在门外。</p><div class="tag-row"><span>Gate</span><span>Receipt</span></div></article>
+          <article class="capability-card reveal" data-kind="recovery"><span class="card-number">06</span><div class="card-icon">↻</div><h3>长任务与恢复</h3><p>租约、心跳、checkpoint、重试、暂停、恢复和写入账本支撑十几分钟到数小时的任务。</p><div class="tag-row"><span>Lease</span><span>Checkpoint</span></div></article>
+          <article class="capability-card reveal" data-kind="knowledge"><span class="card-number">07</span><div class="card-icon">▤</div><h3>知识库与拆书</h3><p>搜索方法论、上传文档、分析报告、桥段和图谱，只把相关证据送进当前岗位。</p><div class="tag-row"><span>KB</span><span>LLM Wiki Export</span></div></article>
+          <article class="capability-card reveal" data-kind="human"><span class="card-number">08</span><div class="card-icon">◉</div><h3>人机协作</h3><p>作者可以逐步确认、比较候选、采纳版本，也可以让总编主动提出缺口和任务。</p><div class="tag-row"><span>Human-in-loop</span><span>Action Audit</span></div></article>
+          <article class="capability-card reveal" data-kind="models"><span class="card-number">09</span><div class="card-icon">◈</div><h3>模型与成本治理</h3><p>接入 DeepSeek、MiniMax、Ollama，统一处理限流、退避、缓存、用量和成本估算。</p><div class="tag-row"><span>Provider</span><span>LLM Governor</span></div></article>
+        </div>
+      </section>
+
+      <section class="directory section-shell" id="directory">
+        <div class="section-heading reveal"><div><div class="section-kicker">03 / CAPABILITY DIRECTORY</div><h2>从“有多少”，<em>看到“能做什么”。</em></h2></div><p>搜索 Agent、Skill 和 Tool，展开职责、输入边界、门禁与可调用能力。</p></div>
+        <div class="directory-intro reveal"><div class="directory-stat"><b id="directory-agent-count">148</b><span>registered agents</span></div><div class="directory-stat"><b id="directory-skill-count">137</b><span>executable skills</span></div><div class="directory-stat"><b id="directory-tool-count">—</b><span>runtime tools</span></div><div class="directory-stat directory-source"><span>DATA SOURCE</span><b>公开 catalog 元数据</b><small>不读取数据库、Session 或密钥</small></div></div>
+        <div class="directory-controls reveal"><label class="directory-search"><span>⌕</span><input id="directory-search" type="search" placeholder="搜索名称、职责、团队、Skill 或工具…" autocomplete="off" /></label><div class="directory-tabs" role="tablist" aria-label="能力目录类型"><button class="directory-tab active" data-directory-tab="agents">Agents</button><button class="directory-tab" data-directory-tab="skills">Skills</button><button class="directory-tab" data-directory-tab="tools">Tools</button></div><select id="directory-filter" aria-label="按团队或类别筛选"><option value="all">全部团队 / 类别</option></select></div>
+        <div class="directory-status" id="directory-status" aria-live="polite">正在读取公开能力目录…</div>
+        <div class="directory-grid" id="directory-grid"></div>
+        <button class="directory-more" id="directory-more" type="button" hidden>加载更多</button>
+        <p class="directory-footnote">目录展示的是当前仓库注册的职责与调用关系，不代表每个 Agent 都能脱离上下文独立完成任意任务；完整实现仍以源码、Skill 正文和运行时 Gate 为准。</p>
+      </section>
+
+      <section class="atlas section-shell" id="atlas">
+        <div class="section-heading reveal"><div><div class="section-kicker">04 / INTERFACE ATLAS</div><h2>每一个界面，<em>都有它的任务。</em></h2></div><p>不是截图说明，而是把“谁在什么状态下，输入什么，得到什么，失败后怎么办”讲清楚。</p></div>
+        <div class="atlas-hero reveal"><div><span class="atlas-badge">PRODUCT SPEC / PUBLIC SURFACE</span><h3>从首页到交付，沿着用户真正走过的路径阅读。</h3><p>点击左侧界面组，查看该界面的目标、可执行操作、输入与输出、状态机、权限边界、证据来源和恢复路径。已实现能力与设计目标会明确分开。</p></div><div class="atlas-legend"><span><i class="legend-dot implemented"></i>当前界面 / 已有截图</span><span><i class="legend-dot runtime"></i>运行时能力 / 由服务支持</span><span><i class="legend-dot planned"></i>规划增强 / 需要继续验收</span></div></div>
+        <div class="atlas-layout reveal"><div class="atlas-main"><div class="atlas-toolbar"><label class="directory-search"><span>⌕</span><input id="atlas-search" type="search" placeholder="搜索界面、操作、状态或产物…" autocomplete="off" /></label><span class="atlas-count" id="atlas-count">正在加载界面规格…</span></div><div class="atlas-grid" id="atlas-grid"></div></div></div>
+        <p class="atlas-note">规格来自当前仓库的公开页面、截图、Agent/Skill/Tool catalog 与运行时命名；没有把模型可能做到的事情包装成确定承诺。</p>
+      </section>
+
+      <section class="workflow section-shell" id="workflow">
+        <div class="section-heading reveal"><div><div class="section-kicker">04 / HOW IT WORKS</div><h2>一项任务，<em>如何穿过系统。</em></h2></div><p>每一步都留下可回放的状态、产物或证据。</p></div>
+        <div class="workflow-layout">
+          <div class="workflow-rail" aria-label="任务执行流程">
+            <div class="flow-step active reveal"><span>01</span><div><b>作者提出目标</b><small>Web · 飞书 · CLI</small></div></div>
+            <div class="flow-step reveal"><span>02</span><div><b>总编识别范围</b><small>格式 · 阶段 · 交付物</small></div></div>
+            <div class="flow-step reveal"><span>03</span><div><b>编排协作岗位</b><small>并行 · 接力 · 子任务</small></div></div>
+            <div class="flow-step reveal"><span>04</span><div><b>执行并持久化</b><small>工具 · 产物 · 记忆 · Run</small></div></div>
+            <div class="flow-step reveal"><span>05</span><div><b>门禁与人工确认</b><small>Gate · Receipt · Adopt</small></div></div>
+          </div>
+          <div class="workflow-console reveal reveal-delay"><div class="console-head"><span>RUN TRACE</span><span class="console-status"><i></i> RESUMABLE</span></div><div class="console-body"><div class="trace-row"><span class="trace-time">00:00.4</span><b>chief</b><span>识别为 manju / S0_SETUP</span></div><div class="trace-row"><span class="trace-time">00:01.8</span><b>fleet</b><span>建立 3 个独立岗位</span></div><div class="trace-row"><span class="trace-time">00:12.7</span><b>memory</b><span>注入 bible + 2 条引用</span></div><div class="trace-row"><span class="trace-time">00:24.1</span><b>artifact</b><span>core_hook v4 已保存</span></div><div class="trace-row"><span class="trace-time">00:26.6</span><b>gate</b><span class="green">8/8 PASS · 等待作者确认</span></div><div class="console-cursor">▍</div></div></div>
+        </div>
+      </section>
+
+      <section class="architecture section-shell" id="architecture">
+        <div class="section-heading reveal"><div><div class="section-kicker">06 / GRAPH · LOOP · CONTEXT</div><h2>把智能体能力，<em>变成可解释的系统。</em></h2></div><p>Graph 决定顺序，Loop 负责执行，Context Engineering 决定每一次调用看到什么。</p></div>
+        <div class="architecture-stack reveal" aria-label="架构原理连续说明"><div class="architecture-panel" id="architecture-graph"></div><div class="architecture-panel" id="architecture-loop"></div><div class="architecture-panel" id="architecture-context"></div></div>
+      </section>
+
+      <section class="formats section-shell reveal">
+        <div class="section-kicker">05 / SIX CREATIVE FORMATS</div><h2>同一套底盘，<em>六种写作现场。</em></h2>
+        <div class="format-grid"><div><span>01</span><b>漫剧</b><small>分集 · 分镜 · 投稿整理</small></div><div><span>02</span><b>短剧</b><small>节拍 · 卡点 · 分场剧本</small></div><div><span>03</span><b>短篇</b><small>开篇 · 结构 · 收束</small></div><div><span>04</span><b>男频长篇</b><small>金手指 · 升级 · 追更</small></div><div><span>05</span><b>女频长篇</b><small>关系 · 情绪 · 节奏</small></div><div><span>06</span><b>IP 改编</b><small>拆书 · 单元 · 改编取舍</small></div></div>
+      </section>
+
+      <section class="gallery-section section-shell" id="gallery">
+        <div class="section-heading reveal"><div><div class="section-kicker">06 / INSIDE THE STUDIO</div><h2>不是概念图，<em>是真实工作台。</em></h2></div><p>从项目首页到 Agent 过程、知识库和质量评测，打开每一层工程证据。</p></div>
+        <div class="gallery-tabs" role="tablist" aria-label="截图分类"><button class="gallery-tab active" data-filter="all">全部界面</button><button class="gallery-tab" data-filter="studio">创作台</button><button class="gallery-tab" data-filter="agents">AI 同事 / Agent</button><button class="gallery-tab" data-filter="knowledge">知识库</button><button class="gallery-tab" data-filter="quality">记忆 / 评测</button></div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+        <p class="gallery-hint">点击任意截图查看大图 · 所有图片均来自仓库内的公开演示资产</p>
+      </section>
+
+      <section class="guide section-shell" id="guide">
+        <div class="guide-panel reveal"><div class="section-kicker">07 / FIRST RUN</div><h2>五分钟，<em>跑通第一次协作。</em></h2><p>从源码到第一个可检查产物，不需要先读完整个架构。</p><ol class="guide-steps"><li><span>01</span><div><b>克隆并安装</b><code>pnpm install</code><small>Node 22.6+ · Python 3.12+ · uv · Redis</small></div></li><li><span>02</span><div><b>配置 Provider</b><code>DEEPSEEK_API_KEY=…</code><small>建议先用 DeepSeek，避免把真实密钥写入前端</small></div></li><li><span>03</span><div><b>启动四个本地服务</b><code>pnpm docker:up<br />pnpm dev:api · pnpm dev:worker<br />pnpm dev:agent-worker · pnpm dev:web</code></div></li><li><span>04</span><div><b>创建项目并选格式</b><small>先试一个核心梗或人物小传任务，观察 Run、工具和 Gate</small></div></li><li><span>05</span><div><b>比较、确认、继续</b><small>作者采纳候选后，再把产物交给下游 Agent</small></div></li></ol><a class="button button-primary" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents#快速启动" target="_blank" rel="noreferrer">打开完整启动说明 ↗</a></div>
+        <div class="guide-aside reveal reveal-delay"><div class="aside-label">WHAT YOU GET</div><div class="result-card"><span class="result-icon">✦</span><b>一个可继续的项目</b><p>不是一次性回答，而是项目事实、候选产物、版本和下一步。</p></div><div class="result-card"><span class="result-icon">◒</span><b>一条可回放的 Run</b><p>知道哪个 Agent 调了什么工具，哪个 Gate 通过，哪里需要人工判断。</p></div><div class="result-card"><span class="result-icon">↻</span><b>一次可恢复的失败</b><p>遇到限流、掉线或暂停，保留已有证据，继续而不是从零开始。</p></div></div>
+      </section>
+
+      <section class="safety section-shell reveal"><div class="safety-mark">!</div><div><div class="section-kicker">08 / HONEST BOUNDARIES</div><h2>工程可以管住失控，<em>不能替你审美。</em></h2><p>Gate 通过不等于作品好看、原创、可拍或一定过平台。项目仍是 Early Preview：模型能力、供应商额度、本地硬件、长篇一致性和最终商业价值都需要真实任务与人工复核。</p></div><a class="text-link" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents/blob/master/docs-public/现存问题.md" target="_blank" rel="noreferrer">查看已知问题 ↗</a></section>
+
+      <section class="support section-shell" id="support"><div class="support-copy reveal"><div class="section-kicker">09 / SUPPORT OPEN SOURCE</div><h2>如果它对你有帮助，<em>给它一个 Star。</em></h2><p>Star、Fork、可复现 Issue 和真实作品反馈，比一句“很酷”更能帮助这个正在开发中的项目继续变好。</p><div class="support-actions"><a class="button button-primary" href="https://github.com/VanGong1999/ai-commerical-writing-personalagents" target="_blank" rel="noreferrer">Star / Fork on GitHub ↗</a><a class="button button-ghost" href="mailto:gongfan1213@163.com">联系作者</a></div></div><div class="support-cards reveal reveal-delay"><div class="support-note"><span>SUPPORT AUTHOR</span><b>支持入口仅展示在这里</b><small>下方图片来自仓库公开的 sponsor 目录；页面不读取或转写图片中的个人信息。</small></div><div class="qr-row"><img src="../sponsor/wechat-friend.jpg" alt="个人微信支持入口" loading="lazy" /><img src="../sponsor/wechat-official.jpg" alt="公众号支持入口" loading="lazy" /><img src="../sponsor/wechat-pay.jpg" alt="微信支付支持入口" loading="lazy" /><img src="../sponsor/alipay.jpg" alt="支付宝支持入口" loading="lazy" /></div></div></section>
+    </main>
+
+    <footer class="site-footer section-shell"><div><a class="brand" href="#top"><span class="brand-mark">X</span><span><b>AI 商业写作台</b><small>VanGong · EARLY PREVIEW</small></span></a><p>把模型的不确定性，约束在可检查的工作流里。</p></div><div class="footer-links"><a href="https://github.com/VanGong1999/ai-commerical-writing-personalagents" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://github.com/VanGong1999/ai-commerical-writing-personalagents/blob/master/README.md" target="_blank" rel="noreferrer">README ↗</a><a href="#support">支持作者</a></div><div class="footer-bottom"><span>© 2026 VanGong</span><span>Built for writers who want to keep control.</span></div></footer>
+
+    <dialog class="lightbox" id="lightbox"><button class="lightbox-close" type="button" aria-label="关闭大图">×</button><img id="lightbox-image" alt="" /><div class="lightbox-caption" id="lightbox-caption"></div></dialog>
+    <script src="./app.js"></script>
+  </body>
+</html>
